@@ -1,0 +1,15 @@
+global using System;
+global using System.Collections.Generic;
+global using System.ComponentModel;
+global using System.Data;
+global using System.Drawing;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using System.Windows.Forms;
+global using MySql.Data.MySqlClient;
+global using Microsoft.AspNetCore.Identity;
+global using Projeto.Utils;
+global using Projeto.Services;
+global using Projeto.Data;
+global using Projeto.Models;

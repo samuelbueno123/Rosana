@@ -68,5 +68,26 @@ namespace Projeto.Utils
             }
 
         }
+
+        public static int AlterarSenha(string senha, string nova)
+        {
+            string hash;
+            string query = "select senha from usuario where nome = @nome";
+
+            using (var cmd = new MySqlCommand(query, BD.Conectar()))
+            {
+                cmd.Parameters.AddWithValue("@nome", Sessao.UsuarioAtual!.nome);
+                hash = cmd.ExecuteScalar().ToString() ?? "";
+                if (!Conta.VerificarSenha(hash, senha)) return -1;
+            }
+            using (var cmd = new MySqlCommand("updatesenha", BD.Conectar()))
+            {
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("_nome", Sessao.UsuarioAtual.nome);
+                cmd.Parameters.AddWithValue("atual", senha);
+                cmd.Parameters.AddWithValue("nova", nova);
+                return cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

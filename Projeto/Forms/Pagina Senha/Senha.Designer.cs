@@ -99,7 +99,7 @@
             button_cancelar.TabIndex = 6;
             button_cancelar.Text = "Cancelar";
             button_cancelar.UseVisualStyleBackColor = true;
-            button_cancelar.Click += this.button_cancelar_Click;
+            button_cancelar.Click += button_cancelar_Click;
             // 
             // Senha
             // 

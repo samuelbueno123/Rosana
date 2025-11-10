@@ -24,8 +24,9 @@ namespace Projeto
 
             navegando = true;
             PaginaCadastro cadastro = new PaginaCadastro();
-            this.Close();
-            cadastro.ShowDialog();
+            cadastro.Show();
+            this.Hide();
+            this.BeginInvoke(new Action(() => this.Close()));
 
         }
 
@@ -116,7 +117,6 @@ namespace Projeto
 
         private void menu_configuracoes_Click(object sender, EventArgs e)
         {
-            navegando = true;
             Configuracoes config = new Configuracoes();
             config.Show();
         }

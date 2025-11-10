@@ -11,6 +11,8 @@ namespace Projeto.Utils
         public bool ValidarUsuario(string nome, string email)
         {
 
+            if (BD.Conectar() == null) return false;
+
             if (!nome.All(char.IsLetterOrDigit))
             {
                 MessageBox.Show("O nome só pode conter caracteres alfanuméricos",

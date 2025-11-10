@@ -84,6 +84,7 @@
             button_mudarsenha.TabIndex = 0;
             button_mudarsenha.Text = "Alterar senha";
             button_mudarsenha.UseVisualStyleBackColor = true;
+            button_mudarsenha.Click += button_mudarsenha_Click;
             // 
             // Configuracoes
             // 

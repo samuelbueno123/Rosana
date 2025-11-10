@@ -35,10 +35,10 @@
             menu_login = new ToolStripMenuItem();
             menu_sair = new ToolStripMenuItem();
             menu_opcoes = new ToolStripMenuItem();
+            menu_configuracoes = new ToolStripMenuItem();
             menu_preferencias = new ToolStripMenuItem();
             menu_fechar = new ToolStripMenuItem();
             button_teste = new Button();
-            menu_configuracoes = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -98,6 +98,13 @@
             menu_opcoes.Text = "Opções";
             menu_opcoes.Visible = false;
             // 
+            // menu_configuracoes
+            // 
+            menu_configuracoes.Name = "menu_configuracoes";
+            menu_configuracoes.Size = new Size(180, 22);
+            menu_configuracoes.Text = "Configurações";
+            menu_configuracoes.Click += menu_configuracoes_Click;
+            // 
             // menu_preferencias
             // 
             menu_preferencias.Name = "menu_preferencias";
@@ -121,12 +128,6 @@
             button_teste.Text = "teste usuario";
             button_teste.UseVisualStyleBackColor = true;
             button_teste.Click += button_teste_Click;
-            // 
-            // menu_configuracoes
-            // 
-            menu_configuracoes.Name = "menu_configuracoes";
-            menu_configuracoes.Size = new Size(180, 22);
-            menu_configuracoes.Text = "Configurações";
             // 
             // PaginaPrincipal
             // 

@@ -92,7 +92,7 @@
             check_boxe.AutoSize = true;
             check_boxe.Location = new Point(90, 161);
             check_boxe.Name = "check_boxe";
-            check_boxe.Size = new Size(52, 19);
+            check_boxe.Size = new Size(51, 19);
             check_boxe.TabIndex = 4;
             check_boxe.Text = "Boxe";
             check_boxe.UseVisualStyleBackColor = true;
@@ -228,11 +228,11 @@
             button_cancelar.UseVisualStyleBackColor = true;
             button_cancelar.Click += button_cancelar_Click;
             // 
-            // Preferências
+            // Preferencias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1033, 611);
+            ClientSize = new Size(506, 399);
             Controls.Add(button_cancelar);
             Controls.Add(button_salvar);
             Controls.Add(check_rocket);
@@ -251,7 +251,7 @@
             Controls.Add(check_baseball);
             Controls.Add(check_atletismo);
             Controls.Add(label1);
-            Name = "Preferências";
+            Name = "Preferencias";
             Text = "Preferências";
             Load += Preferências_Load;
             ResumeLayout(false);

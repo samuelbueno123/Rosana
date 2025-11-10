@@ -1,4 +1,5 @@
 using K4os.Compression.LZ4.Internal;
+using Projeto.Forms.Pagina_Configuracoes;
 
 namespace Projeto
 {
@@ -23,8 +24,9 @@ namespace Projeto
 
             navegando = true;
             PaginaCadastro cadastro = new PaginaCadastro();
-            this.Close();
-            cadastro.ShowDialog();
+            cadastro.Show();
+            this.Hide();
+            this.BeginInvoke(new Action(() => this.Close()));
 
         }
 
@@ -69,7 +71,7 @@ namespace Projeto
 
         private void button_teste_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"id = {Sessao.UsuarioAtual!.id}, nome = {Sessao.UsuarioAtual!.nome}, email = {Sessao.UsuarioAtual!.email}");
+            MessageBox.Show($"id = {Sessao.UsuarioAtual?.id}, nome = {Sessao.UsuarioAtual?.nome}, email = {Sessao.UsuarioAtual?.email}");
         }
 
         private void label_bemvindo_Click(object sender, EventArgs e)
@@ -105,12 +107,18 @@ namespace Projeto
                 menu_login.Visible = false;
                 label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual!.nome}";
             }
-                
+
         }
 
         private void menu_fechar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void menu_configuracoes_Click(object sender, EventArgs e)
+        {
+            Configuracoes config = new Configuracoes();
+            config.Show();
         }
     }
 }

@@ -11,8 +11,6 @@ namespace Projeto.Utils
         public bool ValidarUsuario(string nome, string email)
         {
 
-            if (BD.Conectar() == null) return false;
-
             if (!nome.All(char.IsLetterOrDigit))
             {
                 MessageBox.Show("O nome só pode conter caracteres alfanuméricos",
@@ -41,7 +39,8 @@ namespace Projeto.Utils
             }
 
 
-            using (var cmd = new MySqlCommand(query, BD.Conectar()))
+            using (var conn = BD.Conectar())
+            using (var cmd = new MySqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@nome", nome);
                 cmd.Parameters.AddWithValue("@email", email);

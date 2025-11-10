@@ -18,9 +18,9 @@
             if (aviso == DialogResult.Yes)
             {
                 MessageBox.Show(
-                    $"Id de conta: {Sessao.UsuarioAtual!.id} \n" +
-                    $"Nome de usuário: {Sessao.UsuarioAtual!.nome} \n" +
-                    $"Email: {Sessao.UsuarioAtual.email}",
+                    $"Id de conta: {Sessao.UsuarioAtual!.Id} \n" +
+                    $"Nome de usuário: {Sessao.UsuarioAtual!.Nome} \n" +
+                    $"Email: {Sessao.UsuarioAtual.Email}",
                     "Informações",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
@@ -33,6 +33,11 @@
             Senha senha = new();
 
             senha.ShowDialog();
+        }
+
+        private void button_excluirconta_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

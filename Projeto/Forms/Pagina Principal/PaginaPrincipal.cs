@@ -71,7 +71,7 @@ namespace Projeto
 
         private void button_teste_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"id = {Sessao.UsuarioAtual?.id}, nome = {Sessao.UsuarioAtual?.nome}, email = {Sessao.UsuarioAtual?.email}");
+            MessageBox.Show($"id = {Sessao.UsuarioAtual?.Id}, nome = {Sessao.UsuarioAtual?.Nome}, email = {Sessao.UsuarioAtual?.Email}");
         }
 
         private void label_bemvindo_Click(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace Projeto
                 menu_opcoes.Visible = true;
                 menu_cadastro.Visible = false;
                 menu_login.Visible = false;
-                label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual!.nome}";
+                label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual!.Nome}";
             }
 
         }

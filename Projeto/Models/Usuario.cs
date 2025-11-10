@@ -4,24 +4,27 @@ namespace Projeto.Models
     public class Usuario : IDisposable
     {
 
-        public int id { get; set; }
-        public string nome {  get; set; }
-        public string email {  get; set; }
+        public int Id { get; set; }
+        public string Nome {  get; set; }
+        public string Email {  get; set; }
+        public string SenhaHash { get; set; }
         private bool disposed = false;
 
-        public Usuario(int id, string nome, string email)
+        public Usuario(int id, string nome, string email, string senhahash)
         {
-            this.id = id;
-            this.nome = nome;
-            this.email = email;
+            this.Id = id;
+            this.Nome = nome;
+            this.Email = email;
+            SenhaHash = senhahash;
         }
     
 
         public void Sair()
         {
-            id = -1;
-            nome = "";
-            email = "";
+            Id = -1;
+            Nome = "";
+            Email = "";
+            SenhaHash = "";
             Dispose();
         }
 

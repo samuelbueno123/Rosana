@@ -65,6 +65,7 @@
             button_excluirconta.TabIndex = 2;
             button_excluirconta.Text = "Excluir conta";
             button_excluirconta.UseVisualStyleBackColor = true;
+            button_excluirconta.Click += button_excluirconta_Click;
             // 
             // button_consultar
             // 

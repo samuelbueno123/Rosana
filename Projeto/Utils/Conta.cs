@@ -9,7 +9,7 @@ namespace Projeto.Utils
 
         private static Usuario? usuario { get; set; }
         private static readonly PasswordHasher<object> hasher = new PasswordHasher<object>();
-        private static readonly string query = "select id, nome, email from usuario where nome = @usuario or email = @usuario";
+        private static readonly string query = "select id, nome, email, senha from usuario where nome = @usuario or email = @usuario";
 
         public static string HasharSenha(string senha) => hasher.HashPassword("", senha);
 
@@ -59,9 +59,9 @@ namespace Projeto.Utils
                     using (var data = cmd.ExecuteReader())
                     {
                         data.Read();
-                        Sessao.UsuarioAtual = new(data.GetInt32("id"), data.GetString("nome").ToString(), data.GetString("email").ToString());
+                        Sessao.UsuarioAtual = new(data.GetInt32("id"), data.GetString("nome").ToString(), data.GetString("email").ToString(), data.GetString("senha").ToString());
 
-                        return Sessao.UsuarioAtual!.nome == user || Sessao.UsuarioAtual.email == user;
+                        return Sessao.UsuarioAtual!.Nome == user || Sessao.UsuarioAtual.Email == user;
 
                     }
                 }
@@ -75,19 +75,40 @@ namespace Projeto.Utils
             string query = "select senha from usuario where nome = @nome";
             bool resultsenha;
 
-            using (var cmd = new MySqlCommand(query, BD.Conectar()))
+            using (var conn = BD.Conectar())
             {
-                cmd.Parameters.AddWithValue("@nome", Sessao.UsuarioAtual!.nome);
-                hash = cmd.ExecuteScalar().ToString() ?? "";
-                if (!Conta.VerificarSenha(hash, senha)) return -1;
-                else resultsenha = true;
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nome", Sessao.UsuarioAtual!.Nome);
+                    hash = cmd.ExecuteScalar().ToString() ?? "";
+                    if (!Conta.VerificarSenha(hash, senha)) return -1;
+                    else resultsenha = true;
+                }
+                using (var cmd = new MySqlCommand("updatesenha", conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("_nome", Sessao.UsuarioAtual.Nome);
+                    cmd.Parameters.AddWithValue("atual", resultsenha);
+                    cmd.Parameters.AddWithValue("nova", nova);
+                    return cmd.ExecuteNonQuery();
+                }
             }
-            using (var cmd = new MySqlCommand("updatesenha", BD.Conectar()))
+            
+        }
+
+        public static int ExcluirConta(string senha)
+        {
+            bool resultsenha;
+            using (var conn = BD.Conectar())
+            using (var cmd = new MySqlCommand("deleteusuario", conn))
             {
+                resultsenha = Conta.VerificarSenha(Sessao.UsuarioAtual!.SenhaHash, senha);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("_nome", Sessao.UsuarioAtual.nome);
-                cmd.Parameters.AddWithValue("atual", resultsenha);
-                cmd.Parameters.AddWithValue("nova", nova);
+
+                cmd.Parameters.AddWithValue("_nome", Sessao.UsuarioAtual.Nome);
+                cmd.Parameters.AddWithValue("_email", Sessao.UsuarioAtual.Email);
+                cmd.Parameters.AddWithValue("senha", resultsenha);
+
                 return cmd.ExecuteNonQuery();
             }
         }

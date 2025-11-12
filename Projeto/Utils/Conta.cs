@@ -100,7 +100,7 @@ namespace Projeto.Utils
         {
             bool resultsenha;
             using (var conn = BD.Conectar())
-            using (var cmd = new MySqlCommand("deleteusuario", conn))
+            using (var cmd = new MySqlCommand("deleteconta", conn))
             {
                 resultsenha = Conta.VerificarSenha(Sessao.UsuarioAtual!.SenhaHash, senha);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;

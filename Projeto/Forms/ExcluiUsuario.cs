@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Projeto.Forms
+﻿namespace Projeto.Forms
 {
     public partial class ExcluiUsuario : Form
     {
@@ -28,15 +18,15 @@ namespace Projeto.Forms
                 MessageBoxIcon.Warning
                 );
 
-            if (apagar == DialogResult.Yes && Conta.ExcluirConta(senha) == 1)
+            if (apagar == DialogResult.Yes && Conta.ExcluirConta(senha) == 2)
             {
+                Sessao.UsuarioAtual!.Sair();
                 MessageBox.Show(
                         "Conta excluida com sucesso.",
                         "Excluida",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information
                         );
-                Sessao.UsuarioAtual!.Sair();
                 Close();
             }
             else

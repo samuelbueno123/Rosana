@@ -60,8 +60,8 @@ namespace Projeto
 
             if (confirma == DialogResult.Yes)
             {
-                label_bemvindo.Text = "Bem-vindo ao site";
                 Sessao.UsuarioAtual!.Sair();
+                label_bemvindo.Text = "Bem-vindo ao site";
                 menu_sair.Visible = false;
                 menu_opcoes.Visible = false;
                 menu_cadastro.Visible = true;
@@ -71,7 +71,9 @@ namespace Projeto
 
         private void button_teste_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"id = {Sessao.UsuarioAtual?.Id}, nome = {Sessao.UsuarioAtual?.Nome}, email = {Sessao.UsuarioAtual?.Email}");
+            MessageBox.Show($"id = {Sessao.UsuarioAtual?.Id}," +
+                $" nome = {Sessao.UsuarioAtual?.Nome}," +
+                $" email = {Sessao.UsuarioAtual?.Email}");
         }
 
         private void label_bemvindo_Click(object sender, EventArgs e)

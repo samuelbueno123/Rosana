@@ -1,43 +1,25 @@
 namespace Projeto.Models
 {
 
-    public class Usuario : IDisposable
+    public class Usuario(int id, string nome, string email, string senhahash) : IDisposable
     {
+        private readonly IDisposable? _usuario;
 
-        public int Id { get; set; }
-        public string Nome {  get; set; }
-        public string Email {  get; set; }
-        public string SenhaHash { get; set; }
-        private bool disposed = false;
-
-        public Usuario(int id, string nome, string email, string senhahash)
-        {
-            this.Id = id;
-            this.Nome = nome;
-            this.Email = email;
-            SenhaHash = senhahash;
-        }
-    
+        public int Id { get; set; } = id;
+        public string Nome { get; set; } = nome;
+        public string Email { get; set; } = email;
+        public string SenhaHash { get; set; } = senhahash;
 
         public void Sair()
         {
             Id = -1;
-            Nome = "";
-            Email = "";
-            SenhaHash = "";
-            Dispose();
+            Nome = null; 
+            Email = null;
+            SenhaHash = null;
         }
 
-        public void Dispose()
-        {
-            if (disposed) return;
-            disposed = true;
-            GC.SuppressFinalize(this);
-        }
+        public void Dispose() => _usuario?.Dispose();
 
-        ~Usuario()
-        {
-            Dispose();
-        }
+        ~Usuario() => Dispose();
     }
 }

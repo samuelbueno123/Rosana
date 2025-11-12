@@ -15,8 +15,7 @@ namespace Projeto
 
         private void PaginaPrincipal_FormClosed(object? sender, EventArgs e)
         {
-            if (!navegando)
-                Application.Exit();
+            if (!navegando) Application.Exit();
         }
 
         private void menu_cadastro_Click(object sender, EventArgs e)
@@ -112,10 +111,7 @@ namespace Projeto
 
         }
 
-        private void menu_fechar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        private void menu_fechar_Click(object sender, EventArgs e) => Application.Exit();
 
         private void menu_configuracoes_Click(object sender, EventArgs e)
         {

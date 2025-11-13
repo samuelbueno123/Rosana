@@ -103,7 +103,7 @@ namespace Projeto.Utils
             using (var cmd = new MySqlCommand("deleteconta", conn))
             {
                 resultsenha = Conta.VerificarSenha(Sessao.UsuarioAtual!.SenhaHash, senha);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("_nome", Sessao.UsuarioAtual.Nome);
                 cmd.Parameters.AddWithValue("_email", Sessao.UsuarioAtual.Email);

@@ -109,6 +109,9 @@ namespace Projeto
                 label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual!.Nome}";
             }
 
+            //if (Properties.Settings.Default.UltimoUsuario != null)                
+              //  Conta.Logar(Properties.Settings.Default.UltimoUsuario!);
+
         }
 
         private void menu_fechar_Click(object sender, EventArgs e) => Application.Exit();

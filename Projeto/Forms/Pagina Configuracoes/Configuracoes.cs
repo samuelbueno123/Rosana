@@ -37,9 +37,27 @@
 
         private void button_excluirconta_Click(object sender, EventArgs e)
         {
-            ExcluiUsuario excluiUsuario = new();
+            ExcluiUsuario0 excluiUsuario = new();
 
             excluiUsuario.ShowDialog();
+        }
+
+        private void combo_tema_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (combo_tema.SelectedIndex == 0)
+            {
+                this.BackColor = Color.White;
+                this.ForeColor = Color.Black;
+                Properties.Settings.Default.TemaEscuro = false;
+                Properties.Settings.Default.Save();
+            }
+            else if (combo_tema.SelectedIndex == 1)
+            {
+                this.BackColor = Color.Black;
+                this.ForeColor = Color.White;
+                Properties.Settings.Default.TemaEscuro = true;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Projeto.Forms
 {
-    partial class ExcluiUsuario
+    partial class ExcluiUsuario0
     {
         /// <summary>
         /// Required designer variable.

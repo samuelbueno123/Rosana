@@ -1,15 +1,4 @@
-﻿using Mysqlx.Session;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Projeto.Forms
+﻿namespace Projeto.Forms
 {
     public partial class Senha : Form
     {
@@ -33,6 +22,8 @@ namespace Projeto.Forms
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
+
+                Sessao.UsuarioAtual!.SenhaHash = nova;
                 Close();
             }
             else

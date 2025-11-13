@@ -109,8 +109,16 @@ namespace Projeto
                 label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual!.Nome}";
             }
 
-            //if (Properties.Settings.Default.UltimoUsuario != null)                
-              //  Conta.Logar(Properties.Settings.Default.UltimoUsuario!);
+            if (Properties.Settings.Default.UltimoUsuario != String.Empty)
+            {
+                Conta.Logar(Properties.Settings.Default.UltimoUsuario);
+                menu_sair.Visible = true;
+                menu_opcoes.Visible = true;
+                menu_cadastro.Visible = false;
+                menu_login.Visible = false;
+                label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual!.Nome}";
+            }
+
 
         }
 

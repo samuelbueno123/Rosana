@@ -30,7 +30,7 @@ namespace Projeto.Utils
             }
             catch
             {
-                MessageBox.Show("Insira um email válido",
+                MessageBox.Show("Insira um email válido.",
                     "Erro",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error

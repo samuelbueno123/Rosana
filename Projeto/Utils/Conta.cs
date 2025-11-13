@@ -45,6 +45,8 @@ namespace Projeto.Utils
         public static bool Logar(string user)
         {
 
+            if (user == null) return false;
+
             using (var conn = BD.Conectar())
             {
                 if (conn == null) return false;

@@ -16,7 +16,7 @@ namespace Projeto.Models
             Nome = null; 
             Email = null;
             SenhaHash = null;
-            Properties.Settings.Default.UltimoUsuario = String.Empty;
+            Properties.Settings.Default.UltimoUsuario = null;
             Properties.Settings.Default.TemaEscuro = false;
             Properties.Settings.Default.Save();
         }

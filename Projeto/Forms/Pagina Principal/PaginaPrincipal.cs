@@ -59,20 +59,13 @@ namespace Projeto
 
             if (confirma == DialogResult.Yes)
             {
-                Sessao.UsuarioAtual!.Sair();
+                Sessao.UsuarioAtual?.Sair();
                 label_bemvindo.Text = "Bem-vindo ao site";
                 menu_sair.Visible = false;
                 menu_opcoes.Visible = false;
                 menu_cadastro.Visible = true;
                 menu_login.Visible = true;
             }
-        }
-
-        private void button_teste_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show($"id = {Sessao.UsuarioAtual?.Id}," +
-                $" nome = {Sessao.UsuarioAtual?.Nome}," +
-                $" email = {Sessao.UsuarioAtual?.Email}");
         }
 
         private void label_bemvindo_Click(object sender, EventArgs e)
@@ -86,9 +79,6 @@ namespace Projeto
             label_bemvindo.Left = (this.ClientSize.Width - label_bemvindo.Width) / 2;
             label_bemvindo.Top = (this.ClientSize.Height - label_bemvindo.Height) / 4;
 
-            button_teste.Left = (this.ClientSize.Width - button_teste.Width) / 2;
-            button_teste.Top = (this.ClientSize.Height - button_teste.Width) / 2;
-
         }
 
         private void PaginaPrincipal_Load(object sender, EventArgs e)
@@ -97,29 +87,17 @@ namespace Projeto
             label_bemvindo.Left = (this.ClientSize.Width - label_bemvindo.Width) / 2;
             label_bemvindo.Top = (this.ClientSize.Height - label_bemvindo.Height) / 4;
 
-            button_teste.Left = (this.ClientSize.Width - button_teste.Width) / 2;
-            button_teste.Top = (this.ClientSize.Height - button_teste.Width) / 2;
-
-            if (Sessao.UsuarioAtual != null)
+            if (Properties.Settings.Default.UltimoUsuario != null && Properties.Settings.Default.UltimoUsuario != String.Empty)
             {
-                menu_sair.Visible = true;
-                menu_opcoes.Visible = true;
-                menu_cadastro.Visible = false;
-                menu_login.Visible = false;
-                label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual!.Nome}";
-            }
-
-            if (Properties.Settings.Default.UltimoUsuario != String.Empty)
-            {
+                MessageBox.Show($"{Properties.Settings.Default.UltimoUsuario}");
                 Conta.Logar(Properties.Settings.Default.UltimoUsuario);
                 menu_sair.Visible = true;
                 menu_opcoes.Visible = true;
                 menu_cadastro.Visible = false;
                 menu_login.Visible = false;
-                label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual!.Nome}";
+                label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual?.Nome}";
             }
-
-
+            
         }
 
         private void menu_fechar_Click(object sender, EventArgs e) => Application.Exit();
@@ -129,5 +107,6 @@ namespace Projeto
             Configuracoes config = new Configuracoes();
             config.Show();
         }
+
     }
 }

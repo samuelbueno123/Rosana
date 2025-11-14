@@ -37,7 +37,7 @@
 
         private void button_excluirconta_Click(object sender, EventArgs e)
         {
-            ExcluiUsuario0 excluiUsuario = new();
+            ExcluiUsuario excluiUsuario = new();
 
             excluiUsuario.ShowDialog();
         }

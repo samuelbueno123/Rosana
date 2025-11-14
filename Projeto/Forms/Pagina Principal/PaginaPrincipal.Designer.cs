@@ -38,7 +38,6 @@
             menu_configuracoes = new ToolStripMenuItem();
             menu_preferencias = new ToolStripMenuItem();
             menu_fechar = new ToolStripMenuItem();
-            button_teste = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -71,21 +70,21 @@
             // menu_cadastro
             // 
             menu_cadastro.Name = "menu_cadastro";
-            menu_cadastro.Size = new Size(180, 22);
+            menu_cadastro.Size = new Size(121, 22);
             menu_cadastro.Text = "Cadastro";
             menu_cadastro.Click += menu_cadastro_Click;
             // 
             // menu_login
             // 
             menu_login.Name = "menu_login";
-            menu_login.Size = new Size(180, 22);
+            menu_login.Size = new Size(121, 22);
             menu_login.Text = "Login";
             menu_login.Click += menu_login_Click;
             // 
             // menu_sair
             // 
             menu_sair.Name = "menu_sair";
-            menu_sair.Size = new Size(180, 22);
+            menu_sair.Size = new Size(121, 22);
             menu_sair.Text = "Sair";
             menu_sair.Visible = false;
             menu_sair.Click += menu_sair_Click;
@@ -101,14 +100,14 @@
             // menu_configuracoes
             // 
             menu_configuracoes.Name = "menu_configuracoes";
-            menu_configuracoes.Size = new Size(180, 22);
+            menu_configuracoes.Size = new Size(151, 22);
             menu_configuracoes.Text = "Configurações";
             menu_configuracoes.Click += menu_configuracoes_Click;
             // 
             // menu_preferencias
             // 
             menu_preferencias.Name = "menu_preferencias";
-            menu_preferencias.Size = new Size(180, 22);
+            menu_preferencias.Size = new Size(151, 22);
             menu_preferencias.Text = "Preferências";
             menu_preferencias.Click += menu_preferencias_Click;
             // 
@@ -119,22 +118,11 @@
             menu_fechar.Text = "Fechar";
             menu_fechar.Click += menu_fechar_Click;
             // 
-            // button_teste
-            // 
-            button_teste.Location = new Point(228, 356);
-            button_teste.Name = "button_teste";
-            button_teste.Size = new Size(171, 55);
-            button_teste.TabIndex = 2;
-            button_teste.Text = "teste usuario";
-            button_teste.UseVisualStyleBackColor = true;
-            button_teste.Click += button_teste_Click;
-            // 
             // PaginaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(764, 459);
-            Controls.Add(button_teste);
             Controls.Add(label_bemvindo);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -159,7 +147,6 @@
         private ToolStripMenuItem menu_fechar;
         private ToolStripMenuItem menu_sair;
         private ToolStripMenuItem menu_preferencias;
-        private Button button_teste;
         private ToolStripMenuItem menu_configuracoes;
     }
 }

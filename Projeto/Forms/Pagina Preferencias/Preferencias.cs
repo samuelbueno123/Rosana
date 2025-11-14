@@ -30,7 +30,7 @@
             bool xadrez = check_xadrez.Checked;
 
             if (BD.UpdatePreferencias(
-                Sessao.UsuarioAtual!.id, atletismo, baseball, basquete,
+                Sessao.UsuarioAtual!.Id, atletismo, baseball, basquete,
                 boxe, cod, cs,
                 formula1, futebol, futebol_americano,
                 golfe, judo, natacao,
@@ -88,7 +88,7 @@
             using (var conn = BD.Conectar())
             using (var cmd = new MySqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@usuario", Sessao.UsuarioAtual!.id);
+                cmd.Parameters.AddWithValue("@usuario", Sessao.UsuarioAtual!.Id);
 
                 using (var data = cmd.ExecuteReader())
                 {

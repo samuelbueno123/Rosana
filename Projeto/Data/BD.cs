@@ -52,7 +52,7 @@ namespace Projeto.Data
         {
 
             using (var conn = BD.Conectar())
-            using (var cmd = new MySqlCommand("updatepreferences", BD.Conectar()))
+            using (var cmd = new MySqlCommand("updatepreferences", conn))
             {
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
@@ -140,6 +140,13 @@ namespace Projeto.Data
             }
 
         }
+
+        //public static string GetSenhaHash(string? nome = null, string? email = null)
+        //{
+        //    string query = "select senha from usuario where nome = @nome or email = @email";
+
+        //    using 
+        //}
 
     }
 }

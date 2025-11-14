@@ -38,6 +38,9 @@
                     MessageBoxIcon.Information
                     );
 
+                Properties.Settings.Default.UltimoUsuario = nome ?? email;
+                Properties.Settings.Default.Save();
+
                 this.Close();
 
             }

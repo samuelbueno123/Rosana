@@ -11,7 +11,7 @@ namespace Projeto.Utils
         public bool ValidarUsuario(string nome, string email)
         {
 
-            if (!nome.All(char.IsLetterOrDigit))
+            if (!nome.All(char.IsLetterOrDigit)) // arrumar pois a função está dando erro com espaço e acentos
             {
                 MessageBox.Show("O nome só pode conter caracteres alfanuméricos",
                     "Erro",
@@ -40,20 +40,23 @@ namespace Projeto.Utils
 
 
             using (var conn = BD.Conectar())
-            using (var cmd = new MySqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@nome", nome);
-                cmd.Parameters.AddWithValue("@email", email);
-
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-                if (count != 0)
+                if (conn == null) return false;
+                using (var cmd = new MySqlCommand(query, conn))
                 {
-                    MessageBox.Show("Já existe um usuário com este nome ou email.",
-                        "Erro",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                        );
-                    return false;
+                    cmd.Parameters.AddWithValue("@nome", nome);
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (count != 0)
+                    {
+                        MessageBox.Show("Já existe um usuário com este nome ou email.",
+                            "Erro",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                            );
+                        return false;
+                    }
                 }
             }
 

@@ -2,11 +2,9 @@
 {
     public partial class Preferencias : Form
     {
-        private Usuario? usuario { get; set; }
-        public Preferencias(Usuario usuario)
+        public Preferencias()
         {
             InitializeComponent();
-            this.usuario = usuario;
         }
 
 
@@ -86,24 +84,27 @@
             string query = $"select * from preferencias where usuario = @usuario";
 
             using (var conn = BD.Conectar())
-            using (var cmd = new MySqlCommand(query, conn))
-            {
-                cmd.Parameters.AddWithValue("@usuario", Sessao.UsuarioAtual!.Id);
+            { 
+                if (conn == null) return;
 
-                using (var data = cmd.ExecuteReader())
+                using (var cmd = new MySqlCommand(query, conn))
                 {
-                    if (data.Read())
-                    {
-                        foreach (string tabela in Constantes.tabelas)
-                        {
-                            bool valor = data.GetBoolean(tabela);
+                    cmd.Parameters.AddWithValue("@usuario", Sessao.UsuarioAtual!.Id);
 
-                            if (valor && checkboxMap.ContainsKey(tabela))
-                                checkboxMap[tabela].Checked = true;
+                    using (var data = cmd.ExecuteReader())
+                    {
+                        if (data.Read())
+                        {
+                            foreach (string tabela in Constantes.tabelas)
+                            {
+                                bool valor = data.GetBoolean(tabela);
+
+                                if (valor && checkboxMap.TryGetValue(tabela, out CheckBox? value))
+                                    value.Checked = true;
+                            }
                         }
                     }
                 }
-
 
             }
 

@@ -52,28 +52,32 @@ namespace Projeto.Data
         {
 
             using (var conn = BD.Conectar())
-            using (var cmd = new MySqlCommand("updatepreferences", conn))
             {
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("p_usuario", usuario);
-                cmd.Parameters.AddWithValue("p_atletismo", atletismo);
-                cmd.Parameters.AddWithValue("p_baseball", baseball);
-                cmd.Parameters.AddWithValue("p_basquete", basquete);
-                cmd.Parameters.AddWithValue("p_boxe", boxe);
-                cmd.Parameters.AddWithValue("p_cod", cod);
-                cmd.Parameters.AddWithValue("p_cs", cs);
-                cmd.Parameters.AddWithValue("p_formula1", formula1);
-                cmd.Parameters.AddWithValue("p_futebol", futebol);
-                cmd.Parameters.AddWithValue("p_futebol_americano", futebolAmericano);
-                cmd.Parameters.AddWithValue("p_golfe", golfe);
-                cmd.Parameters.AddWithValue("p_judo", judo);
-                cmd.Parameters.AddWithValue("p_natacao", natacao);
-                cmd.Parameters.AddWithValue("p_rocket", rocket);
-                cmd.Parameters.AddWithValue("p_valorant", valorant);
-                cmd.Parameters.AddWithValue("p_xadrez", xadrez);
+                if (conn == null) return -1;
+                using (var cmd = new MySqlCommand("updatepreferences", conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                return cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("p_usuario", usuario);
+                    cmd.Parameters.AddWithValue("p_atletismo", atletismo);
+                    cmd.Parameters.AddWithValue("p_baseball", baseball);
+                    cmd.Parameters.AddWithValue("p_basquete", basquete);
+                    cmd.Parameters.AddWithValue("p_boxe", boxe);
+                    cmd.Parameters.AddWithValue("p_cod", cod);
+                    cmd.Parameters.AddWithValue("p_cs", cs);
+                    cmd.Parameters.AddWithValue("p_formula1", formula1);
+                    cmd.Parameters.AddWithValue("p_futebol", futebol);
+                    cmd.Parameters.AddWithValue("p_futebol_americano", futebolAmericano);
+                    cmd.Parameters.AddWithValue("p_golfe", golfe);
+                    cmd.Parameters.AddWithValue("p_judo", judo);
+                    cmd.Parameters.AddWithValue("p_natacao", natacao);
+                    cmd.Parameters.AddWithValue("p_rocket", rocket);
+                    cmd.Parameters.AddWithValue("p_valorant", valorant);
+                    cmd.Parameters.AddWithValue("p_xadrez", xadrez);
+
+                    return cmd.ExecuteNonQuery();
+                }
             }
 
         }
@@ -83,18 +87,21 @@ namespace Projeto.Data
             string query = "select id from usuario where nome = @nome or email = @email";
 
             using (var conn = BD.Conectar())
-            using (var cmd = new MySqlCommand(query, conn))
             {
-
-                cmd.Parameters.AddWithValue("@nome", nome);
-                cmd.Parameters.AddWithValue("@email", email);
-
-                using (var reader = cmd.ExecuteReader())
+                if (conn == null) return 0;
+                using (var cmd = new MySqlCommand(query, conn))
                 {
-                    MessageBox.Show($"{reader.GetInt32("id")}");
-                    return reader.GetInt32("id");
-                }
 
+                    cmd.Parameters.AddWithValue("@nome", nome);
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        MessageBox.Show($"{reader.GetInt32("id")}");
+                        return reader.GetInt32("id");
+                    }
+
+                }
             }
 
         }
@@ -104,18 +111,21 @@ namespace Projeto.Data
             string query = "select nome from usuario where nome = @nome or email = @email";
 
             using (var conn = BD.Conectar())
-            using (var cmd = new MySqlCommand(query, conn))
             {
-
-                cmd.Parameters.AddWithValue("@nome", nome);
-                cmd.Parameters.AddWithValue("@email", email);
-
-                using (var reader = cmd.ExecuteReader())
+                if (conn == null) return "";
+                using (var cmd = new MySqlCommand(query, conn))
                 {
-                    MessageBox.Show(reader.GetString("nome"));
-                    return reader.GetString("nome");
-                }
 
+                    cmd.Parameters.AddWithValue("@nome", nome);
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        MessageBox.Show(reader.GetString("nome"));
+                        return reader.GetString("nome");
+                    }
+
+                }
             }
 
         }
@@ -125,18 +135,21 @@ namespace Projeto.Data
             string query = "select email from usuario where nome = @nome or email = @email";
 
             using (var conn = BD.Conectar())
-            using (var cmd = new MySqlCommand(query, conn))
             {
-
-                cmd.Parameters.AddWithValue("@nome", nome);
-                cmd.Parameters.AddWithValue("@email", email);
-
-                using (var reader = cmd.ExecuteReader())
+                if (conn == null) return "";
+                using (var cmd = new MySqlCommand(query, conn))
                 {
-                    MessageBox.Show(reader.GetString("email"));
-                    return reader.GetString("email");
-                }
 
+                    cmd.Parameters.AddWithValue("@nome", nome);
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        MessageBox.Show(reader.GetString("email"));
+                        return reader.GetString("email");
+                    }
+
+                }
             }
 
         }

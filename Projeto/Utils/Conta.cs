@@ -79,6 +79,9 @@ namespace Projeto.Utils
 
             using (var conn = BD.Conectar())
             {
+
+                if (conn == null) return 0;
+
                 using (var cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@nome", Sessao.UsuarioAtual!.Nome);
@@ -95,23 +98,27 @@ namespace Projeto.Utils
                     return cmd.ExecuteNonQuery();
                 }
             }
-            
+
         }
 
         public static int ExcluirConta(string senha)
         {
             bool resultsenha;
             using (var conn = BD.Conectar())
-            using (var cmd = new MySqlCommand("deleteconta", conn))
             {
-                resultsenha = Conta.VerificarSenha(Sessao.UsuarioAtual!.SenhaHash, senha);
-                cmd.CommandType = CommandType.StoredProcedure;
+                if (conn == null) return 0;
 
-                cmd.Parameters.AddWithValue("_nome", Sessao.UsuarioAtual.Nome);
-                cmd.Parameters.AddWithValue("_email", Sessao.UsuarioAtual.Email);
-                cmd.Parameters.AddWithValue("senha", resultsenha);
+                using (var cmd = new MySqlCommand("deleteconta", conn))
+                {
+                    resultsenha = Conta.VerificarSenha(Sessao.UsuarioAtual!.SenhaHash, senha);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                return cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("_nome", Sessao.UsuarioAtual.Nome);
+                    cmd.Parameters.AddWithValue("_email", Sessao.UsuarioAtual.Email);
+                    cmd.Parameters.AddWithValue("senha", resultsenha);
+
+                    return cmd.ExecuteNonQuery();
+                }
             }
         }
     }

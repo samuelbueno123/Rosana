@@ -22,7 +22,7 @@ namespace Projeto
         {
 
             navegando = true;
-            PaginaCadastro cadastro = new PaginaCadastro();
+            PaginaCadastro cadastro = new ();
             cadastro.Show();
             this.Hide();
             this.BeginInvoke(new Action(() => this.Close()));
@@ -33,7 +33,7 @@ namespace Projeto
         {
 
             navegando = true;
-            PaginaLogin login = new PaginaLogin();
+            PaginaLogin login = new ();
             login.Show();
             this.Hide();
             this.BeginInvoke(new Action(() => this.Close()));
@@ -43,7 +43,7 @@ namespace Projeto
         private void menu_preferencias_Click(object sender, EventArgs e)
         {
 
-            Preferencias preferencias = new Preferencias(Sessao.UsuarioAtual!);
+            Preferencias preferencias = new ();
             preferencias.ShowDialog();
 
         }
@@ -104,7 +104,7 @@ namespace Projeto
 
         private void menu_configuracoes_Click(object sender, EventArgs e)
         {
-            Configuracoes config = new Configuracoes();
+            Configuracoes config = new ();
             config.Show();
         }
 

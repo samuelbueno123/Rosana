@@ -3,12 +3,11 @@ namespace Projeto.Models
 
     public class Usuario(int id, string nome, string email, string senhahash) : IDisposable
     {
-        private readonly IDisposable? _usuario;
 
         public int Id { get; set; } = id;
-        public string Nome { get; set; } = nome;
-        public string Email { get; set; } = email;
-        public string SenhaHash { get; set; } = senhahash;
+        public string? Nome { get; set; } = nome;
+        public string? Email { get; set; } = email;
+        public string? SenhaHash { get; set; } = senhahash;
 
         public void Sair()
         {
@@ -21,7 +20,11 @@ namespace Projeto.Models
             Properties.Settings.Default.Save();
         }
 
-        public void Dispose() => _usuario?.Dispose();
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+            GC.Collect();
+        }
 
         ~Usuario() => Dispose();
     }

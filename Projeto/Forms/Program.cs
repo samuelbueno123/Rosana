@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Projeto
+namespace Projeto.Forms
 {
     internal static class Program
     {

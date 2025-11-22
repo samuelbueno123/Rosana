@@ -1,6 +1,6 @@
 ﻿namespace Projeto.Services
 {
-    internal class placeholder
+    internal class Placeholder
     {
     }
 }

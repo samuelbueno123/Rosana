@@ -1,6 +1,3 @@
-using K4os.Compression.LZ4.Internal;
-using Projeto.Forms.Pagina_Configuracoes;
-
 namespace Projeto
 {
     public partial class PaginaPrincipal : Form
@@ -22,7 +19,7 @@ namespace Projeto
         {
 
             navegando = true;
-            PaginaCadastro cadastro = new ();
+            PaginaCadastro cadastro = new();
             cadastro.Show();
             this.Hide();
             this.BeginInvoke(new Action(() => this.Close()));
@@ -33,7 +30,7 @@ namespace Projeto
         {
 
             navegando = true;
-            PaginaLogin login = new ();
+            PaginaLogin login = new();
             login.Show();
             this.Hide();
             this.BeginInvoke(new Action(() => this.Close()));
@@ -43,7 +40,7 @@ namespace Projeto
         private void menu_preferencias_Click(object sender, EventArgs e)
         {
 
-            Preferencias preferencias = new ();
+            Preferencias preferencias = new();
             preferencias.ShowDialog();
 
         }
@@ -97,16 +94,24 @@ namespace Projeto
                 menu_login.Visible = false;
                 label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual?.Nome}";
             }
-            
+
         }
 
         private void menu_fechar_Click(object sender, EventArgs e) => Application.Exit();
 
         private void menu_configuracoes_Click(object sender, EventArgs e)
         {
-            Configuracoes config = new ();
+            Configuracoes config = new();
             config.Show();
         }
 
+        private void button_futebolAmericano_Click(object sender, EventArgs e)
+        {
+            navegando = true;
+            FutebolAmericano futebolAmericano = new();
+            futebolAmericano.Show();
+            this.Hide();
+            this.BeginInvoke(new Action(() => this.Close()));
+        }
     }
 }

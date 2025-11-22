@@ -38,15 +38,19 @@
             menu_configuracoes = new ToolStripMenuItem();
             menu_preferencias = new ToolStripMenuItem();
             menu_fechar = new ToolStripMenuItem();
+            button_futebolAmericano = new Button();
+            button_futebol = new Button();
+            button_basquete = new Button();
+            mySqlConnection1 = new MySqlConnection();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label_bemvindo
             // 
             label_bemvindo.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
-            label_bemvindo.Location = new Point(167, 24);
+            label_bemvindo.Location = new Point(180, 48);
             label_bemvindo.Name = "label_bemvindo";
-            label_bemvindo.Size = new Size(381, 252);
+            label_bemvindo.Size = new Size(405, 276);
             label_bemvindo.TabIndex = 0;
             label_bemvindo.Text = "Bem-vindo ao site";
             label_bemvindo.Click += label_bemvindo_Click;
@@ -118,11 +122,42 @@
             menu_fechar.Text = "Fechar";
             menu_fechar.Click += menu_fechar_Click;
             // 
+            // button_futebolAmericano
+            // 
+            button_futebolAmericano.Location = new Point(121, 197);
+            button_futebolAmericano.Name = "button_futebolAmericano";
+            button_futebolAmericano.Size = new Size(141, 68);
+            button_futebolAmericano.TabIndex = 2;
+            button_futebolAmericano.Text = "Futebol Americano";
+            button_futebolAmericano.UseVisualStyleBackColor = true;
+            button_futebolAmericano.Click += button_futebolAmericano_Click;
+            // 
+            // button_futebol
+            // 
+            button_futebol.Location = new Point(312, 195);
+            button_futebol.Name = "button_futebol";
+            button_futebol.Size = new Size(141, 68);
+            button_futebol.TabIndex = 3;
+            button_futebol.Text = "Futebol";
+            button_futebol.UseVisualStyleBackColor = true;
+            // 
+            // button_basquete
+            // 
+            button_basquete.Location = new Point(500, 195);
+            button_basquete.Name = "button_basquete";
+            button_basquete.Size = new Size(141, 68);
+            button_basquete.TabIndex = 4;
+            button_basquete.Text = "Basquete";
+            button_basquete.UseVisualStyleBackColor = true;
+            // 
             // PaginaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(764, 459);
+            Controls.Add(button_basquete);
+            Controls.Add(button_futebol);
+            Controls.Add(button_futebolAmericano);
             Controls.Add(label_bemvindo);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -148,5 +183,9 @@
         private ToolStripMenuItem menu_sair;
         private ToolStripMenuItem menu_preferencias;
         private ToolStripMenuItem menu_configuracoes;
+        private Button button_futebolAmericano;
+        private Button button_futebol;
+        private Button button_basquete;
+        private MySqlConnection mySqlConnection1;
     }
 }

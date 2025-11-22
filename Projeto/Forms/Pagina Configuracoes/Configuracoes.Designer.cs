@@ -1,4 +1,4 @@
-﻿namespace Projeto.Forms.Pagina_Configuracoes
+﻿namespace Projeto.Forms
 {
     partial class Configuracoes
     {

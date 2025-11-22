@@ -8,7 +8,7 @@ namespace Projeto.Utils
     {
 
         private static Usuario? usuario { get; set; }
-        private static readonly PasswordHasher<object> hasher = new PasswordHasher<object>();
+        private static readonly PasswordHasher<object> hasher = new();
         private static readonly string query = "select id, nome, email, senha from usuario where nome = @usuario or email = @usuario";
 
         public static string HasharSenha(string senha) => hasher.HashPassword("", senha);
@@ -110,7 +110,7 @@ namespace Projeto.Utils
 
                 using (var cmd = new MySqlCommand("deleteconta", conn))
                 {
-                    resultsenha = Conta.VerificarSenha(Sessao.UsuarioAtual!.SenhaHash, senha);
+                    resultsenha = Conta.VerificarSenha(Sessao.UsuarioAtual!.SenhaHash!, senha);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("_nome", Sessao.UsuarioAtual.Nome);

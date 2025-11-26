@@ -28,12 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FutebolAmericano";
+            components = new Container();
+            data_jogadores = new DataGridView();
+            usuarioBindingSource = new BindingSource(components);
+            ((ISupportInitialize)data_jogadores).BeginInit();
+            ((ISupportInitialize)usuarioBindingSource).BeginInit();
+            SuspendLayout();
+            // 
+            // data_jogadores
+            // 
+            data_jogadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            data_jogadores.Location = new Point(180, 29);
+            data_jogadores.Name = "data_jogadores";
+            data_jogadores.Size = new Size(417, 281);
+            data_jogadores.TabIndex = 0;
+            // 
+            // FutebolAmericano
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(data_jogadores);
+            Name = "FutebolAmericano";
+            Text = "FutebolAmericano";
+            Load += FutebolAmericano_Load;
+            ((ISupportInitialize)data_jogadores).EndInit();
+            ((ISupportInitialize)usuarioBindingSource).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView data_jogadores;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn senhaHashDataGridViewTextBoxColumn;
+        private BindingSource usuarioBindingSource;
     }
 }

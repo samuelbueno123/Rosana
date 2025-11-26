@@ -48,7 +48,7 @@
             // label_bemvindo
             // 
             label_bemvindo.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
-            label_bemvindo.Location = new Point(180, 48);
+            label_bemvindo.Location = new Point(196, 49);
             label_bemvindo.Name = "label_bemvindo";
             label_bemvindo.Size = new Size(405, 276);
             label_bemvindo.TabIndex = 0;
@@ -140,6 +140,7 @@
             button_futebol.TabIndex = 3;
             button_futebol.Text = "Futebol";
             button_futebol.UseVisualStyleBackColor = true;
+            button_futebol.Click += button_futebol_Click;
             // 
             // button_basquete
             // 
@@ -149,6 +150,7 @@
             button_basquete.TabIndex = 4;
             button_basquete.Text = "Basquete";
             button_basquete.UseVisualStyleBackColor = true;
+            button_basquete.Click += button_basquete_Click;
             // 
             // PaginaPrincipal
             // 

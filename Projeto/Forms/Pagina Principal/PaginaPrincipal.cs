@@ -107,11 +107,35 @@ namespace Projeto
 
         private void button_futebolAmericano_Click(object sender, EventArgs e)
         {
+
             navegando = true;
             FutebolAmericano futebolAmericano = new();
             futebolAmericano.Show();
             this.Hide();
             this.BeginInvoke(new Action(() => this.Close()));
+
+        }
+
+        private void button_futebol_Click(object sender, EventArgs e)
+        {
+
+            navegando = true;
+            Futebol futebol = new();
+            futebol.Show();
+            this.Hide();
+            this.BeginInvoke(new Action(() => this.Close()));
+
+        }
+
+        private void button_basquete_Click(object sender, EventArgs e)
+        {
+
+            navegando = true;
+            Basquete basquete = new();
+            basquete.Show();
+            this.Hide();
+            this.BeginInvoke(new Action(() => this.Close()));
+
         }
     }
 }

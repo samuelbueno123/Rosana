@@ -81,7 +81,7 @@
                 { "xadrez", check_xadrez }
             };
 
-            string query = $"select * from preferencias where usuario = @usuario";
+            string query = "select * from preferencias where usuario = @usuario";
 
             using (var conn = BD.Conectar())
             { 

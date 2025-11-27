@@ -13,5 +13,10 @@
             var principal = new PaginaPrincipal();
             principal.Show();
         }
+
+        private void Basquete_Load(object sender, EventArgs e)
+        {
+            tabela_basquete.DataSource = EsporteService.GetJogadores("basquete");
+        }
     }
 }

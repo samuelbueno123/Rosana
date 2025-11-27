@@ -37,5 +37,41 @@ call jogadores ("Magic Johnson", "Basquete", "1959-08-14","Estados Unidos","1979
 call jogadores ("Kobe Bryant","Basquete","1978-08-23","Estados Unidos","1996-11-03","2016-04-13");
 call jogadores ("Anthony Edwards","Basquete","2008-08-05"," Estados Unidos","2020-12-23", null);
 
+call jogadores ("Willie Mays", "Baseball", "1931-05-06", "Estados Unidos", "1951-05-25", "1973-10-16");
+call jogadores ("Mike Trout", "Baseball", "1991-08-07", "Estados Unidos", "2011-07-08", null);
+call jogadores ("Tom Seaver", "Baseball", "1944-11-17", "Estados Unidos", "1967-04-13", "1987-06-20");
+call jogadores ("Albert Pujols", "Baseball", "1980-01-16", "República Dominicana", "2001-04-02", "2022-11-01");
+call jogadores ("Roberto Clemente", "Baseball", "1934-08-18", "Porto Rico (Estados Unidos)", "1955-04-17", "1972-10-03");
 
+
+
+select * from jogadores;
+
+delete from jogadores where codigo = 16;
+
+DELIMITER //
+
+create view jogadores_nfl as
+	select nome, nascimento, nacionalidade, `data de estreia`, `data de aposentaria`
+    from jogadores
+    where esporte = "Futebol americano";
+//
+
+create view jogadores_futebol as
+	select nome, nascimento, nacionalidade, `data de estreia`, `data de aposentaria`
+    from jogadores
+    where esporte = "Futebol";
+//
+
+create view jogadores_basquete as
+	select nome, nascimento, nacionalidade, `data de estreia`, `data de aposentaria`
+    from jogadores
+    where esporte = "basquete";
+//
+
+create view jogadores_baseball as
+	select nome, nascimento, nacionalidade, `data de estreia`, `data de aposentaria`
+    from jogadores
+    where esporte = "baseball";
+//
 

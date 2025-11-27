@@ -1,6 +1,6 @@
 ﻿namespace Projeto.Forms
 {
-    partial class Basquete
+    partial class todosJogadores
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabela_basquete = new DataGridView();
-            ((ISupportInitialize)tabela_basquete).BeginInit();
+            tabela_jogadores = new DataGridView();
+            ((ISupportInitialize)tabela_jogadores).BeginInit();
             SuspendLayout();
             // 
-            // tabela_basquete
+            // tabela_jogadores
             // 
-            tabela_basquete.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tabela_basquete.Location = new Point(154, 93);
-            tabela_basquete.Name = "tabela_basquete";
-            tabela_basquete.Size = new Size(481, 221);
-            tabela_basquete.TabIndex = 0;
+            tabela_jogadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tabela_jogadores.Location = new Point(90, 8);
+            tabela_jogadores.Name = "tabela_jogadores";
+            tabela_jogadores.Size = new Size(664, 436);
+            tabela_jogadores.TabIndex = 0;
             // 
-            // Basquete
+            // todosJogadores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(tabela_basquete);
-            Name = "Basquete";
-            Text = "Basquete";
-            Load += Basquete_Load;
-            ((ISupportInitialize)tabela_basquete).EndInit();
+            Controls.Add(tabela_jogadores);
+            Name = "todosJogadores";
+            Text = "todosJogadores";
+            Load += todosJogadores_Load;
+            ((ISupportInitialize)tabela_jogadores).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView tabela_basquete;
+        private DataGridView tabela_jogadores;
     }
 }

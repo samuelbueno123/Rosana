@@ -13,5 +13,10 @@
             var principal = new PaginaPrincipal();
             principal.Show();
         }
+
+        private void Futebol_Load(object sender, EventArgs e)
+        {
+            tabela_futebol.DataSource = EsporteService.GetJogadores("futebol");
+        }
     }
 }

@@ -29,37 +29,37 @@
         private void InitializeComponent()
         {
             components = new Container();
-            data_jogadores = new DataGridView();
+            tabela_nfl = new DataGridView();
             usuarioBindingSource = new BindingSource(components);
-            ((ISupportInitialize)data_jogadores).BeginInit();
+            ((ISupportInitialize)tabela_nfl).BeginInit();
             ((ISupportInitialize)usuarioBindingSource).BeginInit();
             SuspendLayout();
             // 
-            // data_jogadores
+            // tabela_nfl
             // 
-            data_jogadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            data_jogadores.Location = new Point(180, 29);
-            data_jogadores.Name = "data_jogadores";
-            data_jogadores.Size = new Size(417, 281);
-            data_jogadores.TabIndex = 0;
+            tabela_nfl.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tabela_nfl.Location = new Point(180, 29);
+            tabela_nfl.Name = "tabela_nfl";
+            tabela_nfl.Size = new Size(417, 281);
+            tabela_nfl.TabIndex = 0;
             // 
             // FutebolAmericano
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(data_jogadores);
+            Controls.Add(tabela_nfl);
             Name = "FutebolAmericano";
             Text = "FutebolAmericano";
             Load += FutebolAmericano_Load;
-            ((ISupportInitialize)data_jogadores).EndInit();
+            ((ISupportInitialize)tabela_nfl).EndInit();
             ((ISupportInitialize)usuarioBindingSource).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView data_jogadores;
+        private DataGridView tabela_nfl;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;

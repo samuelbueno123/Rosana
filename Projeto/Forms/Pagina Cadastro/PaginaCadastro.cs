@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic.Logging;
-
-namespace Projeto
+﻿namespace Projeto
 {
     public partial class PaginaCadastro : Form
     {

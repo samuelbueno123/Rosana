@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Futebol";
+            tabela_futebol = new DataGridView();
+            ((ISupportInitialize)tabela_futebol).BeginInit();
+            SuspendLayout();
+            // 
+            // tabela_futebol
+            // 
+            tabela_futebol.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tabela_futebol.Location = new Point(181, 77);
+            tabela_futebol.Name = "tabela_futebol";
+            tabela_futebol.Size = new Size(440, 243);
+            tabela_futebol.TabIndex = 0;
+            // 
+            // Futebol
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(tabela_futebol);
+            Name = "Futebol";
+            Text = "Futebol";
+            Load += Futebol_Load;
+            ((ISupportInitialize)tabela_futebol).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView tabela_futebol;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Projeto.Forms
 {
-    partial class Basquete
+    partial class Baseball
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabela_basquete = new DataGridView();
-            ((ISupportInitialize)tabela_basquete).BeginInit();
+            tabela_baseball = new DataGridView();
+            ((ISupportInitialize)tabela_baseball).BeginInit();
             SuspendLayout();
             // 
-            // tabela_basquete
+            // tabela_baseball
             // 
-            tabela_basquete.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tabela_basquete.Location = new Point(154, 93);
-            tabela_basquete.Name = "tabela_basquete";
-            tabela_basquete.Size = new Size(481, 221);
-            tabela_basquete.TabIndex = 0;
+            tabela_baseball.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tabela_baseball.Location = new Point(137, 86);
+            tabela_baseball.Name = "tabela_baseball";
+            tabela_baseball.Size = new Size(527, 229);
+            tabela_baseball.TabIndex = 0;
             // 
-            // Basquete
+            // Baseball
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(tabela_basquete);
-            Name = "Basquete";
-            Text = "Basquete";
-            Load += Basquete_Load;
-            ((ISupportInitialize)tabela_basquete).EndInit();
+            Controls.Add(tabela_baseball);
+            Name = "Baseball";
+            Text = "Baseball";
+            Load += Baseball_Load;
+            ((ISupportInitialize)tabela_baseball).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView tabela_basquete;
+        private DataGridView tabela_baseball;
     }
 }

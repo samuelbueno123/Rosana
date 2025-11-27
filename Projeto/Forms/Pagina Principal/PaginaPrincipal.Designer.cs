@@ -41,8 +41,11 @@
             button_futebolAmericano = new Button();
             button_futebol = new Button();
             button_basquete = new Button();
-            mySqlConnection1 = new MySqlConnection();
+            button_todosJogadores = new Button();
+            group_jogadores = new GroupBox();
+            button_baseball = new Button();
             menuStrip1.SuspendLayout();
+            group_jogadores.SuspendLayout();
             SuspendLayout();
             // 
             // label_bemvindo
@@ -124,7 +127,7 @@
             // 
             // button_futebolAmericano
             // 
-            button_futebolAmericano.Location = new Point(121, 197);
+            button_futebolAmericano.Location = new Point(15, 46);
             button_futebolAmericano.Name = "button_futebolAmericano";
             button_futebolAmericano.Size = new Size(141, 68);
             button_futebolAmericano.TabIndex = 2;
@@ -134,7 +137,7 @@
             // 
             // button_futebol
             // 
-            button_futebol.Location = new Point(312, 195);
+            button_futebol.Location = new Point(162, 46);
             button_futebol.Name = "button_futebol";
             button_futebol.Size = new Size(141, 68);
             button_futebol.TabIndex = 3;
@@ -144,7 +147,7 @@
             // 
             // button_basquete
             // 
-            button_basquete.Location = new Point(500, 195);
+            button_basquete.Location = new Point(456, 46);
             button_basquete.Name = "button_basquete";
             button_basquete.Size = new Size(141, 68);
             button_basquete.TabIndex = 4;
@@ -152,16 +155,49 @@
             button_basquete.UseVisualStyleBackColor = true;
             button_basquete.Click += button_basquete_Click;
             // 
+            // button_todosJogadores
+            // 
+            button_todosJogadores.Location = new Point(233, 140);
+            button_todosJogadores.Name = "button_todosJogadores";
+            button_todosJogadores.Size = new Size(141, 68);
+            button_todosJogadores.TabIndex = 5;
+            button_todosJogadores.Text = "Todos os Jogadores";
+            button_todosJogadores.UseVisualStyleBackColor = true;
+            button_todosJogadores.Click += button_todosJogadores_Click;
+            // 
+            // group_jogadores
+            // 
+            group_jogadores.Controls.Add(button_baseball);
+            group_jogadores.Controls.Add(button_futebol);
+            group_jogadores.Controls.Add(button_basquete);
+            group_jogadores.Controls.Add(button_todosJogadores);
+            group_jogadores.Controls.Add(button_futebolAmericano);
+            group_jogadores.Location = new Point(74, 177);
+            group_jogadores.Name = "group_jogadores";
+            group_jogadores.Size = new Size(612, 245);
+            group_jogadores.TabIndex = 6;
+            group_jogadores.TabStop = false;
+            group_jogadores.Text = "Jogadores";
+            group_jogadores.Visible = false;
+            // 
+            // button_baseball
+            // 
+            button_baseball.Location = new Point(309, 46);
+            button_baseball.Name = "button_baseball";
+            button_baseball.Size = new Size(141, 68);
+            button_baseball.TabIndex = 6;
+            button_baseball.Text = "Baseball";
+            button_baseball.UseVisualStyleBackColor = true;
+            button_baseball.Click += button_baseball_Click;
+            // 
             // PaginaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(764, 459);
-            Controls.Add(button_basquete);
-            Controls.Add(button_futebol);
-            Controls.Add(button_futebolAmericano);
-            Controls.Add(label_bemvindo);
             Controls.Add(menuStrip1);
+            Controls.Add(group_jogadores);
+            Controls.Add(label_bemvindo);
             MainMenuStrip = menuStrip1;
             Name = "PaginaPrincipal";
             Text = "Página Principal";
@@ -169,6 +205,7 @@
             Resize += PaginaPrincipal_Resize;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            group_jogadores.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -188,6 +225,8 @@
         private Button button_futebolAmericano;
         private Button button_futebol;
         private Button button_basquete;
-        private MySqlConnection mySqlConnection1;
+        private Button button_todosJogadores;
+        private GroupBox group_jogadores;
+        private Button button_baseball;
     }
 }

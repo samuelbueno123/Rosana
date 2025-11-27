@@ -17,7 +17,7 @@
         private void FutebolAmericano_Load(object sender, EventArgs e)
         {
 
-            data_jogadores.DataSource = EsporteService.GetJogadores("futebol americano");
+            tabela_nfl.DataSource = EsporteService.GetJogadores("nfl");
 
         }
     }

@@ -62,6 +62,7 @@ namespace Projeto
                 menu_opcoes.Visible = false;
                 menu_cadastro.Visible = true;
                 menu_login.Visible = true;
+                group_jogadores.Visible = false;
             }
         }
 
@@ -86,12 +87,12 @@ namespace Projeto
 
             if (Properties.Settings.Default.UltimoUsuario != null && Properties.Settings.Default.UltimoUsuario != String.Empty)
             {
-                MessageBox.Show($"{Properties.Settings.Default.UltimoUsuario}");
                 Conta.Logar(Properties.Settings.Default.UltimoUsuario);
                 menu_sair.Visible = true;
                 menu_opcoes.Visible = true;
                 menu_cadastro.Visible = false;
                 menu_login.Visible = false;
+                group_jogadores.Visible = true;
                 label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual?.Nome}";
             }
 
@@ -133,6 +134,28 @@ namespace Projeto
             navegando = true;
             Basquete basquete = new();
             basquete.Show();
+            this.Hide();
+            this.BeginInvoke(new Action(() => this.Close()));
+
+        }
+
+        private void button_todosJogadores_Click(object sender, EventArgs e)
+        {
+
+            navegando = true;
+            todosJogadores todosJogadores = new();
+            todosJogadores.Show();
+            this.Hide();
+            this.BeginInvoke(new Action(() => this.Close()));
+
+        }
+
+        private void button_baseball_Click(object sender, EventArgs e)
+        {
+
+            navegando = true;
+            Baseball baseball = new();
+            baseball.Show();
             this.Hide();
             this.BeginInvoke(new Action(() => this.Close()));
 

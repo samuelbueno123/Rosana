@@ -26,14 +26,14 @@
 
             using (var conn = BD.Conectar())
             {
-                if (conn == null) return null;
+                if (conn is null) return null;
 
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                using (MySqlCommand cmd = new(query, conn))
                 {
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    using (MySqlDataAdapter adapter = new(cmd))
                     {
-                        DataTable dt = new DataTable();
+                        DataTable dt = new();
                         adapter.Fill(dt);
                         return dt;
                     }
@@ -41,6 +41,7 @@
                 }
 
             }
+
 
         }
 

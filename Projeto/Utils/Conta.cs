@@ -1,4 +1,7 @@
-﻿namespace Projeto.Utils
+﻿using Microsoft.Graph.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+
+namespace Projeto.Utils
 {
     public static class Conta
     {
@@ -41,11 +44,11 @@
         public static bool Logar(string user)
         {
 
-            if (user == null) return false;
+            if (user is null) return false;
 
             using (var conn = BD.Conectar())
             {
-                if (conn == null) return false;
+                if (conn is null) return false;
 
                 using (var cmd = new MySqlCommand(query, conn))
                 {
@@ -57,9 +60,14 @@
                     using (var data = cmd.ExecuteReader())
                     {
                         data.Read();
-                        Sessao.UsuarioAtual = new(data.GetInt32("id"), data.GetString("nome").ToString(), data.GetString("email").ToString(), data.GetString("senha").ToString());
+                        Sessao.UsuarioAtual = new(
+                            data.GetInt32("id"),
+                            data.GetString("nome").ToString(),
+                            data.GetString("email").ToString(),
+                            data.GetString("senha").ToString()
+                            );
 
-                        return Sessao.UsuarioAtual!.Nome == user || Sessao.UsuarioAtual.Email == user;
+                        return Sessao.UsuarioAtual.Nome == user || Sessao.UsuarioAtual.Email == user;
                     }
                 }
             }
@@ -81,15 +89,18 @@
                 {
                     cmd.Parameters.AddWithValue("@nome", Sessao.UsuarioAtual!.Nome);
                     hash = cmd.ExecuteScalar().ToString() ?? "";
+
                     if (!Conta.VerificarSenha(hash, senha)) return -1;
                     else resultsenha = true;
                 }
                 using (var cmd = new MySqlCommand("updatesenha", conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
                     cmd.Parameters.AddWithValue("_nome", Sessao.UsuarioAtual.Nome);
                     cmd.Parameters.AddWithValue("atual", resultsenha);
                     cmd.Parameters.AddWithValue("nova", nova);
+
                     return cmd.ExecuteNonQuery();
                 }
             }

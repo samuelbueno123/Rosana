@@ -1,7 +1,4 @@
-﻿using Microsoft.Graph.Education.Classes.Item.Assignments.Item.Submissions.Item.Return;
-using Microsoft.Graph.Models;
-using System.Net.Mail;
-
+﻿
 namespace Projeto.Utils
 {
     public class Validador

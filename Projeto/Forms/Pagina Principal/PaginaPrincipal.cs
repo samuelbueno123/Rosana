@@ -4,6 +4,27 @@ namespace Projeto
     {
         private bool navegando = false;
 
+        private void Deslogar()
+        {
+            Sessao.UsuarioAtual?.Sair();
+            label_bemvindo.Text = "Bem-vindo ao site";
+            menu_sair.Visible = false;
+            menu_opcoes.Visible = false;
+            menu_cadastro.Visible = true;
+            menu_login.Visible = true;
+            group_jogadores.Visible = false;
+        }
+
+        private void Logar()
+        {
+            menu_sair.Visible = true;
+            menu_opcoes.Visible = true;
+            menu_cadastro.Visible = false;
+            menu_login.Visible = false;
+            group_jogadores.Visible = true;
+            label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual?.Nome}";
+        }
+
         public PaginaPrincipal()
         {
             InitializeComponent();
@@ -55,15 +76,7 @@ namespace Projeto
                 );
 
             if (confirma == DialogResult.Yes)
-            {
-                Sessao.UsuarioAtual?.Sair();
-                label_bemvindo.Text = "Bem-vindo ao site";
-                menu_sair.Visible = false;
-                menu_opcoes.Visible = false;
-                menu_cadastro.Visible = true;
-                menu_login.Visible = true;
-                group_jogadores.Visible = false;
-            }
+                Deslogar();
         }
 
         private void label_bemvindo_Click(object sender, EventArgs e)
@@ -85,15 +98,10 @@ namespace Projeto
             label_bemvindo.Left = (this.ClientSize.Width - label_bemvindo.Width) / 2;
             label_bemvindo.Top = (this.ClientSize.Height - label_bemvindo.Height) / 4;
 
-            if (Properties.Settings.Default.UltimoUsuario != null && Properties.Settings.Default.UltimoUsuario != String.Empty)
+            if (Properties.Settings.Default.UltimoUsuario is not null && Properties.Settings.Default.UltimoUsuario != String.Empty)
             {
                 Conta.Logar(Properties.Settings.Default.UltimoUsuario);
-                menu_sair.Visible = true;
-                menu_opcoes.Visible = true;
-                menu_cadastro.Visible = false;
-                menu_login.Visible = false;
-                group_jogadores.Visible = true;
-                label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual?.Nome}";
+                Logar();
             }
 
         }

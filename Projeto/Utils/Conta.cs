@@ -1,7 +1,4 @@
-﻿using Microsoft.Graph.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-
-namespace Projeto.Utils
+﻿namespace Projeto.Utils
 {
     public static class Conta
     {

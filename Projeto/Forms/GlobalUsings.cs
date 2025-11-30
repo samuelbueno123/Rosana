@@ -3,14 +3,21 @@ global using System.Collections.Generic;
 global using System.ComponentModel;
 global using System.Data;
 global using System.Drawing;
+global using System.Drawing.Text;
+global using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 global using System.Linq;
+global using System.Net.Mail;
 global using System.Text;
 global using System.Threading.Tasks;
 global using System.Windows.Forms;
 global using MySql.Data.MySqlClient;
 global using Microsoft.AspNetCore.Identity;
+global using Microsoft.Graph.Education.Classes.Item.Assignments.Item.Submissions.Item.Return;
+global using Microsoft.Graph.Models;
 global using Projeto.Utils;
 global using Projeto.Services;
 global using Projeto.Data;
 global using Projeto.Models;
 global using Projeto.Forms;
+
+

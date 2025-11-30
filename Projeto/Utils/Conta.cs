@@ -3,7 +3,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Projeto.Utils
 {
-
     public static class Conta
     {
 
@@ -64,7 +63,6 @@ namespace Projeto.Utils
                         Sessao.UsuarioAtual = new(data.GetInt32("id"), data.GetString("nome").ToString(), data.GetString("email").ToString(), data.GetString("senha").ToString());
 
                         return Sessao.UsuarioAtual!.Nome == user || Sessao.UsuarioAtual.Email == user;
-
                     }
                 }
             }

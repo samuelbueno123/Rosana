@@ -28,6 +28,10 @@ CREATE TABLE IF NOT EXISTS `trabalho`.`jogadores` (
   PRIMARY KEY (`codigo`))
 ENGINE = InnoDB;
 
+ALTER TABLE jogadores
+ADD foto VARCHAR(255) NULL;
+
+
 
 -- -----------------------------------------------------
 -- Table `trabalho`.`usuario`
@@ -349,9 +353,7 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-
-
-
+use trabalho;
 
 create table preferencias (
 	usuario int(11) primary key,
@@ -462,9 +464,7 @@ end;
 //
 DELIMITER ;
 
-
-
-
+use trabalho;
 
 DELIMITER //
 
@@ -476,63 +476,121 @@ begin
 end;
 //
 
-create procedure jogadores (in _nome varchar(45), _esporte varchar(45), _nascimento date, _nacionalidade varchar(45), _dataestreia date, _dataAposentadoria date)
-begin
-	insert into `jogadores` (nome, esporte, nascimento, nacionalidade, `data de estreia`, `data de aposentaria`) values
-    (_nome, _esporte, _nascimento, _nacionalidade, _dataestreia, _dataAposentadoria);
-end;
+DROP PROCEDURE IF EXISTS jogadores;
+DELIMITER //
+
+CREATE PROCEDURE jogadores (
+  IN _nome VARCHAR(45),
+  IN _esporte VARCHAR(45),
+  IN _nascimento DATE,
+  IN _nacionalidade VARCHAR(45),
+  IN _dataestreia DATE,
+  IN _dataAposentadoria DATE,
+  IN _foto VARCHAR(255)
+)
+BEGIN
+  INSERT INTO jogadores (nome, esporte, nascimento, nacionalidade, `data de estreia`, `data de aposentaria`, foto)
+  VALUES (_nome, _esporte, _nascimento, _nacionalidade, _dataestreia, _dataAposentadoria, _foto);
+END //
+
+create view jogadores_esporte as
+	select nome, nascimento, nacionalidade, `data de estreia`, `data de aposentaria`, esporte
+    from jogadores;
 //
 
 DELIMITER ;
+call jogadores ("Drew Brees", "Futebol americano", "1979-1-15", "Estados Unidos", "2001-11-4", "2021-3-14", "drew.jpg");
+call jogadores ("Tom Brady", "Futebol americano", "1977-8-3", "Estados Unidos", "2000-11-23", "2023-2-1", "tom.jpg");
+call jogadores ("Peyton Manning", "Futebol americano", "1976-3-24", "Estados Unidos", "1998-9-6", "2016-3-7", "peyton.jpg");
+call jogadores ("Joe Montana", "Futebol americano", "1956-6-11", "Estados Unidos", "1979-11-11", "1995-4-18", "joe_montana.jpg");
+call jogadores ("Dan Marino", "Futebol americano", "1961-9-15", "Estados Unidos", "1983-9-19", "2000-1-16", "dan.jpg");
 
-call jogadores ("Drew Brees", "Futebol americano", "1979-1-15", "Estados Unidos", "2001-11-4", "2021-3-14");
-call jogadores ("Tom Brady", "Futebol americano", "1977-8-3", "Estados Unidos", "2000-11-23", "2023-2-1");
-call jogadores ("Peyton Manning", "Futebol americano", "1976-3-24", "Estados Unidos", "1998-9-6", "2016-3-7");
-call jogadores ("Joe Montana", "Futebol americano", "1956-6-11", "Estados Unidos", "1979-11-11", "1995-4-18");
-call jogadores ("Dan Marino", "Futebol americano", "1961-9-15", "Estados Unidos", "1983-9-19", "2000-1-16");
+call jogadores ("Miroslav Klose", "Futebol", "1978-6-9", "Polônia", "2000-4-15", "2016-11-1", "miroslav.jpeg");
+call jogadores ("Ronaldo Nazário", "Futebol", "1976-9-18", "Brasil", "1993-5-25", "2011-2-14", "ronaldo.png");
+call jogadores ("Erling Haaland", "Futebol", "2000-7-21", "Noruega", "2020-1-18", null, "erling.jpg");
 
-call jogadores ("Lionel Messi", "Futebol", "1987-6-24", "Argentina", "2004-10-16", null);
-call jogadores ("Cristiano Ronaldo", "Futebol", "1985-2-5", "Portugal", "2002-09-29", null);
-call jogadores ("Miroslav Klose", "Futebol", "1978-6-9", "Polônia", "2000-4-15", "2016-11-1");
-call jogadores ("Ronaldo Nazário", "Futebol", "1976-9-18", "Brasil", "1993-5-25", "2011-2-14");
-call jogadores ("Erling Haaland", "Futebol", "2000-7-21", "Noruega", "2020-1-18", null);
+call jogadores ("Michael Jordan", "Basquete", "1963-2-17", "Estados Unidos", "1984-10-26", "2003-4-16", "michael.jpg");
+call jogadores ("LeBron James", "Basquete", "1984-12-30", "Estados Unidos", "2003-10-29", null, "lebron.jpg");
+call jogadores ("Magic Johnson", "Basquete", "1959-08-14","Estados Unidos","1979-10-18","1996-05-14", "magic.jpg");
+call jogadores ("Kobe Bryant","Basquete","1978-08-23","Estados Unidos","1996-11-03","2016-04-13", "kobe.jpg");
+call jogadores ("Anthony Edwards","Basquete","2008-08-05"," Estados Unidos","2020-12-23", null, "anthony.jpg");
 
-call jogadores ("Michael Jordan", "Basquete", "1963-2-17", "Estados Unidos", "1984-10-26", "2003-4-16");
-call jogadores ("LeBron James", "Basquete", "1984-12-30", "Estados Unidos", "2003-10-29", null);
-call jogadores ("Magic Johnson", "Basquete", "1959-08-14","Estados Unidos","1979-10-18","1996-05-14");
-call jogadores ("Kobe Bryant","Basquete","1978-08-23","Estados Unidos","1996-11-03","2016-04-13");
-call jogadores ("Anthony Edwards","Basquete","2008-08-05"," Estados Unidos","2020-12-23", null);
+call jogadores ("Usain Bolt", "atletismo", "1986-08-21", "Jamaica", "2004-07-31", "2017-08-12", "usain.jpg");
+call jogadores ("Yohan Blake", "atletismo", "1989-12-26", "Jamaica", "2007-06-13", null, "yohan.jpg");
+call jogadores ("Mo Farah", "atletismo", "1983-03-23", "Reino Unido", "2005-03-12", null, "mo.jpg");
+call jogadores ("Allyson Felix", "atletismo", "1985-11-18", "Estados Unidos", "2003-07-25", "2022-07-24", "allyson.jpg");
+call jogadores ("Carl Lewis", "atletismo", "1961-07-01", "Estados Unidos", "1979-06-01", "1997-08-01", "carl.jpg");
 
-call jogadores ("Willie Mays", "Baseball", "1931-05-06", "Estados Unidos", "1951-05-25", "1973-10-16");
-call jogadores ("Mike Trout", "Baseball", "1991-08-07", "Estados Unidos", "2011-07-08", null);
-call jogadores ("Tom Seaver", "Baseball", "1944-11-17", "Estados Unidos", "1967-04-13", "1987-06-20");
-call jogadores ("Albert Pujols", "Baseball", "1980-01-16", "República Dominicana", "2001-04-02", "2022-11-01");
-call jogadores ("Roberto Clemente", "Baseball", "1934-08-18", "Porto Rico (Estados Unidos)", "1955-04-17", "1972-10-03");
+call jogadores ("Babe Ruth", "baseball", "1895-02-06", "Estados Unidos", "1914-07-11", "1935-05-30", "babe.jpg");
+call jogadores ("Mickey Mantle", "baseball", "1931-10-20", "Estados Unidos", "1951-04-17", "1968-09-28", "mickey.jpg");
+call jogadores ("Ichiro Suzuki", "baseball", "1973-10-22", "Japão", "2001-04-02", "2018-05-03", "ichiro.jpg");
+call jogadores ("Jackie Robinson", "baseball", "1919-01-31", "Estados Unidos", "1947-04-15", "1956-09-30", "jackie.jpg");
+call jogadores ("Barry Bonds", "baseball", "1964-07-24", "Estados Unidos", "1986-05-30", "2007-09-26", "barry.png");
 
+call jogadores ("Muhammad Ali", "boxe", "1942-01-17", "Estados Unidos", "1960-10-29", "1981-12-11", "muhammad.jpg");
+call jogadores ("Mike Tyson", "boxe", "1966-06-30", "Estados Unidos", "1985-03-06", "2005-06-11", "mike.jpg");
+call jogadores ("Manny Pacquiao", "boxe", "1978-12-17", "Filipinas", "1995-01-22", "2021-08-21", "manny.jpg");
+call jogadores ("Floyd Mayweather Jr.", "boxe", "1977-02-24", "Estados Unidos", "1996-10-11", "2017-08-26", "floyd.jpg");
+call jogadores ("Joe Frazier", "boxe", "1944-01-12", "Estados Unidos", "1965-08-16", "1981-12-11", "joe.jpg");
 
-DELIMITER //
+call jogadores ("Ayrton Senna", "formula1", "1960-03-21", "Brasil", "1984-03-25", "1994-05-01", "ayrton.jpg");
+call jogadores ("Lewis Hamilton", "formula1", "1985-01-07", "Reino Unido", "2007-03-18", null, "lewis.jpg");
+call jogadores ("Michael Schumacher", "formula1", "1969-01-03", "Alemanha", "1991-08-25", "2012-11-25", "schumacher.jpg");
+call jogadores ("Sebastian Vettel", "formula1", "1987-07-03", "Alemanha", "2007-06-17", "2022-11-20", "sebastian.jpg");
+call jogadores ("Max Verstappen", "formula1", "1997-09-30", "Holanda", "2015-03-15", null, "max.jpg");
 
-create view jogadores_nfl as
-	select nome, nascimento, nacionalidade, `data de estreia`, `data de aposentaria`
-    from jogadores
-    where esporte = "Futebol americano";
-//
+call jogadores ("Pelé", "futebol", "1940-10-23", "Brasil", "1956-09-07", "1977-10-01", "pele.jpg");
+call jogadores ("Lionel Messi", "futebol", "1987-06-24", "Argentina", "2004-10-16", null, "lionel.jpg");
+call jogadores ("Cristiano Ronaldo", "futebol", "1985-02-05", "Portugal", "2002-08-14", null, "cristiano.jpg");
+call jogadores ("Neymar Jr.", "futebol", "1992-02-05", "Brasil", "2009-03-07", null, "neymar.jpg");
+call jogadores ("Kylian Mbappé", "futebol", "1998-12-20", "França", "2015-12-02", null, "kylian.jpg");
 
-create view jogadores_futebol as
-	select nome, nascimento, nacionalidade, `data de estreia`, `data de aposentaria`
-    from jogadores
-    where esporte = "Futebol";
-//
+call jogadores ("Tiger Woods", "golfe", "1975-12-30", "Estados Unidos", "1996-08-29", null, "tiger.jpg");
+call jogadores ("Jack Nicklaus", "golfe", "1940-01-21", "Estados Unidos", "1962-01-01", "2005-07-15", "jack.jpg");
+call jogadores ("Rory McIlroy", "golfe", "1989-05-04", "Irlanda do Norte", "2007-01-01", null, "rory.jpg");
+call jogadores ("Phil Mickelson", "golfe", "1970-06-16", "Estados Unidos", "1992-01-01", null, "phil.jpg");
+call jogadores ("Jordan Spieth", "golfe", "1993-07-27", "Estados Unidos", "2012-01-01", null, "jordan_spieth.webp");
 
-create view jogadores_basquete as
-	select nome, nascimento, nacionalidade, `data de estreia`, `data de aposentaria`
-    from jogadores
-    where esporte = "basquete";
-//
+call jogadores ("Teddy Riner", "judo", "1989-04-07", "França", "2007-09-01", null, "teddy.jpg");
+call jogadores ("Ryoko Tani", "judo", "1975-09-06", "Japão", "1993-05-01", "2008-08-15", "ryoko.jpg");
+call jogadores ("David Douillet", "judo", "1969-02-17", "França", "1991-09-01", "2000-10-20", "david.jpg");
+call jogadores ("Rafaela Silva", "judo", "1992-04-24", "Brasil", "2011-02-01", null, "rafaela.jpg");
+call jogadores ("Shohei Ono", "judo", "1992-02-03", "Japão", "2012-01-01", null, "shohei.jpg");
 
-create view jogadores_baseball as
-	select nome, nascimento, nacionalidade, `data de estreia`, `data de aposentaria`
-    from jogadores
-    where esporte = "baseball";
-//
+call jogadores ("Michael Phelps", "natacao", "1985-06-30", "Estados Unidos", "2000-09-09", "2016-08-13", "phelps.jpg");
+call jogadores ("Katie Ledecky", "natacao", "1997-03-17", "Estados Unidos", "2012-06-30", null, "katie.jpg");
+call jogadores ("César Cielo", "natacao", "1987-01-10", "Brasil", "2006-08-02", null, "cesar.jpg");
+call jogadores ("Ian Thorpe", "natacao", "1982-10-13", "Austrália", "1997-01-01", "2014-11-01", "ianthorpe.jpg");
+call jogadores ("Mark Spitz", "natacao", "1950-02-10", "Estados Unidos", "1968-10-12", "1972-09-04", "mark.jpg");
 
+call jogadores ("Magnus Carlsen", "xadrez", "1990-11-30", "Noruega", "2004-01-01", null, "magnus.png");
+call jogadores ("Garry Kasparov", "xadrez", "1963-04-13", "Rússia", "1978-01-01", "2005-03-10", "garry.jpg");
+call jogadores ("Hikaru Nakamura", "xadrez", "1987-12-09", "Estados Unidos", "1998-01-01", null, "hikaru.png");
+call jogadores ("Bobby Fischer", "xadrez", "1943-03-09", "Estados Unidos", "1957-01-01", "1972-01-01", "bobby.jpg");
+call jogadores ("Ian Nepomniachtchi", "xadrez", "1990-07-14", "Rússia", "2006-01-01", null, "ian.png");
+
+-- E-SPORTS --//
+
+call jogadores ("aspas", "valorant", "2003-06-12", "Brasil", "2020-10-01", null, "aspas.png");
+call jogadores ("yay", "valorant", "1998-09-09", "Estados Unidos", "2020-04-07", null, "yay.png");
+call jogadores ("TenZ", "valorant", "2001-05-05", "Canadá", "2020-04-07", null, "tenz.png");
+call jogadores ("Derke", "valorant", "2003-02-06", "Finlândia", "2021-02-26", null, "derke.png");
+call jogadores ("Cryocells", "valorant", "2003-09-19", "Estados Unidos", "2021-01-01", null, "cryocells.png");
+
+call jogadores ("jstn", "rocket", "2002-08-05", "Estados Unidos", "2017-10-01", null, "jstn.png");
+call jogadores ("GarrettG", "rocket", "2000-04-06", "Estados Unidos", "2016-01-01", null, "garrettg.png");
+call jogadores ("SquishyMuffinz", "rocket", "2000-11-29", "Canadá", "2016-07-01", null, "squishy.jpg");
+call jogadores ("Firstkiller", "rocket", "2004-10-19", "Estados Unidos", "2019-01-01", null, "firstkiller.jpg");
+call jogadores ("Kaydop", "rocket", "1998-05-24", "França", "2015-01-01", null, "kaydop.png");
+
+call jogadores ("s1mple", "cs", "1997-10-02", "Ucrânia", "2013-10-17", null, "s1mple.png");
+call jogadores ("coldzera", "cs", "1994-10-31", "Brasil", "2012-02-01", null, "coldzera.png");
+call jogadores ("fallen", "cs", "1991-06-02", "Brasil", "2005-01-01", null, "fallen.png");
+call jogadores ("ZywOo", "cs", "2000-11-09", "França", "2018-09-01", null, "zywoo.png");
+call jogadores ("device", "cs", "1995-12-31", "Dinamarca", "2013-01-01", null, "device.png");
+
+call jogadores ("Scump", "cod", "1995-06-30", "Estados Unidos", "2011-01-01", "2023-01-17", "scump.png");
+call jogadores ("Crimsix", "cod", "1993-05-29", "Estados Unidos", "2012-01-01", "2022-11-28", "crimsix.png");
+call jogadores ("FormaL", "cod", "1994-12-19", "Estados Unidos", "2013-01-01", "2022-01-01", "formal.png");
+call jogadores ("Cellium", "cod", "2000-12-12", "Estados Unidos", "2019-01-01", null, "cellium.png");
+call jogadores ("Shotzzy", "cod", "2001-07-04", "Estados Unidos", "2019-01-01", null, "shotzzy.png");

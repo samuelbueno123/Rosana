@@ -5,24 +5,36 @@
 
         private static string GetEsporte(string esporte)
         {
-
             string view = esporte.ToLower() switch
             {
                 "jogadores" => "jogadores",
-                "futebol" => "jogadores_futebol",
-                "basquete" => "jogadores_basquete",
-                "baseball" => "jogadores_baseball",
-                "nfl" => "jogadores_nfl",
-                _ => throw new ArgumentException("Esporte inválido")
+                "futebol" => "futebol",
+                "basquete" => "basquete",
+                "baseball" => "baseball",
+                "nfl" => "nfl",
+                "atletismo" => "atletismo",
+                "boxe" => "boxe",
+                "formula1" => "formula1",
+                "golfe" => "golfe",
+                "judo" => "judo",
+                "natacao" => "natacao",
+                "xadrez" => "xadrez",
+                "valorant" => "valorant",
+                "rocket" => "rocket",
+                "cs" => "cs",
+                "cod" => "cod",
+                _ => throw new ArgumentException("esporte inválido")
             };
             return view;
-
         }
+
 
         public static DataTable? GetJogadores(string esporte)
         {
 
-            string query = $"SELECT * FROM {GetEsporte(esporte)}";
+            string query = (esporte == "jogadores") ?
+                $"SELECT * FROM jogadores_esporte":
+                $"SELECT * FROM jogadores_esporte WHERE esporte = \"{GetEsporte(esporte)}\"";
 
             using (var conn = BD.Conectar())
             {

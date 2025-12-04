@@ -1,6 +1,6 @@
 ﻿namespace Projeto.Forms
 {
-    public partial class ExcluiUsuario : Form
+    public partial class ExcluiUsuario : BaseForm
     {
         public ExcluiUsuario()
         {

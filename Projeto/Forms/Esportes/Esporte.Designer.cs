@@ -1,6 +1,6 @@
 ﻿namespace Projeto.Forms
 {
-    partial class FutebolAmericano
+    partial class Esporte
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabela_nfl = new DataGridView();
-            ((ISupportInitialize)tabela_nfl).BeginInit();
+            tabela_stats = new DataGridView();
+            ((ISupportInitialize)tabela_stats).BeginInit();
             SuspendLayout();
             // 
-            // tabela_nfl
+            // tabela_stats
             // 
-            tabela_nfl.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tabela_nfl.Location = new Point(181, 39);
-            tabela_nfl.Name = "tabela_nfl";
-            tabela_nfl.Size = new Size(417, 281);
-            tabela_nfl.TabIndex = 0;
-            tabela_nfl.CellContentClick += tabela_nfl_CellContentClick;
+            tabela_stats.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tabela_stats.Location = new Point(166, 49);
+            tabela_stats.Name = "tabela_stats";
+            tabela_stats.Size = new Size(452, 310);
+            tabela_stats.TabIndex = 0;
             // 
-            // FutebolAmericano
+            // Esporte
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(tabela_nfl);
-            Name = "FutebolAmericano";
-            Text = "FutebolAmericano";
-            Load += FutebolAmericano_Load;
-            ((ISupportInitialize)tabela_nfl).EndInit();
+            Controls.Add(tabela_stats);
+            Name = "Esporte";
+            Text = "Esporte";
+            Load += Esporte_Load;
+            ((ISupportInitialize)tabela_stats).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView tabela_nfl;
+        private DataGridView tabela_stats;
     }
 }

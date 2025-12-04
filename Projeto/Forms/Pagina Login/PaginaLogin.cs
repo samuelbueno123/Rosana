@@ -1,6 +1,6 @@
 ﻿namespace Projeto
 {
-    public partial class PaginaLogin : Form
+    public partial class PaginaLogin : BaseForm
     {
         public PaginaLogin()
         {
@@ -19,7 +19,7 @@
             string login = TxtEmailUsuario.Text;
             string? nome = null, email = null;
 
-            if (login.Contains("@"))
+            if (login.Contains('@'))
                 email = TxtEmailUsuario.Text;
             else
                 nome = TxtEmailUsuario.Text;

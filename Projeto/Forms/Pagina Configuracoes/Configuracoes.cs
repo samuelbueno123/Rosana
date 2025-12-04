@@ -1,6 +1,6 @@
 ﻿namespace Projeto.Forms
 {
-    public partial class Configuracoes : Form
+    public partial class Configuracoes : BaseForm
     {
         public Configuracoes()
         {

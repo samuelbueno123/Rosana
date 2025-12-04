@@ -1,6 +1,6 @@
 ﻿namespace Projeto.Forms
 {
-    public partial class Senha : Form
+    public partial class Senha : BaseForm
     {
         public Senha()
         {

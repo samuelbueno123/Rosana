@@ -1,8 +1,25 @@
 namespace Projeto
 {
-    public partial class PaginaPrincipal : Form
+    public partial class PaginaPrincipal : BaseForm
     {
         private bool navegando = false;
+        private string esporte;
+
+        private void Esporte(string esporte)
+        {
+            navegando = true;
+
+            // pega o type da classe a partir do dicionário
+            Type t = Constantes.esporteParaClasse[esporte.ToLower()]; // ou qualquer chave dinâmica
+
+            // instancia a classe dinamicamente
+            Form pagina = (Form)Activator.CreateInstance(t)!;
+
+            pagina.Show();
+
+            this.Hide();
+            this.BeginInvoke(new Action(() => this.Close()));
+        }
 
         private void Deslogar()
         {
@@ -12,7 +29,6 @@ namespace Projeto
             menu_opcoes.Visible = false;
             menu_cadastro.Visible = true;
             menu_login.Visible = true;
-            group_jogadores.Visible = false;
         }
 
         private void Logar()
@@ -21,7 +37,6 @@ namespace Projeto
             menu_opcoes.Visible = true;
             menu_cadastro.Visible = false;
             menu_login.Visible = false;
-            group_jogadores.Visible = true;
             label_bemvindo.Text = $"Bem-vindo, {Sessao.UsuarioAtual?.Nome}";
         }
 
@@ -116,57 +131,33 @@ namespace Projeto
 
         private void button_futebolAmericano_Click(object sender, EventArgs e)
         {
-
-            navegando = true;
-            FutebolAmericano futebolAmericano = new();
-            futebolAmericano.Show();
-            this.Hide();
-            this.BeginInvoke(new Action(() => this.Close()));
+            esporte = "futebolAmericano";
+            Esporte(esporte);
 
         }
 
         private void button_futebol_Click(object sender, EventArgs e)
         {
-
-            navegando = true;
-            Futebol futebol = new();
-            futebol.Show();
-            this.Hide();
-            this.BeginInvoke(new Action(() => this.Close()));
-
+            esporte = "futebol";
+            Esporte(esporte);
         }
 
         private void button_basquete_Click(object sender, EventArgs e)
         {
-
-            navegando = true;
-            Basquete basquete = new();
-            basquete.Show();
-            this.Hide();
-            this.BeginInvoke(new Action(() => this.Close()));
-
+            esporte = "basquete";
+            Esporte(esporte);
         }
 
         private void button_todosJogadores_Click(object sender, EventArgs e)
         {
-
-            navegando = true;
-            todosJogadores todosJogadores = new();
-            todosJogadores.Show();
-            this.Hide();
-            this.BeginInvoke(new Action(() => this.Close()));
-
+            esporte = "jogadores";
+            Esporte(esporte);
         }
 
         private void button_baseball_Click(object sender, EventArgs e)
         {
-
-            navegando = true;
-            Baseball baseball = new();
-            baseball.Show();
-            this.Hide();
-            this.BeginInvoke(new Action(() => this.Close()));
-
+            esporte = "baseball";
+            Esporte(esporte);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Projeto.Forms
 {
-    public partial class Basquete : Form
+    public partial class Basquete : BaseForm
     {
         public Basquete()
         {

@@ -1,6 +1,6 @@
 ﻿namespace Projeto.Forms
 {
-    public partial class Futebol : Form
+    public partial class Futebol : BaseForm
     {
         public Futebol()
         {

@@ -1,4 +1,6 @@
-﻿namespace Projeto.Services
+﻿using Microsoft.Graph.Models;
+
+namespace Projeto.Services
 {
     public static class EsporteService
     {
@@ -28,13 +30,85 @@
             return view;
         }
 
+        private static string Queries(string esporte)
+        {
+            return esporte.ToLower() switch
+            {
+                "atletismo" =>
+                    "select nome, melhortempo, `títulos` " +
+                    "from atletismo join jogadores on jogadores.codigo = atletismo.jogadores_codigo",
+
+                "baseball" =>
+                    "select nome, partidas, mediarebatidas, homeruns, basesroubadas, corridas " +
+                    "from baseball join jogadores on jogadores.codigo = baseball.jogadores_codigo",
+
+                "basquete" =>
+                    "select nome, partidas, pontos, `3pontos`, rebote, assistencias " +
+                    "from basquete join jogadores on jogadores.codigo = basquete.jogadores_codigo",
+
+                "boxe" =>
+                    "select nome, nocautes, vitorias, derrotas, razaovitorias, ouro, prata, bronze " +
+                    "from boxe join jogadores on jogadores.codigo = boxe.jogadores_codigo",
+
+                "cod" =>
+                    "select nome, kills, mortes, kd, adr, titulos " +
+                    "from cod join jogadores on jogadores.codigo = cod.jogadores_codigo",
+
+                "cs" =>
+                    "select nome, kills, mortes, kd, adr, `títulos` " +
+                    "from cs join jogadores on jogadores.codigo = cs.jogadores_codigo",
+
+                "formula1" =>
+                    "select nome, podios, polepositions, vitorias " +
+                    "from formula1 join jogadores on jogadores.codigo = formula1.jogadores_codigo",
+
+                "futebol" =>
+                    "select nome, partidas, gols, assistencias, titulos, boladeouro " +
+                    "from futebol join jogadores on jogadores.codigo = futebol.jogadores_codigo",
+
+                "futebolamericano" =>
+                    "select nome, partidas, jardas, mediajardas, pontos, `títulos` " +
+                    "from futebolamericano join jogadores on jogadores.codigo = futebolamericano.jogadores_codigo",
+
+                "golfe" =>
+                    "select nome, holeinone, gir " +
+                    "from golfe join jogadores on jogadores.codigo = golfe.jogadores_codigo",
+
+                "jogadores" =>
+                    "select * from jogadores_esporte",
+
+                "judo" =>
+                    "select nome, faixa, clube, ouros, prata, bronze, ippon " +
+                    "from judo join jogadores on jogadores.codigo = judo.jogadores_codigo",
+
+                "natacao" =>
+                    "select nome, melhortempo, velmedia, `títulos` " +
+                    "from natacao join jogadores on jogadores.codigo = natacao.jogadores_codigo",
+
+                "rocket" =>
+                    "select nome, golsporjogo, assistporjogo, defesaporjogo " +
+                    "from rocket join jogadores on jogadores.codigo = rocket.jogadores_codigo",
+
+                "valorant" =>
+                    "select nome, agente, kills, mortes, kd, adr, titulos " +
+                    "from valorant join jogadores on jogadores.codigo = valorant.jogadores_codigo",
+
+                "xadrez" =>
+                    "select nome, percentvitoria, elo, aberturafavorita, titulos " +
+                    "from xadrez join jogadores on jogadores.codigo = xadrez.jogadores_codigo",
+
+                _ => throw new ArgumentException("esporte inválido")
+            };
+        }
+
+
 
         public static DataTable? GetJogadores(string esporte)
         {
 
             string query = (esporte == "jogadores") ?
-                $"SELECT * FROM jogadores_esporte":
-                $"SELECT * FROM jogadores_esporte WHERE esporte = \"{GetEsporte(esporte)}\"";
+                $"SELECT * FROM jogadores_esporte" :
+                Queries(esporte);
 
             using (var conn = BD.Conectar())
             {

@@ -1,6 +1,6 @@
 ﻿namespace Projeto
 {
-    public partial class PaginaCadastro : Form
+    public partial class PaginaCadastro : BaseForm
     {
         public PaginaCadastro()
         {

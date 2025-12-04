@@ -1,5 +1,4 @@
-﻿
-namespace Projeto.Utils
+﻿namespace Projeto.Utils
 {
     public class Validador
     {

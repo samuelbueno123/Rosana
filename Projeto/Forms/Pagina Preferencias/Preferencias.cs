@@ -1,6 +1,6 @@
 ﻿namespace Projeto
 {
-    public partial class Preferencias : Form
+    public partial class Preferencias : BaseForm
     {
         public Preferencias()
         {
@@ -72,7 +72,7 @@
                 { "cs", check_cs },
                 { "formula1", check_formula1 },
                 { "futebol", check_futebol },
-                { "futebol americano", check_futebol_americano },
+                { "futebolamericano", check_futebol_americano },
                 { "golfe", check_golfe },
                 { "judo", check_judo },
                 { "natacao", check_natacao },

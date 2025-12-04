@@ -1,6 +1,6 @@
 ﻿namespace Projeto.Forms
 {
-    public partial class todosJogadores : Form
+    public partial class todosJogadores : BaseForm
     {
         public todosJogadores()
         {

@@ -35,9 +35,9 @@
             // tabela_stats
             // 
             tabela_stats.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tabela_stats.Location = new Point(166, 49);
+            tabela_stats.Location = new Point(59, 49);
             tabela_stats.Name = "tabela_stats";
-            tabela_stats.Size = new Size(452, 310);
+            tabela_stats.Size = new Size(686, 244);
             tabela_stats.TabIndex = 0;
             // 
             // Esporte

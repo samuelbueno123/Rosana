@@ -62,12 +62,11 @@
             // label_bemvindo
             // 
             label_bemvindo.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
-            label_bemvindo.Location = new Point(91, 41);
+            label_bemvindo.Location = new Point(62, 24);
             label_bemvindo.Name = "label_bemvindo";
             label_bemvindo.Size = new Size(661, 78);
             label_bemvindo.TabIndex = 0;
             label_bemvindo.Text = "Bem-vindo ao site";
-            label_bemvindo.Click += label_bemvindo_Click;
             // 
             // menuStrip1
             // 
@@ -139,7 +138,7 @@
             // button_futebolAmericano
             // 
             button_futebolAmericano.FlatStyle = FlatStyle.Flat;
-            button_futebolAmericano.Location = new Point(313, 223);
+            button_futebolAmericano.Location = new Point(460, 223);
             button_futebolAmericano.Name = "button_futebolAmericano";
             button_futebolAmericano.Size = new Size(141, 68);
             button_futebolAmericano.TabIndex = 2;
@@ -161,7 +160,7 @@
             // button_basquete
             // 
             button_basquete.FlatStyle = FlatStyle.Flat;
-            button_basquete.Location = new Point(313, 149);
+            button_basquete.Location = new Point(166, 149);
             button_basquete.Name = "button_basquete";
             button_basquete.Size = new Size(141, 68);
             button_basquete.TabIndex = 4;
@@ -172,7 +171,7 @@
             // button_futebol
             // 
             button_futebol.FlatStyle = FlatStyle.Flat;
-            button_futebol.Location = new Point(460, 223);
+            button_futebol.Location = new Point(313, 223);
             button_futebol.Name = "button_futebol";
             button_futebol.Size = new Size(141, 68);
             button_futebol.TabIndex = 3;
@@ -200,6 +199,7 @@
             button_cod.TabIndex = 7;
             button_cod.Text = "Call of Duty";
             button_cod.UseVisualStyleBackColor = true;
+            button_cod.Click += button_cod_Click;
             // 
             // button_cs
             // 
@@ -210,6 +210,7 @@
             button_cs.TabIndex = 8;
             button_cs.Text = "Counter-Strike";
             button_cs.UseVisualStyleBackColor = true;
+            button_cs.Click += button_cs_Click;
             // 
             // button_atletismo
             // 
@@ -220,16 +221,18 @@
             button_atletismo.TabIndex = 9;
             button_atletismo.Text = "Atletismo";
             button_atletismo.UseVisualStyleBackColor = true;
+            button_atletismo.Click += button_atletismo_Click;
             // 
             // button_boxe
             // 
             button_boxe.FlatStyle = FlatStyle.Flat;
-            button_boxe.Location = new Point(166, 149);
+            button_boxe.Location = new Point(313, 149);
             button_boxe.Name = "button_boxe";
             button_boxe.Size = new Size(141, 68);
             button_boxe.TabIndex = 10;
             button_boxe.Text = "Boxe";
             button_boxe.UseVisualStyleBackColor = true;
+            button_boxe.Click += button_boxe_Click;
             // 
             // button_rocket
             // 
@@ -240,6 +243,7 @@
             button_rocket.TabIndex = 11;
             button_rocket.Text = "Rocket League";
             button_rocket.UseVisualStyleBackColor = true;
+            button_rocket.Click += button_rocket_Click;
             // 
             // button_golf
             // 
@@ -250,6 +254,7 @@
             button_golf.TabIndex = 12;
             button_golf.Text = "Golfe";
             button_golf.UseVisualStyleBackColor = true;
+            button_golf.Click += button_golf_Click;
             // 
             // button_judo
             // 
@@ -260,6 +265,7 @@
             button_judo.TabIndex = 13;
             button_judo.Text = "Judô";
             button_judo.UseVisualStyleBackColor = true;
+            button_judo.Click += button_judo_Click;
             // 
             // button_natacao
             // 
@@ -270,6 +276,7 @@
             button_natacao.TabIndex = 14;
             button_natacao.Text = "Natação";
             button_natacao.UseVisualStyleBackColor = true;
+            button_natacao.Click += button_natacao_Click;
             // 
             // button_formula1
             // 
@@ -280,6 +287,7 @@
             button_formula1.TabIndex = 15;
             button_formula1.Text = "Fórmula 1";
             button_formula1.UseVisualStyleBackColor = true;
+            button_formula1.Click += button_formula1_Click;
             // 
             // button_xadrez
             // 
@@ -290,6 +298,7 @@
             button_xadrez.TabIndex = 16;
             button_xadrez.Text = "Xadrez";
             button_xadrez.UseVisualStyleBackColor = true;
+            button_xadrez.Click += button_xadrez_Click;
             // 
             // button_valorant
             // 
@@ -300,6 +309,7 @@
             button_valorant.TabIndex = 17;
             button_valorant.Text = "Valorant";
             button_valorant.UseVisualStyleBackColor = true;
+            button_valorant.Click += button_valorant_Click;
             // 
             // button1
             // 

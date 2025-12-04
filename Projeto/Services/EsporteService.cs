@@ -70,7 +70,7 @@ namespace Projeto.Services
                     "select nome, partidas, jardas, mediajardas, pontos, `títulos` " +
                     "from futebolamericano join jogadores on jogadores.codigo = futebolamericano.jogadores_codigo",
 
-                "golfe" =>
+                "golf" =>
                     "select nome, holeinone, gir " +
                     "from golfe join jogadores on jogadores.codigo = golfe.jogadores_codigo",
 

@@ -7,7 +7,7 @@
         public Esporte(string esporte)
         {
             this.esporte = esporte;
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void Esporte_Load(object sender, EventArgs e)

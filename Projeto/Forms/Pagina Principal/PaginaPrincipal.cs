@@ -3,22 +3,28 @@ namespace Projeto
     public partial class PaginaPrincipal : BaseForm
     {
         private bool navegando = false;
-        private string? esporte;
+        private readonly Dictionary<Button, string> botaoParaEsporte = [];
 
+        
         private void Esporte(string esporte)
         {
             navegando = true;
 
-            // pega o type da classe a partir do dicionário
-            Type t = Constantes.esporteParaClasse[esporte.ToLower()];
+            Esporte esporteForm = new(esporte);
+            esporteForm.Show();
 
-            // instancia a classe dinamicamente
-            Form pagina = (Form)Activator.CreateInstance(t)!;
+            navegando = false;
+        }
 
-            pagina.Show();
+        private void SemConta()
+        {
+            
+            foreach (var botao in Constantes.ReceberBotoes(this))
+            {
+                if (botao.Name is not ("button_baseball" or "button_basquete" or "button_futebol"))
+                    botao.Visible = false;
+            }
 
-            this.Hide();
-            this.BeginInvoke(new Action(() => this.Close()));
         }
 
         private void Deslogar()
@@ -44,7 +50,28 @@ namespace Projeto
         {
             InitializeComponent();
             this.FormClosed += PaginaPrincipal_FormClosed;
+
+            botaoParaEsporte = new Dictionary<Button, string>
+            {
+                { button_atletismo, "atletismo" },
+                { button_baseball, "baseball" },
+                { button_basquete, "basquete" },
+                { button_boxe, "boxe" },
+                { button_cod, "cod" },
+                { button_cs, "cs" },
+                { button_futebol, "futebol" },
+                { button_futebolAmericano, "futebolAmericano" },
+                { button_formula1, "formula1" },
+                { button_golf, "golf" },
+                { button_judo, "judo" },
+                { button_natacao, "natacao" },
+                { button_rocket, "rocket" },
+                { button_todosJogadores, "jogadores" },
+                { button_valorant, "valorant" },
+                { button_xadrez, "xadrez" }
+            };
         }
+
 
         private void PaginaPrincipal_FormClosed(object? sender, EventArgs e)
         {
@@ -56,9 +83,8 @@ namespace Projeto
 
             navegando = true;
             PaginaCadastro cadastro = new();
-            cadastro.Show();
             this.Hide();
-            this.BeginInvoke(new Action(() => this.Close()));
+            cadastro.ShowDialog();
 
         }
 
@@ -67,9 +93,8 @@ namespace Projeto
 
             navegando = true;
             PaginaLogin login = new();
-            login.Show();
             this.Hide();
-            this.BeginInvoke(new Action(() => this.Close()));
+            login.ShowDialog();
 
         }
 
@@ -94,11 +119,6 @@ namespace Projeto
                 Deslogar();
         }
 
-        private void label_bemvindo_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void PaginaPrincipal_Resize(object sender, EventArgs e)
         {
 
@@ -113,11 +133,14 @@ namespace Projeto
             label_bemvindo.Left = (this.ClientSize.Width - label_bemvindo.Width) / 2;
             label_bemvindo.Top = (this.ClientSize.Height - label_bemvindo.Height) / 4;
 
-            if (Properties.Settings.Default.UltimoUsuario is not null && Properties.Settings.Default.UltimoUsuario != String.Empty)
+            if (Properties.Settings.Default.UltimoUsuario is not null &&
+                Properties.Settings.Default.UltimoUsuario != String.Empty)
             {
                 if (Conta.Logar(Properties.Settings.Default.UltimoUsuario))
                     Logar();
             }
+            else
+                SemConta();
 
         }
 
@@ -129,41 +152,42 @@ namespace Projeto
             config.Show();
         }
 
-        private void button_futebolAmericano_Click(object sender, EventArgs e)
-        {
-            esporte = "futebolAmericano";
-            Esporte(esporte);
-
-        }
-
-        private void button_futebol_Click(object sender, EventArgs e)
-        {
-            esporte = "futebol";
-            Esporte(esporte);
-        }
-
-        private void button_basquete_Click(object sender, EventArgs e)
-        {
-            esporte = "basquete";
-            Esporte(esporte);
-        }
-
-        private void button_todosJogadores_Click(object sender, EventArgs e)
-        {
-            esporte = "jogadores";
-            Esporte(esporte);
-        }
-
-        private void button_baseball_Click(object sender, EventArgs e)
-        {
-            esporte = "baseball";
-            Esporte(esporte);
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show($"{Constantes.Imagens["profile"]}");
             button1.Image = Constantes.Imagens["sport_stats"];
         }
+
+        private void button_atletismo_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_basquete_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_boxe_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_baseball_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_cod_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_cs_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_formula1_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_futebol_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_futebolAmericano_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_golf_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_judo_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_natacao_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_rocket_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_todosJogadores_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_valorant_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
+        private void button_xadrez_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Projeto.Utils
+﻿using Microsoft.VisualBasic.Logging;
+
+namespace Projeto.Utils
 {
     public static class Constantes
     {
@@ -34,6 +36,52 @@
            // { "valorant", typeof(Forms.Valorant) },
            // { "xadrez", typeof(Forms.Xadrez) }
         };
+
+        public static readonly Dictionary<string, Image> Imagens = LoadImagens();
+
+        private static Dictionary<string, Image> LoadImagens()
+        {
+            var validExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            { ".jpg", ".jpeg", ".png", ".bmp", ".gif" };
+
+            var directories = new[]
+            {
+            Path.Combine(Application.StartupPath, "Assets", "fotos"),
+            Path.Combine(Application.StartupPath, "Assets", "fotos", "esportes"),
+            Path.Combine(Application.StartupPath, "Assets", "fotos", "devs")
+            };
+
+            var Imagens = new Dictionary<string, Image>(StringComparer.OrdinalIgnoreCase);
+
+            foreach (var dir in directories)
+            {
+                if (!Directory.Exists(dir)) continue;
+
+                foreach (var file in Directory.GetFiles(dir))
+                {
+                    //filtra para apenas extensões validas
+                    if (!validExtensions.Contains(Path.GetExtension(file))) continue;
+
+                    string key = Path.GetFileNameWithoutExtension(file);
+
+                    //tratamento de chaves duplicadas
+                    if (!Imagens.ContainsKey(key))
+                    {
+                        try
+                        {
+                            Imagens.Add(key, Image.FromFile(file));
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Erro ao carregar imagem '{file}': {ex.Message}");
+                        }
+                    }
+                }
+            }
+            return Imagens;
+        }
+
+
 
     }
 }

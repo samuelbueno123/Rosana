@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(PaginaPrincipal));
             label_bemvindo = new Label();
             menuStrip1 = new MenuStrip();
             menu_conta = new ToolStripMenuItem();
@@ -54,13 +55,14 @@
             button_formula1 = new Button();
             button_xadrez = new Button();
             button_valorant = new Button();
+            button1 = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label_bemvindo
             // 
             label_bemvindo.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
-            label_bemvindo.Location = new Point(91, 45);
+            label_bemvindo.Location = new Point(91, 41);
             label_bemvindo.Name = "label_bemvindo";
             label_bemvindo.Size = new Size(661, 78);
             label_bemvindo.TabIndex = 0;
@@ -136,6 +138,7 @@
             // 
             // button_futebolAmericano
             // 
+            button_futebolAmericano.FlatStyle = FlatStyle.Flat;
             button_futebolAmericano.Location = new Point(313, 223);
             button_futebolAmericano.Name = "button_futebolAmericano";
             button_futebolAmericano.Size = new Size(141, 68);
@@ -146,6 +149,7 @@
             // 
             // button_todosJogadores
             // 
+            button_todosJogadores.FlatStyle = FlatStyle.Flat;
             button_todosJogadores.Location = new Point(313, 379);
             button_todosJogadores.Name = "button_todosJogadores";
             button_todosJogadores.Size = new Size(141, 68);
@@ -156,6 +160,7 @@
             // 
             // button_basquete
             // 
+            button_basquete.FlatStyle = FlatStyle.Flat;
             button_basquete.Location = new Point(313, 149);
             button_basquete.Name = "button_basquete";
             button_basquete.Size = new Size(141, 68);
@@ -166,6 +171,7 @@
             // 
             // button_futebol
             // 
+            button_futebol.FlatStyle = FlatStyle.Flat;
             button_futebol.Location = new Point(460, 223);
             button_futebol.Name = "button_futebol";
             button_futebol.Size = new Size(141, 68);
@@ -176,6 +182,7 @@
             // 
             // button_baseball
             // 
+            button_baseball.FlatStyle = FlatStyle.Flat;
             button_baseball.Location = new Point(460, 149);
             button_baseball.Name = "button_baseball";
             button_baseball.Size = new Size(141, 68);
@@ -186,6 +193,7 @@
             // 
             // button_cod
             // 
+            button_cod.FlatStyle = FlatStyle.Flat;
             button_cod.Location = new Point(607, 149);
             button_cod.Name = "button_cod";
             button_cod.Size = new Size(141, 68);
@@ -195,6 +203,7 @@
             // 
             // button_cs
             // 
+            button_cs.FlatStyle = FlatStyle.Flat;
             button_cs.Location = new Point(19, 223);
             button_cs.Name = "button_cs";
             button_cs.Size = new Size(141, 68);
@@ -204,6 +213,7 @@
             // 
             // button_atletismo
             // 
+            button_atletismo.FlatStyle = FlatStyle.Flat;
             button_atletismo.Location = new Point(19, 149);
             button_atletismo.Name = "button_atletismo";
             button_atletismo.Size = new Size(141, 68);
@@ -213,6 +223,7 @@
             // 
             // button_boxe
             // 
+            button_boxe.FlatStyle = FlatStyle.Flat;
             button_boxe.Location = new Point(166, 149);
             button_boxe.Name = "button_boxe";
             button_boxe.Size = new Size(141, 68);
@@ -222,6 +233,7 @@
             // 
             // button_rocket
             // 
+            button_rocket.FlatStyle = FlatStyle.Flat;
             button_rocket.Location = new Point(313, 297);
             button_rocket.Name = "button_rocket";
             button_rocket.Size = new Size(141, 68);
@@ -231,6 +243,7 @@
             // 
             // button_golf
             // 
+            button_golf.FlatStyle = FlatStyle.Flat;
             button_golf.Location = new Point(607, 223);
             button_golf.Name = "button_golf";
             button_golf.Size = new Size(141, 68);
@@ -240,6 +253,7 @@
             // 
             // button_judo
             // 
+            button_judo.FlatStyle = FlatStyle.Flat;
             button_judo.Location = new Point(19, 297);
             button_judo.Name = "button_judo";
             button_judo.Size = new Size(141, 68);
@@ -249,6 +263,7 @@
             // 
             // button_natacao
             // 
+            button_natacao.FlatStyle = FlatStyle.Flat;
             button_natacao.Location = new Point(166, 297);
             button_natacao.Name = "button_natacao";
             button_natacao.Size = new Size(141, 68);
@@ -258,6 +273,7 @@
             // 
             // button_formula1
             // 
+            button_formula1.FlatStyle = FlatStyle.Flat;
             button_formula1.Location = new Point(166, 223);
             button_formula1.Name = "button_formula1";
             button_formula1.Size = new Size(141, 68);
@@ -267,6 +283,7 @@
             // 
             // button_xadrez
             // 
+            button_xadrez.FlatStyle = FlatStyle.Flat;
             button_xadrez.Location = new Point(607, 297);
             button_xadrez.Name = "button_xadrez";
             button_xadrez.Size = new Size(141, 68);
@@ -276,6 +293,7 @@
             // 
             // button_valorant
             // 
+            button_valorant.FlatStyle = FlatStyle.Flat;
             button_valorant.Location = new Point(460, 297);
             button_valorant.Name = "button_valorant";
             button_valorant.Size = new Size(141, 68);
@@ -283,11 +301,27 @@
             button_valorant.Text = "Valorant";
             button_valorant.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            button1.BackgroundImageLayout = ImageLayout.Zoom;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.TopCenter;
+            button1.Location = new Point(509, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(138, 125);
+            button1.TabIndex = 18;
+            button1.Text = "button1";
+            button1.TextAlign = ContentAlignment.BottomCenter;
+            button1.TextImageRelation = TextImageRelation.ImageAboveText;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // PaginaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(764, 459);
+            Controls.Add(button1);
             Controls.Add(button_valorant);
             Controls.Add(button_xadrez);
             Controls.Add(button_formula1);
@@ -345,5 +379,6 @@
         private Button button_valorant;
         private Button button_golf;
         private Button button_judo;
+        private Button button1;
     }
 }

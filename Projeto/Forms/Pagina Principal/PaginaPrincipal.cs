@@ -3,14 +3,14 @@ namespace Projeto
     public partial class PaginaPrincipal : BaseForm
     {
         private bool navegando = false;
-        private string esporte;
+        private string? esporte;
 
         private void Esporte(string esporte)
         {
             navegando = true;
 
             // pega o type da classe a partir do dicionário
-            Type t = Constantes.esporteParaClasse[esporte.ToLower()]; // ou qualquer chave dinâmica
+            Type t = Constantes.esporteParaClasse[esporte.ToLower()];
 
             // instancia a classe dinamicamente
             Form pagina = (Form)Activator.CreateInstance(t)!;
@@ -115,8 +115,8 @@ namespace Projeto
 
             if (Properties.Settings.Default.UltimoUsuario is not null && Properties.Settings.Default.UltimoUsuario != String.Empty)
             {
-                Conta.Logar(Properties.Settings.Default.UltimoUsuario);
-                Logar();
+                if (Conta.Logar(Properties.Settings.Default.UltimoUsuario))
+                    Logar();
             }
 
         }
@@ -158,6 +158,12 @@ namespace Projeto
         {
             esporte = "baseball";
             Esporte(esporte);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"{Constantes.Imagens["profile"]}");
+            button1.Image = Constantes.Imagens["sport_stats"];
         }
     }
 }

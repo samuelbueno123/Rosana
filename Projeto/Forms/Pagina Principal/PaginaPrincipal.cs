@@ -139,7 +139,7 @@ namespace Projeto
 
             if (Properties.Settings.Default.UltimoUsuario is not null &&
             Properties.Settings.Default.UltimoUsuario != String.Empty &&
-            (Conta.Logar(Properties.Settings.Default.UltimoUsuario)))
+            Conta.Logar(Properties.Settings.Default.UltimoUsuario))
                 Logar();
             else
                 SemConta();

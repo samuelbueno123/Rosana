@@ -101,15 +101,10 @@
                     {
 
                         if (data.Read())
-                        {
-
                             UsuarioLido = data.GetString("usuario");
 
-                        }
                         else
-                        {
                             UsuarioLido = "-1";
-                        }
 
                         return UsuarioLido == nome;
 

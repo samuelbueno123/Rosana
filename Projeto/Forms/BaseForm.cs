@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace Projeto.Forms
+﻿namespace Projeto.Forms
 {
     public partial class BaseForm : Form
     {

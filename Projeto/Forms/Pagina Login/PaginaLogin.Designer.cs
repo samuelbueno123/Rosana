@@ -33,10 +33,10 @@
             TxtEmailUsuario = new TextBox();
             TxtSenha = new TextBox();
             button_login = new Button();
-            groupBox1 = new GroupBox();
+            group_login = new GroupBox();
             label_NaoConta = new Label();
             label_cadastre = new Label();
-            groupBox1.SuspendLayout();
+            group_login.SuspendLayout();
             SuspendLayout();
             // 
             // label_emailusuario
@@ -82,24 +82,24 @@
             button_login.UseVisualStyleBackColor = true;
             button_login.Click += button_login_Click;
             // 
-            // groupBox1
+            // group_login
             // 
-            groupBox1.Controls.Add(button_login);
-            groupBox1.Controls.Add(label_emailusuario);
-            groupBox1.Controls.Add(TxtSenha);
-            groupBox1.Controls.Add(TxtEmailUsuario);
-            groupBox1.Controls.Add(label_senha);
-            groupBox1.Location = new Point(149, 129);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(487, 160);
-            groupBox1.TabIndex = 6;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "group_login";
+            group_login.Controls.Add(button_login);
+            group_login.Controls.Add(label_emailusuario);
+            group_login.Controls.Add(TxtSenha);
+            group_login.Controls.Add(TxtEmailUsuario);
+            group_login.Controls.Add(label_senha);
+            group_login.Location = new Point(149, 129);
+            group_login.Name = "group_login";
+            group_login.Size = new Size(487, 160);
+            group_login.TabIndex = 6;
+            group_login.TabStop = false;
+            group_login.Text = "Fazer Login";
             // 
             // label_NaoConta
             // 
             label_NaoConta.AutoSize = true;
-            label_NaoConta.Location = new Point(288, 292);
+            label_NaoConta.Location = new Point(293, 292);
             label_NaoConta.Name = "label_NaoConta";
             label_NaoConta.Size = new Size(131, 15);
             label_NaoConta.TabIndex = 7;
@@ -110,7 +110,7 @@
             label_cadastre.AutoSize = true;
             label_cadastre.Cursor = Cursors.Hand;
             label_cadastre.ForeColor = Color.SteelBlue;
-            label_cadastre.Location = new Point(420, 292);
+            label_cadastre.Location = new Point(425, 292);
             label_cadastre.Name = "label_cadastre";
             label_cadastre.Size = new Size(72, 15);
             label_cadastre.TabIndex = 8;
@@ -124,12 +124,12 @@
             ClientSize = new Size(800, 450);
             Controls.Add(label_cadastre);
             Controls.Add(label_NaoConta);
-            Controls.Add(groupBox1);
+            Controls.Add(group_login);
             Name = "PaginaLogin";
             Text = "PaginaLogin";
             Load += PaginaLogin_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            group_login.ResumeLayout(false);
+            group_login.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -140,7 +140,7 @@
         private TextBox TxtEmailUsuario;
         private TextBox TxtSenha;
         private Button button_login;
-        private GroupBox groupBox1;
+        private GroupBox group_login;
         private Label label_NaoConta;
         private Label label_cadastre;
     }

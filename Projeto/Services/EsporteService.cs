@@ -5,7 +5,7 @@ namespace Projeto.Services
     public static class EsporteService
     {
 
-        private static string GetEsporte(string esporte)
+        public static string GetEsporte(string esporte)
         {
             string view = esporte.ToLower() switch
             {
@@ -103,7 +103,7 @@ namespace Projeto.Services
 
 
 
-        public static DataTable? GetJogadores(string esporte)
+        //public static List<string>? GetJogadores(string esporte) fazer a logica para preencher as estatisticas depois
         {
 
             string query = (esporte == "jogadores") ?
@@ -114,16 +114,14 @@ namespace Projeto.Services
             {
                 if (conn is null) return null;
 
-                using (MySqlCommand cmd = new(query, conn))
+                using (MySqlDataReader? reader = new MySqlCommand(query, conn).ExecuteReader())
                 {
-
-                    using (MySqlDataAdapter adapter = new(cmd))
+                    List<string> jogadores = [];
+                    while (reader.Read())
                     {
-                        DataTable dt = new();
-                        adapter.Fill(dt);
-                        return dt;
+                        jogadores.Add(reader.GetString("nome"));
                     }
-
+                    return jogadores;
                 }
 
             }

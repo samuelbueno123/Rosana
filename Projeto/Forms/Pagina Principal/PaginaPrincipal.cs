@@ -25,6 +25,9 @@ namespace Projeto
                     botao.Visible = false;
             }
 
+            button_basquete.Location = new Point(166, 223);
+            button_baseball.Location = new Point(460, 223);
+
         }
 
         private void Deslogar()
@@ -35,6 +38,7 @@ namespace Projeto
             menu_opcoes.Visible = false;
             menu_cadastro.Visible = true;
             menu_login.Visible = true;
+            SemConta();
         }
 
         private void Logar()
@@ -134,11 +138,9 @@ namespace Projeto
             label_bemvindo.Top = (this.ClientSize.Height - label_bemvindo.Height) / 4;
 
             if (Properties.Settings.Default.UltimoUsuario is not null &&
-                Properties.Settings.Default.UltimoUsuario != String.Empty)
-            {
-                if (Conta.Logar(Properties.Settings.Default.UltimoUsuario))
-                    Logar();
-            }
+            Properties.Settings.Default.UltimoUsuario != String.Empty &&
+            (Conta.Logar(Properties.Settings.Default.UltimoUsuario)))
+                Logar();
             else
                 SemConta();
 

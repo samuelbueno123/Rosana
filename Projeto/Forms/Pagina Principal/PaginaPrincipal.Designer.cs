@@ -313,16 +313,17 @@
             // 
             // button1
             // 
-            button1.BackgroundImageLayout = ImageLayout.Zoom;
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = SystemColors.ControlText;
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.TopCenter;
-            button1.Location = new Point(509, 12);
+            button1.Location = new Point(523, 24);
             button1.Name = "button1";
-            button1.Size = new Size(138, 125);
+            button1.Size = new Size(214, 78);
             button1.TabIndex = 18;
             button1.Text = "button1";
             button1.TextAlign = ContentAlignment.BottomCenter;
-            button1.TextImageRelation = TextImageRelation.ImageAboveText;
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -330,6 +331,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(0, 192, 0);
             ClientSize = new Size(764, 459);
             Controls.Add(button1);
             Controls.Add(button_valorant);
@@ -350,6 +352,7 @@
             Controls.Add(button_todosJogadores);
             Controls.Add(menuStrip1);
             Controls.Add(label_bemvindo);
+            ForeColor = Color.FromArgb(0, 0, 192);
             MainMenuStrip = menuStrip1;
             Name = "PaginaPrincipal";
             Text = "Página Principal";

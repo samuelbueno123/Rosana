@@ -10,7 +10,7 @@
 
         private void PaginaLogin_FormClosed(object? sender, FormClosedEventArgs e)
         {
-            var principal = new PaginaPrincipal();  
+            var principal = new PaginaPrincipal();
             principal.Show();
         }
 
@@ -24,7 +24,7 @@
             else
                 nome = TxtEmailUsuario.Text;
 
-                string senha = TxtSenha.Text;
+            string senha = TxtSenha.Text;
             var validador = new Validador();
 
             if (validador.Auth(login, senha))
@@ -50,6 +50,18 @@
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error
                 );
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            var cadastro = new PaginaCadastro();
+            this.Hide();
+            cadastro.ShowDialog();
+        }
+
+        private void PaginaLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

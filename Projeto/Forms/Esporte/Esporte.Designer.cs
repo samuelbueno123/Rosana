@@ -11,11 +11,14 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing)
             {
-                components.Dispose();
+                foreach (var img in _ownedImages)
+                    img.Dispose();
+                _ownedImages.Clear();
             }
             base.Dispose(disposing);
         }
@@ -58,10 +61,11 @@
             // panel_foto1
             // 
             panel_foto1.Location = new Point(65, 22);
+            panel_foto1.MaximumSize = new Size(180, 172);
             panel_foto1.Name = "panel_foto1";
             panel_foto1.Size = new Size(180, 172);
             panel_foto1.TabIndex = 0;
-            panel_foto1.Paint += panel_foto_Paint;
+            panel_foto1.Paint += panel_foto1_Paint;
             // 
             // group_jogador2
             // 
@@ -135,7 +139,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(987, 699);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(group_jogador5);
             Controls.Add(group_jogador4);
             Controls.Add(group_jogador3);
@@ -143,6 +147,7 @@
             Controls.Add(group_jogador1);
             Name = "Esporte";
             Text = "Esporte";
+            WindowState = FormWindowState.Maximized;
             Load += Esporte_Load;
             group_jogador1.ResumeLayout(false);
             group_jogador2.ResumeLayout(false);

@@ -66,11 +66,10 @@ namespace Projeto
                 { button_futebol, "futebol" },
                 { button_futebolAmericano, "futebolAmericano" },
                 { button_formula1, "formula1" },
-                { button_golf, "golf" },
+                { button_golfe, "golfe" },
                 { button_judo, "judo" },
                 { button_natacao, "natacao" },
                 { button_rocket, "rocket" },
-                { button_todosJogadores, "jogadores" },
                 { button_valorant, "valorant" },
                 { button_xadrez, "xadrez" }
             };
@@ -152,12 +151,6 @@ namespace Projeto
         {
             Configuracoes config = new();
             config.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show($"{Constantes.Imagens["profile"]}");
-            button1.Image = Constantes.Imagens["sport_stats"];
         }
 
         private void button_atletismo_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);

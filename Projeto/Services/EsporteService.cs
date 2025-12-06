@@ -1,4 +1,5 @@
 ﻿using Microsoft.Graph.Models;
+using System.Dynamic;
 
 namespace Projeto.Services
 {
@@ -35,80 +36,104 @@ namespace Projeto.Services
             return esporte.ToLower() switch
             {
                 "atletismo" =>
-                    "select nome, melhortempo, `títulos` " +
-                    "from atletismo join jogadores on jogadores.codigo = atletismo.jogadores_codigo",
+                    "select melhortempo, `títulos` " +
+                    "from atletismo where atletismo.jogadores_codigo = @codigo",
 
                 "baseball" =>
-                    "select nome, partidas, mediarebatidas, homeruns, basesroubadas, corridas " +
-                    "from baseball join jogadores on jogadores.codigo = baseball.jogadores_codigo",
+                    "select partidas, mediarebatidas, homeruns, basesroubadas, corridas " +
+                    "from baseball where baseball.jogadores_codigo = @codigo",
 
                 "basquete" =>
-                    "select nome, partidas, pontos, `3pontos`, rebote, assistencias " +
-                    "from basquete join jogadores on jogadores.codigo = basquete.jogadores_codigo",
+                    "select partidas, pontos, `3pontos`, rebote, assistencias " +
+                    "from basquete where basquete.jogadores_codigo = @codigo",
 
                 "boxe" =>
-                    "select nome, nocautes, vitorias, derrotas, razaovitorias, ouro, prata, bronze " +
-                    "from boxe join jogadores on jogadores.codigo = boxe.jogadores_codigo",
+                    "select nocautes, vitorias, derrotas, razaovitorias, ouro, prata, bronze " +
+                    "from boxe where boxe.jogadores_codigo = @codigo",
 
                 "cod" =>
-                    "select nome, kills, mortes, kd, adr, titulos " +
-                    "from cod join jogadores on jogadores.codigo = cod.jogadores_codigo",
+                    "select kills, mortes, kd, adr, titulos " +
+                    "from cod where cod.jogadores_codigo = @codigo",
 
                 "cs" =>
-                    "select nome, kills, mortes, kd, adr, `títulos` " +
-                    "from cs join jogadores on jogadores.codigo = cs.jogadores_codigo",
+                    "select kills, mortes, kd, adr, `títulos` " +
+                    "from cs where cs.jogadores_codigo = @codigo",
 
                 "formula1" =>
-                    "select nome, podios, polepositions, vitorias " +
-                    "from formula1 join jogadores on jogadores.codigo = formula1.jogadores_codigo",
+                    "select podios, polepositions, vitorias " +
+                    "from formula1 where formula1.jogadores_codigo = @codigo",
 
                 "futebol" =>
-                    "select nome, partidas, gols, assistencias, titulos, boladeouro " +
-                    "from futebol join jogadores on jogadores.codigo = futebol.jogadores_codigo",
+                    "select partidas, gols, assistencias, titulos, boladeouro " +
+                    "from futebol where futebol.jogadores_codigo = @codigo",
 
                 "futebolamericano" =>
-                    "select nome, partidas, jardas, mediajardas, pontos, `títulos` " +
-                    "from futebolamericano join jogadores on jogadores.codigo = futebolamericano.jogadores_codigo",
+                    "select partidas, jardas, mediajardas, pontos, `títulos` " +
+                    "from futebolamericano where futebolamericano.jogadores_codigo = @codigo",
 
-                "golf" =>
-                    "select nome, holeinone, gir " +
-                    "from golfe join jogadores on jogadores.codigo = golfe.jogadores_codigo",
+                "golfe" =>
+                    "select holeinone, gir " +
+                    "from golfe where golfe.jogadores_codigo = @codigo",
 
                 "jogadores" =>
                     "select * from jogadores_esporte",
 
                 "judo" =>
-                    "select nome, faixa, clube, ouros, prata, bronze, ippon " +
-                    "from judo join jogadores on jogadores.codigo = judo.jogadores_codigo",
+                    "select faixa, clube, ouros, prata, bronze, ippon " +
+                    "from judo where judo.jogadores_codigo = @codigo",
 
                 "natacao" =>
-                    "select nome, melhortempo, velmedia, `títulos` " +
-                    "from natacao join jogadores on jogadores.codigo = natacao.jogadores_codigo",
+                    "select melhortempo, velmedia, `títulos` " +
+                    "from natacao where natacao.jogadores_codigo = @codigo",
 
                 "rocket" =>
-                    "select nome, golsporjogo, assistporjogo, defesaporjogo " +
-                    "from rocket join jogadores on jogadores.codigo = rocket.jogadores_codigo",
+                    "select golsporjogo, assistporjogo, defesaporjogo " +
+                    "from rocket where rocket.jogadores_codigo = @codigo",
 
                 "valorant" =>
-                    "select nome, agente, kills, mortes, kd, adr, titulos " +
-                    "from valorant join jogadores on jogadores.codigo = valorant.jogadores_codigo",
+                    "select agente, kills, mortes, kd, adr, titulos " +
+                    "from valorant where valorant.jogadores_codigo = @codigo",
 
                 "xadrez" =>
-                    "select nome, percentvitoria, elo, aberturafavorita, titulos " +
-                    "from xadrez join jogadores on jogadores.codigo = xadrez.jogadores_codigo",
+                    "select percentvitoria, elo, aberturafavorita, titulos " +
+                    "from xadrez where xadrez.jogadores_codigo = @codigo",
 
                 _ => throw new ArgumentException("esporte inválido")
             };
         }
 
+        public static Dictionary<string, object>? GetStats(string nome, string esporte)
+        {
+            string query = Queries(esporte);
 
+            using (var conn = BD.Conectar())
+            {
+                if (conn is null) return null;
 
-        //public static List<string>? GetJogadores(string esporte) fazer a logica para preencher as estatisticas depois
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@codigo", GetCodigo(nome));
+                    using (MySqlDataReader? reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            Dictionary<string, object> stats = [];
+                            for (int i = 0; i < reader.FieldCount; i++)
+                                stats[reader.GetName(i)] = reader.GetValue(i);
+
+                            return stats;
+                        }
+                        else
+                            return null;
+                    }
+                }
+            }
+        }
+
+        public static List<string>? GetJogadores(string esporte)
         {
 
-            string query = (esporte == "jogadores") ?
-                $"SELECT * FROM jogadores_esporte" :
-                Queries(esporte);
+            string query = $"select nome from jogadores where esporte = '{esporte}'";
 
             using (var conn = BD.Conectar())
             {
@@ -118,16 +143,60 @@ namespace Projeto.Services
                 {
                     List<string> jogadores = [];
                     while (reader.Read())
-                    {
                         jogadores.Add(reader.GetString("nome"));
-                    }
+
                     return jogadores;
                 }
-
             }
-
 
         }
 
+        public static string? GetNome(int codigo)
+        {
+            string query = "select nome from jogadores where codigo = @codigo";
+            using (var conn = BD.Conectar())
+            {
+                if (conn is null) return null;
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@codigo", codigo);
+                    object? result = cmd.ExecuteScalar();
+                    return result != null ? result.ToString()! : string.Empty;
+                }
+            }
+        }
+
+        public static int? GetCodigo(string nome)
+        {
+            string query = "select codigo from jogadores where nome = @nome";
+            using (var conn = BD.Conectar())
+            {
+                if (conn is null) return null;
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nome", nome);
+                    object? result = cmd.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : -1;
+                }
+            }
+        }
+
+        public static string? GetImages (string nome)
+        {
+            string query = "select image_url from jogadores where nome = @nome";
+            using (var conn = BD.Conectar())
+            {
+                if (conn is null) return null;
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nome", nome);
+
+                    string? result = cmd.ExecuteScalar() as string;
+                    return result?.Split('.')[0];
+                }
+            }
+        }
     }
 }

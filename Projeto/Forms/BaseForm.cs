@@ -6,6 +6,7 @@
         public BaseForm()
         {
             this.KeyPreview = true;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

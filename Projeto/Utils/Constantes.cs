@@ -6,13 +6,13 @@ namespace Projeto.Utils
     {
         // Lista de tabelas/esportes
         public static readonly string[] tabelas =
-        {
+        [
             "atletismo", "baseball", "basquete",
             "boxe", "cod", "cs",
             "formula1", "futebol", "futebolamericano",
             "golfe", "judo", "natacao",
             "rocket", "valorant", "xadrez"
-        };
+        ];
 
         public static List<Button> ReceberBotoes(Control parent)
         {
@@ -46,48 +46,43 @@ namespace Projeto.Utils
             { "xadrez", typeof(Forms.Xadrez) }
         }; */
 
-        public static readonly Dictionary<string, Image> Imagens = LoadImagens();
+        public static readonly Dictionary<string, string> ImagePaths;
 
-        private static Dictionary<string, Image> LoadImagens()
+        static Constantes()
         {
-            var validExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-            { ".jpg", ".jpeg", ".png", ".bmp", ".gif" };
-
             var directories = new[]
             {
             Path.Combine(Application.StartupPath, "Assets", "fotos"),
             Path.Combine(Application.StartupPath, "Assets", "fotos", "esportes"),
-            Path.Combine(Application.StartupPath, "Assets", "fotos", "devs")
-            };
+            Path.Combine(Application.StartupPath, "Assets", "fotos", "devs"),
+            Path.Combine(Application.StartupPath, "Assets", "fotos", "atletas")
+        };
 
-            var Imagens = new Dictionary<string, Image>(StringComparer.OrdinalIgnoreCase);
+            var validExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            { ".jpg", ".jpeg", ".png", ".bmp", ".gif" };
+
+            var dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
             foreach (var dir in directories)
             {
                 if (!Directory.Exists(dir)) continue;
-
                 foreach (var file in Directory.GetFiles(dir))
                 {
-                    //filtra para apenas extensões validas
                     if (!validExtensions.Contains(Path.GetExtension(file))) continue;
-
-                    string key = Path.GetFileNameWithoutExtension(file);
-
-                    //tratamento de chaves duplicadas
-                    if (!Imagens.ContainsKey(key))
-                    {
-                        try
-                        {
-                            Imagens.Add(key, Image.FromFile(file));
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Erro ao carregar imagem '{file}': {ex.Message}");
-                        }
-                    }
+                    var key = Path.GetFileNameWithoutExtension(file);
+                    if (!dict.ContainsKey(key))
+                        dict[key] = file; // store path only
                 }
             }
-            return Imagens;
+
+            ImagePaths = dict;
+        }
+
+        // returns null if key not found or file missing
+        public static string? GetPath(string key)
+        {
+            if (key == null) return null;
+            return ImagePaths.TryGetValue(key, out var path) && File.Exists(path) ? path : null;
         }
 
 

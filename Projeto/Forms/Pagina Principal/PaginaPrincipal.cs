@@ -122,19 +122,8 @@ namespace Projeto
                 Deslogar();
         }
 
-        private void PaginaPrincipal_Resize(object sender, EventArgs e)
-        {
-
-            label_bemvindo.Left = (this.ClientSize.Width - label_bemvindo.Width) / 2;
-            label_bemvindo.Top = (this.ClientSize.Height - label_bemvindo.Height) / 4;
-
-        }
-
         private void PaginaPrincipal_Load(object sender, EventArgs e)
         {
-
-            label_bemvindo.Left = (this.ClientSize.Width - label_bemvindo.Width) / 2;
-            label_bemvindo.Top = (this.ClientSize.Height - label_bemvindo.Height) / 4;
 
             if (Properties.Settings.Default.UltimoUsuario is not null &&
             Properties.Settings.Default.UltimoUsuario != String.Empty &&

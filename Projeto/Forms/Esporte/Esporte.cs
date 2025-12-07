@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Windows.Forms;
-
-namespace Projeto.Forms
+﻿namespace Projeto.Forms
 {
     public partial class Esporte : BaseForm
     {
@@ -13,14 +9,19 @@ namespace Projeto.Forms
         {
             _esporte = esporte;
             InitializeComponent();
-            this.Load += Esporte_Load;
         }
-
         private void Esporte_Load(object? sender, EventArgs e)
         {
             var panels = AllControls(this)
                 .OfType<Panel>()
                 .Where(p => p.Name.StartsWith("panel_foto", StringComparison.OrdinalIgnoreCase))
+                .OrderBy(p => p.Name)
+                .Take(5)
+                .ToList();
+
+            var flows = AllControls(this)
+                .OfType<FlowLayoutPanel>()
+                .Where(p => p.Name.StartsWith("flowLayoutPanel", StringComparison.OrdinalIgnoreCase))
                 .OrderBy(p => p.Name)
                 .Take(5)
                 .ToList();
@@ -48,9 +49,27 @@ namespace Projeto.Forms
                 // assign and keep ownership so we can dispose later
                 panels[i].BackgroundImage = bmp;
                 panels[i].BackgroundImageLayout = ImageLayout.Stretch;
-                panels[i].Dock = DockStyle.Fill;
                 _ownedImages.Add(bmp);
             }
+
+            for (int i = 0; i < flows.Count && i < nomes.Length; i++)
+                CriarCards(flows[i], i);
+        }
+
+        private void CriarCards(FlowLayoutPanel flow, int index)
+        {
+            var nomes = EsporteService.GetJogadores(_esporte) ?? [];
+            var stats = EsporteService.GetStats(nomes[index], _esporte) ?? [];
+
+            var jogador = EsporteService.CriarCardJogador
+            (
+                nome: nomes[index],
+                stats: stats,
+                index: index
+            );
+
+            flow.Controls.Add(jogador);
+
         }
 
         private static IEnumerable<Control> AllControls(Control root)
@@ -62,9 +81,5 @@ namespace Projeto.Forms
             }
         }
 
-        private void panel_foto1_Paint(object sender, PaintEventArgs e)
-        {
-            ControlPaint.DrawBorder(e.Graphics, ((Panel)sender).ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
-        }
     }
 }

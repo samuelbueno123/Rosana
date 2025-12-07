@@ -12,6 +12,7 @@ global using System.Windows.Forms;
 global using MySql.Data.MySqlClient;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.Graph.Education.Classes.Item.Assignments.Item.Submissions.Item.Return;
+global using Projeto;
 global using Projeto.Utils;
 global using Projeto.Services;
 global using Projeto.Data;

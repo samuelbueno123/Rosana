@@ -62,9 +62,9 @@
             // label_bemvindo
             // 
             label_bemvindo.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
-            label_bemvindo.Location = new Point(62, 24);
+            label_bemvindo.Location = new Point(440, 252);
             label_bemvindo.Name = "label_bemvindo";
-            label_bemvindo.Size = new Size(661, 78);
+            label_bemvindo.Size = new Size(661, 80);
             label_bemvindo.TabIndex = 0;
             label_bemvindo.Text = "Bem-vindo ao site";
             // 
@@ -87,21 +87,21 @@
             // menu_cadastro
             // 
             menu_cadastro.Name = "menu_cadastro";
-            menu_cadastro.Size = new Size(121, 22);
+            menu_cadastro.Size = new Size(180, 22);
             menu_cadastro.Text = "Cadastro";
             menu_cadastro.Click += menu_cadastro_Click;
             // 
             // menu_login
             // 
             menu_login.Name = "menu_login";
-            menu_login.Size = new Size(121, 22);
+            menu_login.Size = new Size(180, 22);
             menu_login.Text = "Login";
             menu_login.Click += menu_login_Click;
             // 
             // menu_sair
             // 
             menu_sair.Name = "menu_sair";
-            menu_sair.Size = new Size(121, 22);
+            menu_sair.Size = new Size(180, 22);
             menu_sair.Text = "Sair";
             menu_sair.Visible = false;
             menu_sair.Click += menu_sair_Click;
@@ -117,14 +117,14 @@
             // menu_configuracoes
             // 
             menu_configuracoes.Name = "menu_configuracoes";
-            menu_configuracoes.Size = new Size(151, 22);
+            menu_configuracoes.Size = new Size(180, 22);
             menu_configuracoes.Text = "Configurações";
             menu_configuracoes.Click += menu_configuracoes_Click;
             // 
             // menu_preferencias
             // 
             menu_preferencias.Name = "menu_preferencias";
-            menu_preferencias.Size = new Size(151, 22);
+            menu_preferencias.Size = new Size(180, 22);
             menu_preferencias.Text = "Preferências";
             menu_preferencias.Click += menu_preferencias_Click;
             // 
@@ -139,9 +139,9 @@
             // 
             button_futebolAmericano.Anchor = AnchorStyles.None;
             button_futebolAmericano.FlatStyle = FlatStyle.Flat;
-            button_futebolAmericano.Location = new Point(947, 450);
+            button_futebolAmericano.Location = new Point(881, 454);
             button_futebolAmericano.Name = "button_futebolAmericano";
-            button_futebolAmericano.Size = new Size(141, 68);
+            button_futebolAmericano.Size = new Size(141, 70);
             button_futebolAmericano.TabIndex = 2;
             button_futebolAmericano.Text = "Futebol Americano";
             button_futebolAmericano.UseVisualStyleBackColor = true;
@@ -151,9 +151,9 @@
             // 
             button_basquete.Anchor = AnchorStyles.None;
             button_basquete.FlatStyle = FlatStyle.Flat;
-            button_basquete.Location = new Point(653, 376);
+            button_basquete.Location = new Point(587, 380);
             button_basquete.Name = "button_basquete";
-            button_basquete.Size = new Size(141, 68);
+            button_basquete.Size = new Size(141, 70);
             button_basquete.TabIndex = 4;
             button_basquete.Text = "Basquete";
             button_basquete.UseVisualStyleBackColor = true;
@@ -163,9 +163,9 @@
             // 
             button_futebol.Anchor = AnchorStyles.None;
             button_futebol.FlatStyle = FlatStyle.Flat;
-            button_futebol.Location = new Point(800, 450);
+            button_futebol.Location = new Point(734, 454);
             button_futebol.Name = "button_futebol";
-            button_futebol.Size = new Size(141, 68);
+            button_futebol.Size = new Size(141, 70);
             button_futebol.TabIndex = 3;
             button_futebol.Text = "Futebol";
             button_futebol.UseVisualStyleBackColor = true;
@@ -175,9 +175,9 @@
             // 
             button_baseball.Anchor = AnchorStyles.None;
             button_baseball.FlatStyle = FlatStyle.Flat;
-            button_baseball.Location = new Point(947, 376);
+            button_baseball.Location = new Point(881, 380);
             button_baseball.Name = "button_baseball";
-            button_baseball.Size = new Size(141, 68);
+            button_baseball.Size = new Size(141, 70);
             button_baseball.TabIndex = 6;
             button_baseball.Text = "Baseball";
             button_baseball.UseVisualStyleBackColor = true;
@@ -187,9 +187,9 @@
             // 
             button_cod.Anchor = AnchorStyles.None;
             button_cod.FlatStyle = FlatStyle.Flat;
-            button_cod.Location = new Point(1094, 376);
+            button_cod.Location = new Point(1028, 380);
             button_cod.Name = "button_cod";
-            button_cod.Size = new Size(141, 68);
+            button_cod.Size = new Size(141, 70);
             button_cod.TabIndex = 7;
             button_cod.Text = "Call of Duty";
             button_cod.UseVisualStyleBackColor = true;
@@ -199,9 +199,9 @@
             // 
             button_cs.Anchor = AnchorStyles.None;
             button_cs.FlatStyle = FlatStyle.Flat;
-            button_cs.Location = new Point(506, 450);
+            button_cs.Location = new Point(440, 454);
             button_cs.Name = "button_cs";
-            button_cs.Size = new Size(141, 68);
+            button_cs.Size = new Size(141, 70);
             button_cs.TabIndex = 8;
             button_cs.Text = "Counter-Strike";
             button_cs.UseVisualStyleBackColor = true;
@@ -211,9 +211,9 @@
             // 
             button_atletismo.Anchor = AnchorStyles.None;
             button_atletismo.FlatStyle = FlatStyle.Flat;
-            button_atletismo.Location = new Point(506, 376);
+            button_atletismo.Location = new Point(440, 380);
             button_atletismo.Name = "button_atletismo";
-            button_atletismo.Size = new Size(141, 68);
+            button_atletismo.Size = new Size(141, 70);
             button_atletismo.TabIndex = 9;
             button_atletismo.Text = "Atletismo";
             button_atletismo.UseVisualStyleBackColor = true;
@@ -223,9 +223,9 @@
             // 
             button_boxe.Anchor = AnchorStyles.None;
             button_boxe.FlatStyle = FlatStyle.Flat;
-            button_boxe.Location = new Point(800, 376);
+            button_boxe.Location = new Point(734, 380);
             button_boxe.Name = "button_boxe";
-            button_boxe.Size = new Size(141, 68);
+            button_boxe.Size = new Size(141, 70);
             button_boxe.TabIndex = 10;
             button_boxe.Text = "Boxe";
             button_boxe.UseVisualStyleBackColor = true;
@@ -235,9 +235,9 @@
             // 
             button_rocket.Anchor = AnchorStyles.None;
             button_rocket.FlatStyle = FlatStyle.Flat;
-            button_rocket.Location = new Point(800, 524);
+            button_rocket.Location = new Point(734, 528);
             button_rocket.Name = "button_rocket";
-            button_rocket.Size = new Size(141, 68);
+            button_rocket.Size = new Size(141, 70);
             button_rocket.TabIndex = 11;
             button_rocket.Text = "Rocket League";
             button_rocket.UseVisualStyleBackColor = true;
@@ -247,9 +247,9 @@
             // 
             button_golfe.Anchor = AnchorStyles.None;
             button_golfe.FlatStyle = FlatStyle.Flat;
-            button_golfe.Location = new Point(1094, 450);
+            button_golfe.Location = new Point(1028, 454);
             button_golfe.Name = "button_golfe";
-            button_golfe.Size = new Size(141, 68);
+            button_golfe.Size = new Size(141, 70);
             button_golfe.TabIndex = 12;
             button_golfe.Text = "Golfe";
             button_golfe.UseVisualStyleBackColor = true;
@@ -259,9 +259,9 @@
             // 
             button_judo.Anchor = AnchorStyles.None;
             button_judo.FlatStyle = FlatStyle.Flat;
-            button_judo.Location = new Point(506, 524);
+            button_judo.Location = new Point(440, 528);
             button_judo.Name = "button_judo";
-            button_judo.Size = new Size(141, 68);
+            button_judo.Size = new Size(141, 70);
             button_judo.TabIndex = 13;
             button_judo.Text = "Judô";
             button_judo.UseVisualStyleBackColor = true;
@@ -271,9 +271,9 @@
             // 
             button_natacao.Anchor = AnchorStyles.None;
             button_natacao.FlatStyle = FlatStyle.Flat;
-            button_natacao.Location = new Point(653, 524);
+            button_natacao.Location = new Point(587, 528);
             button_natacao.Name = "button_natacao";
-            button_natacao.Size = new Size(141, 68);
+            button_natacao.Size = new Size(141, 70);
             button_natacao.TabIndex = 14;
             button_natacao.Text = "Natação";
             button_natacao.UseVisualStyleBackColor = true;
@@ -283,9 +283,9 @@
             // 
             button_formula1.Anchor = AnchorStyles.None;
             button_formula1.FlatStyle = FlatStyle.Flat;
-            button_formula1.Location = new Point(653, 450);
+            button_formula1.Location = new Point(587, 454);
             button_formula1.Name = "button_formula1";
-            button_formula1.Size = new Size(141, 68);
+            button_formula1.Size = new Size(141, 70);
             button_formula1.TabIndex = 15;
             button_formula1.Text = "Fórmula 1";
             button_formula1.UseVisualStyleBackColor = true;
@@ -295,9 +295,9 @@
             // 
             button_xadrez.Anchor = AnchorStyles.None;
             button_xadrez.FlatStyle = FlatStyle.Flat;
-            button_xadrez.Location = new Point(1094, 524);
+            button_xadrez.Location = new Point(1028, 528);
             button_xadrez.Name = "button_xadrez";
-            button_xadrez.Size = new Size(141, 68);
+            button_xadrez.Size = new Size(141, 70);
             button_xadrez.TabIndex = 16;
             button_xadrez.Text = "Xadrez";
             button_xadrez.UseVisualStyleBackColor = true;
@@ -307,9 +307,9 @@
             // 
             button_valorant.Anchor = AnchorStyles.None;
             button_valorant.FlatStyle = FlatStyle.Flat;
-            button_valorant.Location = new Point(947, 524);
+            button_valorant.Location = new Point(881, 528);
             button_valorant.Name = "button_valorant";
-            button_valorant.Size = new Size(141, 68);
+            button_valorant.Size = new Size(141, 70);
             button_valorant.TabIndex = 17;
             button_valorant.Text = "Valorant";
             button_valorant.UseVisualStyleBackColor = true;
@@ -318,7 +318,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(800, 27);
+            pictureBox1.Location = new Point(687, 38);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(209, 182);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -329,7 +329,6 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(0, 192, 0);
             ClientSize = new Size(1584, 861);
             Controls.Add(pictureBox1);
             Controls.Add(button_valorant);
@@ -349,13 +348,11 @@
             Controls.Add(button_futebolAmericano);
             Controls.Add(menuStrip1);
             Controls.Add(label_bemvindo);
-            ForeColor = Color.FromArgb(0, 0, 192);
+            ForeColor = Color.White;
             MainMenuStrip = menuStrip1;
             Name = "PaginaPrincipal";
             Text = "Página Principal";
-            WindowState = FormWindowState.Maximized;
             Load += PaginaPrincipal_Load;
-            Resize += PaginaPrincipal_Resize;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((ISupportInitialize)pictureBox1).EndInit();

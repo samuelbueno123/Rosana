@@ -74,9 +74,9 @@
             // 
             // button_login
             // 
-            button_login.Location = new Point(224, 111);
+            button_login.Location = new Point(216, 111);
             button_login.Name = "button_login";
-            button_login.Size = new Size(75, 23);
+            button_login.Size = new Size(91, 32);
             button_login.TabIndex = 5;
             button_login.Text = "Login";
             button_login.UseVisualStyleBackColor = true;

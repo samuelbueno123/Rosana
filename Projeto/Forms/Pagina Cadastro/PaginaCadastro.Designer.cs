@@ -50,7 +50,7 @@
             // label_usuario
             // 
             label_usuario.AutoSize = true;
-            label_usuario.Location = new Point(128, 179);
+            label_usuario.Location = new Point(224, 163);
             label_usuario.Name = "label_usuario";
             label_usuario.Size = new Size(101, 15);
             label_usuario.TabIndex = 2;
@@ -59,7 +59,7 @@
             // label_email
             // 
             label_email.AutoSize = true;
-            label_email.Location = new Point(190, 222);
+            label_email.Location = new Point(286, 206);
             label_email.Name = "label_email";
             label_email.Size = new Size(39, 15);
             label_email.TabIndex = 3;
@@ -68,7 +68,7 @@
             // label_senha
             // 
             label_senha.AutoSize = true;
-            label_senha.Location = new Point(187, 267);
+            label_senha.Location = new Point(283, 251);
             label_senha.Name = "label_senha";
             label_senha.Size = new Size(42, 15);
             label_senha.TabIndex = 4;
@@ -76,7 +76,7 @@
             // 
             // TxtSenha
             // 
-            TxtSenha.Location = new Point(235, 264);
+            TxtSenha.Location = new Point(331, 248);
             TxtSenha.Name = "TxtSenha";
             TxtSenha.Size = new Size(123, 23);
             TxtSenha.TabIndex = 5;
@@ -84,23 +84,23 @@
             // 
             // TxtUsuario
             // 
-            TxtUsuario.Location = new Point(235, 176);
+            TxtUsuario.Location = new Point(331, 160);
             TxtUsuario.Name = "TxtUsuario";
             TxtUsuario.Size = new Size(123, 23);
             TxtUsuario.TabIndex = 6;
             // 
             // TxtEmail
             // 
-            TxtEmail.Location = new Point(235, 219);
+            TxtEmail.Location = new Point(331, 203);
             TxtEmail.Name = "TxtEmail";
             TxtEmail.Size = new Size(123, 23);
             TxtEmail.TabIndex = 7;
             // 
             // button_enviar
             // 
-            button_enviar.Location = new Point(450, 197);
+            button_enviar.Location = new Point(346, 290);
             button_enviar.Name = "button_enviar";
-            button_enviar.Size = new Size(95, 65);
+            button_enviar.Size = new Size(93, 42);
             button_enviar.TabIndex = 8;
             button_enviar.Text = "Enviar";
             button_enviar.UseVisualStyleBackColor = true;

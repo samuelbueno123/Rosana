@@ -1,5 +1,6 @@
 ﻿using Microsoft.Graph.Models;
 using System.Dynamic;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Projeto.Services
 {
@@ -102,7 +103,7 @@ namespace Projeto.Services
             };
         }
 
-        public static Dictionary<string, object>? GetStats(string nome, string esporte)
+        public static Dictionary<string, string>? GetStats(string nome, string esporte)
         {
             string query = Queries(esporte);
 
@@ -117,14 +118,16 @@ namespace Projeto.Services
                     {
                         if (reader.Read())
                         {
-                            Dictionary<string, object> stats = [];
+                            Dictionary<string, string> stats = [];
                             for (int i = 0; i < reader.FieldCount; i++)
-                                stats[reader.GetName(i)] = reader.GetValue(i);
+                            {
+                                object? value = reader.GetValue(i);
+                                stats[string.Concat(reader.GetName(i)[..1].ToUpper(), reader.GetName(i).AsSpan(1))] = value?.ToString() ?? string.Empty;
+                            }
 
                             return stats;
                         }
-                        else
-                            return null;
+                        else return null;
                     }
                 }
             }
@@ -198,5 +201,66 @@ namespace Projeto.Services
                 }
             }
         }
+
+        public static Panel CriarCardJogador(string nome, Dictionary<string, string> stats, int index)
+        {
+            int width, height;
+            if (index <= 2)
+            {
+                width = 246;
+                height = 359;
+            }
+            else
+            {
+                width = 375;
+                height = 359;
+            }
+
+                var card = new Panel
+                {
+                    Width = width,
+                    Height = height,
+                    BackColor = Color.Transparent,
+                    Margin = new Padding(20)
+                };
+
+            var lblNome = new Label
+            {
+                Text = nome,
+                AutoSize = false,
+                Font = new Font("Segoe UI", 14, FontStyle.Bold),
+                Width = 300,
+                Height = 30,
+                Location = new Point(25, 265)
+            };
+            card.Controls.Add(lblNome);
+
+            var container = new FlowLayoutPanel
+            {
+                FlowDirection = FlowDirection.TopDown,
+                WrapContents = false,
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink
+            };
+
+            card.Controls.Add(container);
+
+
+            foreach (var stat in stats)
+            {
+                var lbl = new Label
+                {
+                    Text = $"{stat.Key}: {stat.Value}",
+                    AutoSize = true,
+                    Font = new Font("Arial", 11)
+                };
+                container.Controls.Add(lbl);
+            }
+
+            card.Controls.Add(container);
+
+            return card;
+        }
+
     }
 }

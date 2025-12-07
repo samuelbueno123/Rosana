@@ -2,23 +2,56 @@
 {
     public partial class BaseForm : Form
     {
+        private static readonly Color ThemeBack = ColorTranslator.FromHtml("#071323");
+        private static readonly Color ThemeFore = ColorTranslator.FromHtml("#c3f030");
 
         public BaseForm()
         {
-            this.KeyPreview = true;
-            this.StartPosition = FormStartPosition.CenterScreen;
+            KeyPreview = true;
+            StartPosition = FormStartPosition.CenterScreen;
+
+            // local form theme
+            BackColor = ThemeBack;
+            ForeColor = ThemeFore;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            applyTheme(this);
+        }
+
+        private static void applyTheme(Control root)
+        {
+            foreach (Control c in root.Controls)
+            {
+                // foreground ALWAYS
+                c.ForeColor = ThemeFore;
+
+                // background: inherit unless explicitly transparent
+                if (c is Button b)
+                {
+                    b.UseVisualStyleBackColor = false;
+                    b.BackColor = ThemeBack;    // matches form (you can darken if u want contrast)
+                }
+                else if (c.BackColor != Color.Transparent)
+                {
+                    c.BackColor = ThemeBack;
+                }
+
+                if (c.HasChildren)
+                    applyTheme(c);
+            }
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Escape)
             {
-                this.Close();
-                return true; // mark handled
+                Close();
+                return true;
             }
-
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
     }
 }

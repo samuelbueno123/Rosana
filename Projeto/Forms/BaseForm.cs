@@ -25,7 +25,6 @@
         {
             foreach (Control c in root.Controls)
             {
-                // foreground ALWAYS
                 c.ForeColor = ThemeFore;
 
                 // background: inherit unless explicitly transparent

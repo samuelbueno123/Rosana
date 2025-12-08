@@ -39,6 +39,7 @@
             menu_configuracoes = new ToolStripMenuItem();
             menu_preferencias = new ToolStripMenuItem();
             menu_fechar = new ToolStripMenuItem();
+            menu_admin = new ToolStripMenuItem();
             button_futebolAmericano = new Button();
             button_basquete = new Button();
             button_futebol = new Button();
@@ -70,7 +71,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { menu_conta, menu_opcoes, menu_fechar });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { menu_conta, menu_opcoes, menu_fechar, menu_admin });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1584, 24);
@@ -87,21 +88,21 @@
             // menu_cadastro
             // 
             menu_cadastro.Name = "menu_cadastro";
-            menu_cadastro.Size = new Size(180, 22);
+            menu_cadastro.Size = new Size(121, 22);
             menu_cadastro.Text = "Cadastro";
             menu_cadastro.Click += menu_cadastro_Click;
             // 
             // menu_login
             // 
             menu_login.Name = "menu_login";
-            menu_login.Size = new Size(180, 22);
+            menu_login.Size = new Size(121, 22);
             menu_login.Text = "Login";
             menu_login.Click += menu_login_Click;
             // 
             // menu_sair
             // 
             menu_sair.Name = "menu_sair";
-            menu_sair.Size = new Size(180, 22);
+            menu_sair.Size = new Size(121, 22);
             menu_sair.Text = "Sair";
             menu_sair.Visible = false;
             menu_sair.Click += menu_sair_Click;
@@ -117,14 +118,14 @@
             // menu_configuracoes
             // 
             menu_configuracoes.Name = "menu_configuracoes";
-            menu_configuracoes.Size = new Size(180, 22);
+            menu_configuracoes.Size = new Size(151, 22);
             menu_configuracoes.Text = "Configurações";
             menu_configuracoes.Click += menu_configuracoes_Click;
             // 
             // menu_preferencias
             // 
             menu_preferencias.Name = "menu_preferencias";
-            menu_preferencias.Size = new Size(180, 22);
+            menu_preferencias.Size = new Size(151, 22);
             menu_preferencias.Text = "Preferências";
             menu_preferencias.Click += menu_preferencias_Click;
             // 
@@ -134,6 +135,16 @@
             menu_fechar.Size = new Size(54, 20);
             menu_fechar.Text = "Fechar";
             menu_fechar.Click += menu_fechar_Click;
+            // 
+            // menu_admin
+            // 
+            menu_admin.MergeAction = MergeAction.Insert;
+            menu_admin.MergeIndex = 0;
+            menu_admin.Name = "menu_admin";
+            menu_admin.Size = new Size(95, 20);
+            menu_admin.Text = "Administrador";
+            menu_admin.Visible = false;
+            menu_admin.Click += menu_admin_Click;
             // 
             // button_futebolAmericano
             // 
@@ -388,5 +399,6 @@
         private Button button_golfe;
         private Button button_judo;
         private PictureBox pictureBox1;
+        private ToolStripMenuItem menu_admin;
     }
 }

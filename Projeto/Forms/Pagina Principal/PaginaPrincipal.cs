@@ -5,7 +5,7 @@ namespace Projeto
         private bool navegando = false;
         private readonly Dictionary<Button, string> botaoParaEsporte = [];
 
-        
+
         private void Esporte(string esporte)
         {
             navegando = true;
@@ -18,15 +18,13 @@ namespace Projeto
 
         private void SemConta()
         {
-            
+
             foreach (var botao in Constantes.ReceberBotoes(this))
             {
                 if (botao.Name is not ("button_baseball" or "button_basquete" or "button_futebol"))
                     botao.Visible = false;
             }
 
-            button_basquete.Location = new Point(166, 223);
-            button_baseball.Location = new Point(460, 223);
 
         }
 
@@ -34,6 +32,7 @@ namespace Projeto
         {
             Sessao.UsuarioAtual?.Sair();
             label_bemvindo.Text = "Bem-vindo ao site";
+            menu_admin.Visible = false;
             menu_sair.Visible = false;
             menu_opcoes.Visible = false;
             menu_cadastro.Visible = true;
@@ -43,6 +42,7 @@ namespace Projeto
 
         private void Logar()
         {
+            if (Constantes.admins.Contains(Sessao.UsuarioAtual!.Nome)) menu_admin.Visible = true;
             menu_sair.Visible = true;
             menu_opcoes.Visible = true;
             menu_cadastro.Visible = false;
@@ -134,6 +134,12 @@ namespace Projeto
 
         }
 
+        private void menu_admin_Click(object sender, EventArgs e)
+        {
+            Admin admin = new();
+            admin.Show();
+        }
+
         private void menu_fechar_Click(object sender, EventArgs e) => Application.Exit();
 
         private void menu_configuracoes_Click(object sender, EventArgs e)
@@ -173,5 +179,6 @@ namespace Projeto
         private void button_valorant_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
 
         private void button_xadrez_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
+
     }
 }

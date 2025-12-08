@@ -14,6 +14,11 @@ namespace Projeto.Utils
             "rocket", "valorant", "xadrez"
         ];
 
+        public static readonly string[] admins = 
+        [
+            "Admin", "admin", "Samuel", "administrador"
+        ];
+
         public static List<Button> ReceberBotoes(Control parent)
         {
             List<Button> botoes = [];

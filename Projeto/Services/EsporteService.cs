@@ -250,7 +250,7 @@ namespace Projeto.Services
             {
                 var lbl = new Label
                 {
-                    Text = $"{stat.Key}: {stat.Value}",
+                    Text = $"{stat.Key}: {stat.Value}\n\n",
                     AutoSize = true,
                     Font = new Font("Arial", 11)
                 };

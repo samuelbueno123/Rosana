@@ -158,5 +158,21 @@ namespace Projeto.Data
         //    using 
         //}
 
+        public static DataTable? GetUsuarios()
+        {
+            string query = "select * from usuario";
+            using (var conn = BD.Conectar())
+            {
+                if (conn == null) return null;
+
+                using (var adapter = new MySqlDataAdapter(query, conn))
+                {
+                    DataTable usuarios = new();
+                    adapter.Fill(usuarios);        
+
+                    return usuarios;
+                }
+            }
+        }
     }
 }

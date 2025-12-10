@@ -18,5 +18,3 @@ global using Projeto.Services;
 global using Projeto.Data;
 global using Projeto.Models;
 global using Projeto.Forms;
-
-

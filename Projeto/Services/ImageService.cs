@@ -1,6 +1,6 @@
 ﻿using System.Drawing.Drawing2D;
-namespace Projeto.Services;
 
+namespace Projeto.Services;
 public static class ImageService
 {
     public static Bitmap? LoadResizedBitmap(string? filePath, Size targetSize)

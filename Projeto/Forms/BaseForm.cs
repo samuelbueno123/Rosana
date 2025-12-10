@@ -1,56 +1,54 @@
-﻿namespace Projeto.Forms
+﻿namespace Projeto.Forms;
+public partial class BaseForm : Form
 {
-    public partial class BaseForm : Form
+    private static readonly Color ThemeBack = ColorTranslator.FromHtml("#071323");
+    private static readonly Color ThemeFore = ColorTranslator.FromHtml("#c3f030");
+
+    public BaseForm()
     {
-        private static readonly Color ThemeBack = ColorTranslator.FromHtml("#071323");
-        private static readonly Color ThemeFore = ColorTranslator.FromHtml("#c3f030");
+        KeyPreview = true;
+        StartPosition = FormStartPosition.CenterScreen;
 
-        public BaseForm()
+        // local form theme
+        BackColor = ThemeBack;
+        ForeColor = ThemeFore;
+    }
+
+    protected override void OnLoad(EventArgs e)
+    {
+        base.OnLoad(e);
+        applyTheme(this);
+    }
+
+    private static void applyTheme(Control root)
+    {
+        foreach (Control c in root.Controls)
         {
-            KeyPreview = true;
-            StartPosition = FormStartPosition.CenterScreen;
+            c.ForeColor = ThemeFore;
 
-            // local form theme
-            BackColor = ThemeBack;
-            ForeColor = ThemeFore;
-        }
-
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            applyTheme(this);
-        }
-
-        private static void applyTheme(Control root)
-        {
-            foreach (Control c in root.Controls)
+            // background: inherit unless explicitly transparent
+            if (c is Button b)
             {
-                c.ForeColor = ThemeFore;
-
-                // background: inherit unless explicitly transparent
-                if (c is Button b)
-                {
-                    b.UseVisualStyleBackColor = false;
-                    b.BackColor = ThemeBack;    // matches form (you can darken if u want contrast)
-                }
-                else if (c.BackColor != Color.Transparent)
-                {
-                    c.BackColor = ThemeBack;
-                }
-
-                if (c.HasChildren)
-                    applyTheme(c);
+                b.UseVisualStyleBackColor = false;
+                b.BackColor = ThemeBack;    // matches form (you can darken if u want contrast)
             }
-        }
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (keyData == Keys.Escape)
+            else if (c.BackColor != Color.Transparent)
             {
-                Close();
-                return true;
+                c.BackColor = ThemeBack;
             }
-            return base.ProcessCmdKey(ref msg, keyData);
+
+            if (c.HasChildren)
+                applyTheme(c);
         }
+    }
+
+    protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+    {
+        if (keyData == Keys.Escape)
+        {
+            Close();
+            return true;
+        }
+        return base.ProcessCmdKey(ref msg, keyData);
     }
 }

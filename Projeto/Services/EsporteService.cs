@@ -133,34 +133,6 @@ namespace Projeto.Services
             }
         }
 
-        public static Dictionary<string, string>? GetDados(int codigo)
-        {
-            string query = "select nascimento, nacionalidade, `data de estreia` from jogadores where codigo = @codigo";
-            using (var conn = BD.Conectar())
-            {
-                if (conn is null) return null;
-                using (var cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@codigo", codigo);
-
-                    using (MySqlDataReader? reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            Dictionary<string, string> dados = [];
-                            for (int i = 0; i < reader.FieldCount; i++)
-                            {
-                                object? value = reader.GetValue(i);
-                                dados[string.Concat(reader.GetName(i)[..1].ToUpper(), reader.GetName(i).AsSpan(1))] = value?.ToString() ?? string.Empty;
-                            }
-                            return dados;
-                        }
-                        else return null;
-                    }
-                }
-            }
-        }
-
         public static List<string>? GetJogadores(string esporte)
         {
 
@@ -230,7 +202,7 @@ namespace Projeto.Services
             }
         }
 
-        public static Panel CriarCardJogador(string nome, Dictionary<string, string> stats, Dictionary<string, string> dados, int index)
+        public static Panel CriarCardJogador(string nome, Dictionary<string, string> stats, int index)
         {
             int width, height;
             if (index <= 2)
@@ -244,47 +216,35 @@ namespace Projeto.Services
                 height = 359;
             }
 
-            var card = new Panel
-            {
-                Width = width,
-                Height = height,
-                BackColor = Color.Transparent,
-                Margin = new Padding(10)
-            };
+                var card = new Panel
+                {
+                    Width = width,
+                    Height = height,
+                    BackColor = Color.Transparent,
+                    Margin = new Padding(20)
+                };
 
             var lblNome = new Label
             {
                 Text = nome,
-                Dock = DockStyle.Bottom,
                 AutoSize = false,
-                Height = 60,
-                Font = new Font("Segoe UI", 20, FontStyle.Bold),
-                TextAlign = ContentAlignment.MiddleCenter,
-                Padding = new Padding(0, 0, 0, 20)
+                Font = new Font("Segoe UI", 14, FontStyle.Bold),
+                Width = 300,
+                Height = 30,
+                Location = new Point(25, 265)
             };
-
             card.Controls.Add(lblNome);
 
             var container = new FlowLayoutPanel
             {
                 FlowDirection = FlowDirection.TopDown,
                 WrapContents = false,
-                AutoScroll = true,
-                Location = new Point(10, 10),
-                Size = new Size(width, 240) // adjust height so it stops before the name
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink
             };
 
+            card.Controls.Add(container);
 
-            foreach (var dado in dados)
-            {
-                var lbl = new Label
-                {
-                    Text = $"{dado.Key}: {dado.Value}\n\n",
-                    AutoSize = true,
-                    Font = new Font("Arial", 10)
-                };
-                container.Controls.Add(lbl);
-            }
 
             foreach (var stat in stats)
             {
@@ -292,7 +252,7 @@ namespace Projeto.Services
                 {
                     Text = $"{stat.Key}: {stat.Value}\n\n",
                     AutoSize = true,
-                    Font = new Font("Arial", 10)
+                    Font = new Font("Arial", 11)
                 };
                 container.Controls.Add(lbl);
             }

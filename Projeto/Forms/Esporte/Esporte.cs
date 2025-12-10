@@ -60,11 +60,13 @@
         {
             var nomes = EsporteService.GetJogadores(_esporte) ?? [];
             var stats = EsporteService.GetStats(nomes[index], _esporte) ?? [];
+            var dados = EsporteService.GetDados(EsporteService.GetCodigo(nomes[index]) ?? -1) ?? [];
 
             var jogador = EsporteService.CriarCardJogador
             (
                 nome: nomes[index],
                 stats: stats,
+                dados: dados,
                 index: index
             );
 

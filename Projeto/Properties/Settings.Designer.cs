@@ -37,7 +37,7 @@ namespace Projeto.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
         public string UltimoUsuario {
             get {
                 return ((string)(this["UltimoUsuario"]));

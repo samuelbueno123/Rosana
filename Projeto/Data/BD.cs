@@ -185,6 +185,23 @@ public static class BD
         }
     }
 
+    public static bool Acesso()
+    {
+        string query = "select ligado from estado";
+        using (var conn = BD.Conectar())
+        {
+            if (conn == null) return false;
+            using (var cmd = new MySqlCommand(query, conn))
+            {
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (!reader.Read()) return false;
+                    return reader.GetBoolean("ligado");
+                }
+            }
+        }
+    }
+
     public static int RemoveAcesso()
     {
         string query = "update estado set ligado = false";

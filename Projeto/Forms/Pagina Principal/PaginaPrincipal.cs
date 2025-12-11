@@ -89,6 +89,7 @@ public partial class PaginaPrincipal : BaseForm
 
     private void Deslogar()
     {
+        Properties.Settings.Default.UltimoUsuario = null;
         Sessao.UsuarioAtual?.Sair();
         label_bemvindo.Text = "Bem-vindo ao site";
         menu_admin.Visible = false;

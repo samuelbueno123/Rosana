@@ -82,6 +82,8 @@ public partial class PaginaPrincipal : BaseForm
         {
             if (botao.Name is not ("button_baseball" or "button_basquete" or "button_futebol"))
                 botao.Visible = false;
+            else
+                botao.Visible = true;
         }
 
 

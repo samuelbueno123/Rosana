@@ -169,6 +169,18 @@ public partial class PaginaPrincipal : BaseForm
     private void PaginaPrincipal_FormClosed(object? sender, EventArgs e)
     {
         if (!navegando) Application.Exit();
+
+        foreach (var item in menuStrip1.Items.OfType<ToolStripMenuItem>())
+            item.Image?.Dispose();
+
+        foreach (var btn in botaoParaEsporte.Keys)
+            btn.BackgroundImage?.Dispose();
+
+        foreach (var btn in botaoParaEsporte.Keys)
+        {
+            btn.BackgroundImage?.Dispose();
+            btn.BackgroundImage = null;
+        }
     }
 
     private void menu_cadastro_Click(object sender, EventArgs e)
@@ -224,6 +236,12 @@ public partial class PaginaPrincipal : BaseForm
             if (!string.IsNullOrEmpty(key) && Constantes.ImagePaths.TryGetValue(key, out var imagePath) && !string.IsNullOrEmpty(imagePath))
             {
                 imagem = LoadAndResize(imagePath, new Size(64, 64));
+                if (item.Image != null)
+                {
+                    item.Image.Dispose();
+                    item.Image = null;
+                }
+
                 item.Image = imagem;
             }
             item.ImageAlign = ContentAlignment.MiddleCenter;

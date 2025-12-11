@@ -51,4 +51,5 @@ public partial class BaseForm : Form
         }
         return base.ProcessCmdKey(ref msg, keyData);
     }
+
 }

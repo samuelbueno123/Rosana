@@ -338,6 +338,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 use trabalho;
 
+create table estado (ligado bool primary key);
+insert into estado values (true);
+
 create table preferencias (
 	usuario int(11) primary key,
     atletismo bool,

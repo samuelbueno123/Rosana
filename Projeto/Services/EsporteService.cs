@@ -1,4 +1,5 @@
-﻿using Microsoft.Graph.Models;
+﻿using Microsoft.Extensions.Options;
+using Microsoft.Graph.Models;
 using System.Dynamic;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -276,12 +277,20 @@ public static class EsporteService
 
         foreach (var dado in dados)
         {
-            var lbl = new Label
+            string valor;
+            if (dado.Key is ("Data de estreia" or "Nascimento" or "Data de aposentaria"))
             {
-                Text = $"{dado.Key}: {dado.Value}\n\n",
-                AutoSize = true,
-                Font = new Font("Arial", 10)
-            };
+                valor = dado.Value.Split(' ')[0];
+            }
+            else
+                valor = dado.Value;
+
+            var lbl = new Label
+                {
+                    Text = $"{dado.Key}: {valor}\n\n",
+                    AutoSize = true,
+                    Font = new Font("Arial", 10)
+                };
             container.Controls.Add(lbl);
         }
 

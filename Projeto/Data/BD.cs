@@ -170,7 +170,7 @@ public static class BD
 
     public static DataTable? GetUsuarios()
     {
-        string query = "select * from usuario";
+        string query = "select id, nome, email from usuario";
         using (var conn = BD.Conectar())
         {
             if (conn == null) return null;

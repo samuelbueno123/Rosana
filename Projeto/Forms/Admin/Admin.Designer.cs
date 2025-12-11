@@ -41,9 +41,9 @@
             // tabela_usuarios
             // 
             tabela_usuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tabela_usuarios.Location = new Point(12, 43);
+            tabela_usuarios.Location = new Point(43, 43);
             tabela_usuarios.Name = "tabela_usuarios";
-            tabela_usuarios.Size = new Size(463, 255);
+            tabela_usuarios.Size = new Size(392, 347);
             tabela_usuarios.TabIndex = 0;
             // 
             // label_usuarios
@@ -61,18 +61,19 @@
             group_actions.Controls.Add(button_abrirApp);
             group_actions.Controls.Add(button_fecharApp);
             group_actions.Controls.Add(button_excluirConta);
-            group_actions.Location = new Point(564, 43);
+            group_actions.Location = new Point(501, 43);
             group_actions.Name = "group_actions";
-            group_actions.Size = new Size(194, 255);
+            group_actions.Size = new Size(252, 347);
             group_actions.TabIndex = 2;
             group_actions.TabStop = false;
             group_actions.Text = "Ações de admin";
             // 
             // button_abrirApp
             // 
-            button_abrirApp.Location = new Point(36, 189);
+            button_abrirApp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button_abrirApp.Location = new Point(36, 221);
             button_abrirApp.Name = "button_abrirApp";
-            button_abrirApp.Size = new Size(124, 23);
+            button_abrirApp.Size = new Size(182, 79);
             button_abrirApp.TabIndex = 3;
             button_abrirApp.Text = "Reinstaurar acesso";
             button_abrirApp.UseVisualStyleBackColor = true;
@@ -80,9 +81,10 @@
             // 
             // button_fecharApp
             // 
-            button_fecharApp.Location = new Point(36, 119);
+            button_fecharApp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button_fecharApp.Location = new Point(36, 136);
             button_fecharApp.Name = "button_fecharApp";
-            button_fecharApp.Size = new Size(124, 23);
+            button_fecharApp.Size = new Size(182, 79);
             button_fecharApp.TabIndex = 2;
             button_fecharApp.Text = "Remover acesso";
             button_fecharApp.UseVisualStyleBackColor = true;
@@ -90,9 +92,10 @@
             // 
             // button_excluirConta
             // 
-            button_excluirConta.Location = new Point(36, 55);
+            button_excluirConta.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button_excluirConta.Location = new Point(36, 51);
             button_excluirConta.Name = "button_excluirConta";
-            button_excluirConta.Size = new Size(124, 23);
+            button_excluirConta.Size = new Size(182, 79);
             button_excluirConta.TabIndex = 1;
             button_excluirConta.Text = "Excluir Conta";
             button_excluirConta.UseVisualStyleBackColor = true;

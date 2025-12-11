@@ -31,7 +31,7 @@
             ComponentResourceManager resources = new ComponentResourceManager(typeof(PaginaPrincipal));
             label_bemvindo = new Label();
             menuStrip1 = new MenuStrip();
-            menu_conta = new ToolStripMenuItem();
+            menu_profile = new ToolStripMenuItem();
             menu_cadastro = new ToolStripMenuItem();
             menu_login = new ToolStripMenuItem();
             menu_sair = new ToolStripMenuItem();
@@ -63,7 +63,7 @@
             // label_bemvindo
             // 
             label_bemvindo.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
-            label_bemvindo.Location = new Point(469, 223);
+            label_bemvindo.Location = new Point(573, 223);
             label_bemvindo.Name = "label_bemvindo";
             label_bemvindo.Size = new Size(661, 80);
             label_bemvindo.TabIndex = 0;
@@ -71,38 +71,39 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { menu_conta, menu_opcoes, menu_fechar, menu_admin });
+            menuStrip1.AutoSize = false;
+            menuStrip1.Items.AddRange(new ToolStripItem[] { menu_profile, menu_opcoes, menu_fechar, menu_admin });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1584, 24);
+            menuStrip1.Size = new Size(1584, 128);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
-            // menu_conta
+            // menu_profile
             // 
-            menu_conta.DropDownItems.AddRange(new ToolStripItem[] { menu_cadastro, menu_login, menu_sair });
-            menu_conta.Name = "menu_conta";
-            menu_conta.Size = new Size(51, 20);
-            menu_conta.Text = "Conta";
+            menu_profile.DropDownItems.AddRange(new ToolStripItem[] { menu_cadastro, menu_login, menu_sair });
+            menu_profile.Name = "menu_profile";
+            menu_profile.Size = new Size(51, 124);
+            menu_profile.Text = "Conta";
             // 
             // menu_cadastro
             // 
             menu_cadastro.Name = "menu_cadastro";
-            menu_cadastro.Size = new Size(121, 22);
+            menu_cadastro.Size = new Size(180, 22);
             menu_cadastro.Text = "Cadastro";
             menu_cadastro.Click += menu_cadastro_Click;
             // 
             // menu_login
             // 
             menu_login.Name = "menu_login";
-            menu_login.Size = new Size(121, 22);
+            menu_login.Size = new Size(180, 22);
             menu_login.Text = "Login";
             menu_login.Click += menu_login_Click;
             // 
             // menu_sair
             // 
             menu_sair.Name = "menu_sair";
-            menu_sair.Size = new Size(121, 22);
+            menu_sair.Size = new Size(180, 22);
             menu_sair.Text = "Sair";
             menu_sair.Visible = false;
             menu_sair.Click += menu_sair_Click;
@@ -111,7 +112,7 @@
             // 
             menu_opcoes.DropDownItems.AddRange(new ToolStripItem[] { menu_configuracoes, menu_preferencias });
             menu_opcoes.Name = "menu_opcoes";
-            menu_opcoes.Size = new Size(59, 20);
+            menu_opcoes.Size = new Size(59, 124);
             menu_opcoes.Text = "Opções";
             menu_opcoes.Visible = false;
             // 
@@ -132,7 +133,7 @@
             // menu_fechar
             // 
             menu_fechar.Name = "menu_fechar";
-            menu_fechar.Size = new Size(54, 20);
+            menu_fechar.Size = new Size(54, 124);
             menu_fechar.Text = "Fechar";
             menu_fechar.Click += menu_fechar_Click;
             // 
@@ -141,7 +142,7 @@
             menu_admin.MergeAction = MergeAction.Insert;
             menu_admin.MergeIndex = 0;
             menu_admin.Name = "menu_admin";
-            menu_admin.Size = new Size(95, 20);
+            menu_admin.Size = new Size(95, 124);
             menu_admin.Text = "Administrador";
             menu_admin.Visible = false;
             menu_admin.Click += menu_admin_Click;
@@ -368,14 +369,13 @@
             menuStrip1.PerformLayout();
             ((ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Label label_bemvindo;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem menu_conta;
+        private ToolStripMenuItem menu_profile;
         private ToolStripMenuItem menu_cadastro;
         private ToolStripMenuItem menu_login;
         private ToolStripMenuItem menu_opcoes;

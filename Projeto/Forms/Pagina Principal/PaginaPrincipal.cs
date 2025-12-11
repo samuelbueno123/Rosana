@@ -1,3 +1,6 @@
+using System.Drawing;
+using System.IO;
+using SkiaSharp;
 using System.Globalization;
 
 namespace Projeto;
@@ -6,6 +9,60 @@ public partial class PaginaPrincipal : BaseForm
 {
     private bool navegando = false;
     private readonly Dictionary<Button, string> botaoParaEsporte = [];
+
+    private Image LoadAndResize(string path, Size size)
+    {
+        try
+        {
+            using var fs = File.OpenRead(path);
+            using var original = Image.FromStream(fs, true, true);
+            var resized = new Bitmap(size.Width, size.Height);
+            using (var g = Graphics.FromImage(resized))
+            {
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                g.DrawImage(original, 0, 0, size.Width, size.Height);
+            }
+            return resized;
+        }
+        catch (ArgumentException ex)
+        {
+            MessageBox.Show(
+                $"Erro ao carregar a imagem em '{path}' por causa de {ex.Message}. Tentando método alternativo...",
+                "Aviso",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
+            using var fs2 = File.OpenRead(path);
+            using var codec = SKCodec.Create(fs2);
+            if (codec is null)
+                throw;
+
+            using var originalBitmap = SKBitmap.Decode(codec);
+
+            // PRESERVAR COLOR TYPE / ALPHA / COLORSPACE !!!
+            var info = new SKImageInfo(
+                size.Width,
+                size.Height,
+                originalBitmap.ColorType,
+                originalBitmap.AlphaType,
+                originalBitmap.ColorSpace
+            );
+
+            using var resizedSk = originalBitmap.Resize(info, SKFilterQuality.High);
+            if (resizedSk is null)
+                throw new ArgumentException("Não foi possível decodificar a imagem.");
+
+            using var image = SKImage.FromBitmap(resizedSk);
+            using var data = image.Encode(SKEncodedImageFormat.Png, 100);
+            using var ms = new MemoryStream();
+            data.SaveTo(ms);
+            ms.Position = 0;
+            return Image.FromStream(ms);
+        }
+
+    }
 
 
     private void Esporte(string esporte)
@@ -158,8 +215,23 @@ public partial class PaginaPrincipal : BaseForm
 
     private void PaginaPrincipal_Load(object sender, EventArgs e)
     {
+        Image imagem, redimensionada;
+        
+        foreach (ToolStripMenuItem item in menuStrip1.Items)
+        {
+            item.ImageScaling = ToolStripItemImageScaling.None;
+            var key = item.Name?.Replace("menu_", "") ?? "";
+            if (!string.IsNullOrEmpty(key) && Constantes.ImagePaths.TryGetValue(key, out var imagePath) && !string.IsNullOrEmpty(imagePath))
+            {
+                imagem = LoadAndResize(imagePath, new Size(64, 64));
+                item.Image = imagem;
+            }
+            item.ImageAlign = ContentAlignment.MiddleCenter;
+            item.TextImageRelation = TextImageRelation.ImageAboveText;
+        }
+
         var ultimo = Properties.Settings.Default.UltimoUsuario;
-        Image imagem;
+        Image imagemBtn;
 
         foreach (Button btn in botaoParaEsporte.Keys)
         {
@@ -168,27 +240,27 @@ public partial class PaginaPrincipal : BaseForm
             if (!botaoParaEsporte.TryGetValue(btn, out var esporte) || string.IsNullOrEmpty(esporte))
                 continue;
 
-            // usar o helper que verifica File.Exists e retorna null se inválido
             var path = Constantes.GetPath(esporte);
             if (string.IsNullOrEmpty(path))
-                continue; // arquivo não encontrado -> ignorar botão
+                continue;
 
-            imagem = null;
+            imagemBtn = null;
             try
             {
-                imagem = System.Drawing.Image.FromFile(path);
+                imagemBtn = System.Drawing.Image.FromFile(path);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // opcional: registrar/logar o erro e continuar sem travar a UI
                 continue;
             }
 
-            if (imagem is not null)
+            if (imagemBtn is not null)
             {
-                btn.BackgroundImage = imagem;
+                btn.BackgroundImage = imagemBtn;
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
-                
+                btn.TextAlign = ContentAlignment.BottomCenter;
+                btn.TextImageRelation = TextImageRelation.ImageBeforeText;
+                btn.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             }
         }
 
@@ -274,5 +346,4 @@ public partial class PaginaPrincipal : BaseForm
     private void button_valorant_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
 
     private void button_xadrez_Click(object sender, EventArgs e) => Esporte(botaoParaEsporte[(Button)sender]);
-
 }

@@ -39,14 +39,11 @@
     <None Remove="Assets\fotos\esportes\boxe.jpg" />
     <None Remove="Assets\fotos\esportes\cod.jpg" />
     <None Remove="Assets\fotos\esportes\cs.png" />
-    <None Remove="Assets\fotos\esportes\formula1.jpg" />
     <None Remove="Assets\fotos\esportes\formula1.webp" />
     <None Remove="Assets\fotos\esportes\futebol.jpg" />
-    <None Remove="Assets\fotos\esportes\futebol_americano.png" />
     <None Remove="Assets\fotos\esportes\golfe.jpg" />
     <None Remove="Assets\fotos\esportes\judo.jpg" />
     <None Remove="Assets\fotos\esportes\natacao.jpg" />
-    <None Remove="Assets\fotos\esportes\rocket_league.jpg" />
     <None Remove="Assets\fotos\esportes\valorant.png" />
     <None Remove="Assets\fotos\esportes\xadrez.jpg" />
     <None Remove="Assets\fotos\profile.png" />
@@ -315,7 +312,7 @@
     <Content Include="Assets\fotos\esportes\futebol.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\fotos\esportes\futebol_americano.png">
+    <Content Include="Assets\fotos\esportes\futebolamericano.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\fotos\esportes\golfe.jpg">
@@ -327,7 +324,7 @@
     <Content Include="Assets\fotos\esportes\natacao.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\fotos\esportes\rocket_league.jpg">
+    <Content Include="Assets\fotos\esportes\rocket.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\fotos\esportes\valorant.png">
@@ -340,12 +337,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\fotos\sport_stats.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Assets\fotos\esportes\formula1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -378,6 +369,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Assets\fotos\esportes\formula1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

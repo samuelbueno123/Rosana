@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace Projeto;
 
 public partial class PaginaPrincipal : BaseForm
@@ -42,7 +44,38 @@ public partial class PaginaPrincipal : BaseForm
 
     private void Logar()
     {
-        if (Constantes.admins.Contains(Sessao.UsuarioAtual!.Nome)) menu_admin.Visible = true;
+        if (Constantes.admins.Contains(Sessao.UsuarioAtual?.Nome))
+        {
+            menu_admin.Visible = true;
+        }
+        else
+        {
+            // Esconder todos os botões por padrão
+            foreach (var btn in botaoParaEsporte.Keys)
+                btn.Visible = false;
+
+            var preferencias = BD.GetPreferencias(Sessao.UsuarioAtual?.Nome);
+
+            if (preferencias != null)
+            {
+                // Ordem deve corresponder à ordem de inserção no construtor
+                var esportes = Constantes.tabelas.ToList();
+
+                int i = 0;
+                foreach (bool pref in preferencias)
+                {
+                    if (i >= esportes.Count) break;
+
+                    string esporte = esportes[i++];
+                    var kv = botaoParaEsporte.FirstOrDefault(p => p.Value == esporte);
+
+                    // kv.Key será null se não encontrado
+                    if (kv.Key is not null)
+                        kv.Key.Visible = pref;
+                }
+            }
+        }
+
         menu_sair.Visible = true;
         menu_opcoes.Visible = true;
         menu_cadastro.Visible = false;
@@ -64,7 +97,7 @@ public partial class PaginaPrincipal : BaseForm
                 { button_cod, "cod" },
                 { button_cs, "cs" },
                 { button_futebol, "futebol" },
-                { button_futebolAmericano, "futebolAmericano" },
+                { button_futebolAmericano, "futebolamericano" },
                 { button_formula1, "formula1" },
                 { button_golfe, "golfe" },
                 { button_judo, "judo" },
@@ -106,7 +139,8 @@ public partial class PaginaPrincipal : BaseForm
 
         Preferencias preferencias = new();
         preferencias.ShowDialog();
-
+        if (preferencias.DialogResult == DialogResult.OK)
+            Logar();
     }
 
     private void menu_sair_Click(object sender, EventArgs e)
@@ -125,6 +159,38 @@ public partial class PaginaPrincipal : BaseForm
     private void PaginaPrincipal_Load(object sender, EventArgs e)
     {
         var ultimo = Properties.Settings.Default.UltimoUsuario;
+        Image imagem;
+
+        foreach (Button btn in botaoParaEsporte.Keys)
+        {
+            if (btn is null) continue;
+
+            if (!botaoParaEsporte.TryGetValue(btn, out var esporte) || string.IsNullOrEmpty(esporte))
+                continue;
+
+            // usar o helper que verifica File.Exists e retorna null se inválido
+            var path = Constantes.GetPath(esporte);
+            if (string.IsNullOrEmpty(path))
+                continue; // arquivo não encontrado -> ignorar botão
+
+            imagem = null;
+            try
+            {
+                imagem = System.Drawing.Image.FromFile(path);
+            }
+            catch (Exception ex)
+            {
+                // opcional: registrar/logar o erro e continuar sem travar a UI
+                continue;
+            }
+
+            if (imagem is not null)
+            {
+                btn.BackgroundImage = imagem;
+                btn.BackgroundImageLayout = ImageLayout.Stretch;
+                
+            }
+        }
 
         // fluxo 1: site em manutenção
         if (!BD.Acesso() && !Constantes.admins.Contains(ultimo))
@@ -162,8 +228,6 @@ public partial class PaginaPrincipal : BaseForm
         else
             SemConta();
     }
-
-
 
     private void menu_admin_Click(object sender, EventArgs e)
     {

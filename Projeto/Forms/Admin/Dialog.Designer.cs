@@ -38,7 +38,7 @@ partial class Dialog
         label1.AutoSize = true;
         label1.Location = new Point(12, 44);
         label1.Name = "label1";
-        label1.Size = new Size(310, 15);
+        label1.Size = new Size(309, 15);
         label1.TabIndex = 0;
         label1.Text = "O site está em manutenção. Tente novamente mais tarde.";
         // 
@@ -69,6 +69,7 @@ partial class Dialog
         Controls.Add(button_sair);
         Controls.Add(label1);
         Name = "Dialog";
+        StartPosition = FormStartPosition.CenterScreen;
         Text = "Dialog";
         ResumeLayout(false);
         PerformLayout();

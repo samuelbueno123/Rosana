@@ -31,10 +31,9 @@
             tabela_usuarios = new DataGridView();
             label_usuarios = new Label();
             group_actions = new GroupBox();
+            button_abrirApp = new Button();
             button_fecharApp = new Button();
             button_excluirConta = new Button();
-            button_addJogador = new Button();
-            button_abrirApp = new Button();
             ((ISupportInitialize)tabela_usuarios).BeginInit();
             group_actions.SuspendLayout();
             SuspendLayout();
@@ -62,42 +61,12 @@
             group_actions.Controls.Add(button_abrirApp);
             group_actions.Controls.Add(button_fecharApp);
             group_actions.Controls.Add(button_excluirConta);
-            group_actions.Controls.Add(button_addJogador);
             group_actions.Location = new Point(564, 43);
             group_actions.Name = "group_actions";
             group_actions.Size = new Size(194, 255);
             group_actions.TabIndex = 2;
             group_actions.TabStop = false;
             group_actions.Text = "Ações de admin";
-            // 
-            // button_fecharApp
-            // 
-            button_fecharApp.Location = new Point(36, 141);
-            button_fecharApp.Name = "button_fecharApp";
-            button_fecharApp.Size = new Size(124, 23);
-            button_fecharApp.TabIndex = 2;
-            button_fecharApp.Text = "Remover acesso";
-            button_fecharApp.UseVisualStyleBackColor = true;
-            button_fecharApp.Click += button_fecharApp_Click;
-            // 
-            // button_excluirConta
-            // 
-            button_excluirConta.Location = new Point(36, 97);
-            button_excluirConta.Name = "button_excluirConta";
-            button_excluirConta.Size = new Size(124, 23);
-            button_excluirConta.TabIndex = 1;
-            button_excluirConta.Text = "Excluir Conta";
-            button_excluirConta.UseVisualStyleBackColor = true;
-            button_excluirConta.Click += button_excluirConta_Click;
-            // 
-            // button_addJogador
-            // 
-            button_addJogador.Location = new Point(36, 51);
-            button_addJogador.Name = "button_addJogador";
-            button_addJogador.Size = new Size(124, 23);
-            button_addJogador.TabIndex = 0;
-            button_addJogador.Text = "Adicionar Jogador";
-            button_addJogador.UseVisualStyleBackColor = true;
             // 
             // button_abrirApp
             // 
@@ -108,6 +77,26 @@
             button_abrirApp.Text = "Reinstaurar acesso";
             button_abrirApp.UseVisualStyleBackColor = true;
             button_abrirApp.Click += button_abrirApp_Click;
+            // 
+            // button_fecharApp
+            // 
+            button_fecharApp.Location = new Point(36, 119);
+            button_fecharApp.Name = "button_fecharApp";
+            button_fecharApp.Size = new Size(124, 23);
+            button_fecharApp.TabIndex = 2;
+            button_fecharApp.Text = "Remover acesso";
+            button_fecharApp.UseVisualStyleBackColor = true;
+            button_fecharApp.Click += button_fecharApp_Click;
+            // 
+            // button_excluirConta
+            // 
+            button_excluirConta.Location = new Point(36, 55);
+            button_excluirConta.Name = "button_excluirConta";
+            button_excluirConta.Size = new Size(124, 23);
+            button_excluirConta.TabIndex = 1;
+            button_excluirConta.Text = "Excluir Conta";
+            button_excluirConta.UseVisualStyleBackColor = true;
+            button_excluirConta.Click += button_excluirConta_Click;
             // 
             // Admin
             // 
@@ -133,7 +122,6 @@
         private Label label_usuarios;
         private GroupBox group_actions;
         private Button button_excluirConta;
-        private Button button_addJogador;
         private Button button_fecharApp;
         private Button button_abrirApp;
     }

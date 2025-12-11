@@ -43,7 +43,7 @@ public partial class Preferencias : BaseForm
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
                 );
-            this.Close();
+            this.Close();            
 
         }
         else MessageBox.Show(

@@ -185,6 +185,30 @@ public static class BD
         }
     }
 
+    public static List<bool> GetPreferencias(string nome)
+    {
+        string query = "select * from preferencias where usuario = @usuario";
+        List<bool> preferencias = [];
+        using (var conn = BD.Conectar())
+        {
+            if (conn == null) return preferencias;
+
+            using (var cmd = new MySqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@usuario", GetId(nome: nome));
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (!reader.Read()) return preferencias;
+                    for (int i = 1; i < reader.FieldCount; i++)
+                    {
+                        preferencias.Add(reader.GetBoolean(i));
+                    }
+                    return preferencias;
+                }
+            }
+        }
+    }
+
     public static bool Acesso()
     {
         string query = "select ligado from estado";

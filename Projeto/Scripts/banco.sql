@@ -448,7 +448,18 @@ begin
 	end if;
 end;
 //
+
+create procedure deleteconta (in _nome varchar(45), _email varchar(45), senha bool)
+begin
+	if senha = true then
+		delete from usuario where nome = _nome and email = _email;
+	end if;
+end
+//
+
 DELIMITER ;
+
+call deleteconta ("admin", "admin@gmail.com", true);
 
 use trabalho;
 

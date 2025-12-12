@@ -5,13 +5,6 @@ public partial class PaginaCadastro : BaseForm
     public PaginaCadastro()
     {
         InitializeComponent();
-        this.FormClosed += PaginaCadastro_FormClosed;
-    }
-
-    private void PaginaCadastro_FormClosed(object? sender, FormClosedEventArgs e)
-    {
-        var principal = new PaginaPrincipal();
-        principal.Show();
     }
 
     private void button_enviar_Click(object sender, EventArgs e)
@@ -36,6 +29,7 @@ public partial class PaginaCadastro : BaseForm
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
                 );
+            this.DialogResult = DialogResult.OK;
             this.Close();
 
         }

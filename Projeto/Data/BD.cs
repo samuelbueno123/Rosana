@@ -2,7 +2,7 @@ namespace Projeto.Data;
 public static class BD
 {
 
-    private static readonly string con = "server=localhost;user=root;password=;database=trabalho";
+    private static readonly string con = "server=localhost;user=root;password=balsaMO1;database=trabalho";
 
     public static MySqlConnection? Conectar()
     {

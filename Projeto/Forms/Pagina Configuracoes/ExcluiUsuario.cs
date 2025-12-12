@@ -18,7 +18,7 @@ public partial class ExcluiUsuario : BaseForm
             MessageBoxIcon.Warning
             );
 
-        if (apagar == DialogResult.Yes && Conta.ExcluirConta(senha) == 2)
+        if (apagar == DialogResult.Yes && Conta.ExcluirConta(senha) == 1)
         {
             Sessao.UsuarioAtual!.Sair();
             MessageBox.Show(

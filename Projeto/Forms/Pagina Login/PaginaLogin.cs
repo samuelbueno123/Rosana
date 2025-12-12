@@ -5,13 +5,6 @@ public partial class PaginaLogin : BaseForm
     public PaginaLogin()
     {
         InitializeComponent();
-        this.FormClosed += PaginaLogin_FormClosed;
-    }
-
-    private void PaginaLogin_FormClosed(object? sender, FormClosedEventArgs e)
-    {
-        var principal = new PaginaPrincipal();
-        principal.Show();
     }
 
     private void button_login_Click(object sender, EventArgs e)
@@ -41,21 +34,27 @@ public partial class PaginaLogin : BaseForm
             Properties.Settings.Default.UltimoUsuario = nome ?? email;
             Properties.Settings.Default.Save();
 
+            this.DialogResult = DialogResult.OK;
             this.Close();
 
         }
-        else MessageBox.Show(
+        else
+        {
+            MessageBox.Show(
             "Erro no login",
             "Erro",
             MessageBoxButtons.OK,
             MessageBoxIcon.Error
             );
+        }
+
     }
 
     private void label2_Click(object sender, EventArgs e)
     {
         var cadastro = new PaginaCadastro();
-        this.Hide();
+        this.Close();
+        this.DialogResult = DialogResult.Cancel;
         cadastro.ShowDialog();
     }
 

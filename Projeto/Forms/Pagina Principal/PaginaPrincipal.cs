@@ -2,6 +2,7 @@ using System.Drawing;
 using System.IO;
 using SkiaSharp;
 using System.Globalization;
+using System.Configuration;
 
 namespace Projeto;
 
@@ -107,6 +108,8 @@ public partial class PaginaPrincipal : BaseForm
         if (Constantes.admins.Contains(Sessao.UsuarioAtual?.Nome))
         {
             menu_admin.Visible = true;
+            foreach (var btn in botaoParaEsporte.Keys)
+                btn.Visible = true;
         }
         else
         {
@@ -193,6 +196,7 @@ public partial class PaginaPrincipal : BaseForm
         PaginaCadastro cadastro = new();
         this.Hide();
         cadastro.ShowDialog();
+        this.Show();
 
     }
 
@@ -203,7 +207,11 @@ public partial class PaginaPrincipal : BaseForm
         PaginaLogin login = new();
         this.Hide();
         login.ShowDialog();
+        
+        if (login.DialogResult == DialogResult.OK)
+            Logar();
 
+        this.Show();
     }
 
     private void menu_preferencias_Click(object sender, EventArgs e)

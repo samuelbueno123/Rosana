@@ -1,10 +1,8 @@
 namespace Projeto.Models
 {
 
-    public class Usuario(int id, string nome, string email, string senhahash) : IDisposable
+    public class Usuario(int id, string nome, string email, string senhahash)
     {
-        private readonly IDisposable? _usuario;
-
         public int Id { get; set; } = id;
         public string Nome { get; set; } = nome;
         public string Email { get; set; } = email;
@@ -19,10 +17,7 @@ namespace Projeto.Models
             Properties.Settings.Default.UltimoUsuario = null;
             Properties.Settings.Default.TemaEscuro = false;
             Properties.Settings.Default.Save();
+            Sessao.UsuarioAtual = null;
         }
-
-        public void Dispose() => _usuario?.Dispose();
-
-        ~Usuario() => Dispose();
     }
 }

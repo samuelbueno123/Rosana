@@ -43,7 +43,7 @@ namespace Projeto
         private void menu_preferencias_Click(object sender, EventArgs e)
         {
 
-            Preferencias preferencias = new Preferencias(Sessao.UsuarioAtual!);
+            using Preferencias preferencias = new Preferencias(Sessao.UsuarioAtual!);
             preferencias.ShowDialog();
 
         }

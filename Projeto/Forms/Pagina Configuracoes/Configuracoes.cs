@@ -30,15 +30,13 @@
 
         private void button_mudarsenha_Click(object sender, EventArgs e)
         {
-            Senha senha = new();
-
+            using Senha senha = new();
             senha.ShowDialog();
         }
 
         private void button_excluirconta_Click(object sender, EventArgs e)
         {
-            ExcluiUsuario excluiUsuario = new();
-
+            using ExcluiUsuario excluiUsuario = new();
             excluiUsuario.ShowDialog();
         }
 
